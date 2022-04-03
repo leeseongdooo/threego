@@ -1,38 +1,202 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
+@media all and (min-width:1024px) { 
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .App {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 1903px;
+    height: auto;
+    overflow: hidden;
   }
+  
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+@media all and (min-width:768px) and (max-width:1023px) {
+
+  .App {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 940px;
+    height: auto;
+    overflow: hidden;
+  }
+
+ }
+
+ /* 모바일 가로, 모바일 세로 (해상도 360px ~ 767px)*/ 
+@media all and (max-width:400px) { 
+
+  .App {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    width: 390px;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .recommend > .travelList > .imgarea > img {
+    border-radius: 20px;
+    width:80px;
+    height: 180px;
+    border: 1px solid black;
+    background-size: cover;
+    max-width: 100%; 
+    height: auto;
+  }
+  
+
+}
+/* 헤더 시작 */
+.Header {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 헤더 로고 */
+.Header > h3 {
+  margin-left: 20px;
+}
+
+.Header > .menuIcon {
+  margin-right: 20px;
+  cursor: pointer;
+}
+/* 헤더 끝 */
+
+/* 컨텐트 영역 (사진이 배경인 부분) */
+.Content {
+  color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  height: 400px;
+  background-image: url('./img/exampleImg.jpg');
+  background-size: cover;
+  background-repeat: none;
+}
+
+/* 텍스트와 버튼을 감싸주는 div = explanation */
+.Content > .explanation {
+  padding: 22px;
+}
+
+/* 버튼박스 */
+.Content > .explanation > .btnbox {
+  margin-top: 20px;
+}
+/* 버튼박스안에 버튼설정 */
+.Content > .explanation > .btnbox > button {
+  width: 120px;
+  height: 35px;
+  border-radius: 36px;
+  border: none;
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 20px;
   color: white;
+  cursor: pointer;
+  background-color: black;
+}
+/* 첫번째 버튼만 설정 */
+.Content > .explanation > .btnbox > button:first-child {
+  margin-left: 0px;
+  color: black;
+  background-color: white;
 }
 
-.App-link {
-  color: #61dafb;
+
+/* 추천div영역 */
+.recommend {
+  margin-top: 20px;
+  width: calc(100% - 30px);
+  height: 250px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* 추천게시물  */
+.recommend > .travelList {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.recommend > .travelList > .imgarea {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 190px;
+}
+
+/* 주변가격정보 */
+
+.priceInfo {
+  margin-top: 20px;
+  width: calc(100% - 30px);
+  height: 300px;
+}
+
+.priceInfo > .priceList {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.priceInfo .pricearea {
+  margin-top: 10px;
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 230px;
+  border-radius: 12.5px;
+}
+
+/* 리뷰정보 */
+
+.reviewInfo {
+  margin-top: 20px;
+  width: calc(100% - 30px);
+  height: 300px;
+}
+
+.reviewInfo > .reviewList {
+  width: 100%;
+  padding-left: 20px;
+}
+
+.reviewInfo  .reviewarea {
+  margin-top: 10px;
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 230px;
+}
+
+footer {
+  background-color: yellow;
+}
+
+/* 상단 텍스트 */
+.textarea {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+ .textarea > a {
+  text-decoration: none;
+  color: gray;
+  font-size: 12px;
 }
