@@ -4,59 +4,22 @@
 }
 
 @media all and (min-width:1024px) { 
-
   .App {
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    width: 1903px;
     height: auto;
     overflow: hidden;
   }
   
-}
-
-@media all and (min-width:768px) and (max-width:1023px) {
-
-  .App {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    width: 940px;
-    height: auto;
-    overflow: hidden;
-  }
-
- }
-
- /* 모바일 가로, 모바일 세로 (해상도 360px ~ 767px)*/ 
-@media all and (max-width:400px) { 
-
-  .App {
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    width: 390px;
-    height: auto;
-    overflow: hidden;
-  }
-
   .imgarea {
-    margin-top: 10px;
     width: 75%;
     height: 150px;
-    border: 1px solid black;
     border-radius: 12.5px;
     display: flex;
     flex-direction: column;
-
     align-items:flex-start;
     justify-content: space-between;
-  }
-
-  .imgarea h3 {
-    width: 65%;
-    margin-top: 10px;
   }
 
   .imgarea a {
@@ -66,26 +29,146 @@
   }
 
 }
+
+@media all and (min-width:768px) and (max-width:1023px) {
+  .App {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .imgarea {
+    width: 75%;
+    height: 150px;
+    border-radius: 12.5px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: space-between;
+  }
+
+  .imgarea a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #676767;
+  }
+
+ }
+
+
+@media all and (max-width:420px) { 
+  .App {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .imgarea {
+    width: 75%;
+    height: 150px;
+    border-radius: 12.5px;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start;
+    justify-content: space-between;
+  }
+
+  .imgarea a {
+    text-decoration: none;
+    font-size: 14px;
+    color: #676767;
+  }
+
+
+}
 /* 헤더 시작 */
+
 .Header {
+  position: fixed;
   width: 100%;
-  height: 40px;
+  height: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
+  transition: 0.3s;
 }
 
 /* 헤더 로고 */
 .Header > h3 {
-  margin-left: 20px;
+  width: 115px;
+  font-size: 24px;
+  text-align: center;
+  margin: 10px;
 }
 
 .Header > .menuIcon {
   width: 20px;
   height: 20px;
+  position: relative;
+  z-index: 1;
   margin-right: 20px;
   cursor: pointer;
 }
+
+/* 토글메뉴 */
+.show-menu{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 52px;
+  width: 100%;
+  height: 900px;
+  right: 0;
+  background-color: white;
+  color: black;
+  transition: 0.3s;
+  z-index: 10;
+}
+  
+.hide-menu{
+  position: absolute;
+  right: 0;
+  top: 52px;
+  width: 0%;
+  height: 900px;
+  list-style-type: none;
+  background-color: white;
+  transition: 0.3s;
+  overflow: hidden;
+}
+
+li {
+  width: 65%;
+  margin: 10px;
+  list-style: none outside;
+  font-size: 16px;
+  text-align: center;
+  font-weight: 500;
+}
+
+.loginButton {
+  background-color: royalblue;
+  width: 40%;
+  height: 40px;
+  border-radius: 25px;
+  border: none;
+  margin: 5px;
+}
+
+.loginButton > a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+}
+
 /* 헤더 끝 */
 
 /* 컨텐트 영역 (사진이 배경인 부분) */
@@ -93,7 +176,7 @@
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: flex-start;
   width: 100%;
   height: 400px;
@@ -104,45 +187,52 @@
 
 /* 텍스트와 버튼을 감싸주는 div = explanation */
 .Content > .explanation {
-  padding: 22px;
+  padding: 20px;
 }
 
 /* 버튼박스 */
 .Content > .explanation > .btnbox {
-  margin-top: 20px;
+  margin-top: 10px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
+
+.Content > .explanation > .btnbox .innerbtnbox {
+  padding: 5px;
+}
+
 /* 버튼박스안에 버튼설정 */
-.Content > .explanation > .btnbox > button {
+.Content > .explanation > .btnbox .innerbtnbox button {
   width: 100px;
   height: 35px;
   border-radius: 36px;
   border: none;
   font-size: 16px;
   font-weight: 700;
-  margin-left: 20px;
-  color: white;
   cursor: pointer;
   background-color: black;
+  color: white;
 }
-/* 첫번째 버튼만 설정 */
-.Content > .explanation > .btnbox > button:first-child {
-  margin-left: 0px;
-  color: black;
+
+.Content > .explanation > .btnbox .innerbtnbox:first-child button {
+  padding: 0;
   background-color: white;
+  color: black;
 }
 
 
 /* 추천div영역 */
 .recommend {
-  margin-top: 20px;
-  width: calc(100% - 30px);
+  margin-top: 5px;
+  width: 100%; 
   height: auto;
 }
 
 /* 추천게시물  */
 .recommend > .travelList {
-  width: 100%;
-  padding-left: 20px;
+  width: calc(100% - 40px);
+  padding: 20px;
   height: auto;
 }
 
@@ -159,7 +249,12 @@
 }
 
 .recommend > .travelList .infotext {
-  padding: 10px 0px 0px 20px;
+  padding: 10px;
+}
+
+.recommend > .travelList .infotext > h3 {
+  width: 68%;
+  margin-top: 10px;
 }
 
 .recommend > .travelList .infotext > a {
@@ -170,39 +265,43 @@
 /* 주변가격정보 */
 
 .priceInfo {
-  margin-top: 20px;
-  width: calc(100% - 30px);
+  width: 100%;
   height: 260px;
 }
 
 .priceInfo > .priceList {
-  width: 100%;
-  padding-left: 20px;
+  width: calc(100% - 40px);
+  padding: 20px;
 }
 
 .priceInfo .pricearea {
-  margin-top: 10px;
-  border: 1px solid black;
   width: 100%;
+  height: 230px;
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  height: 230px;
   border-radius: 12.5px;
+  font-weight: 700;
+  color: white;
+  background-color: royalblue;
+  box-shadow: 7px 5px 3px rgba(0, 0, 0, 0.2);
 }
 /* 상단 텍스트 */
 .priceInfo .pricearea .toptext {
   width: 100%;
+  height: 40px;
   display: flex;
   justify-content: space-around;
-  height: 40px;
   align-items: center;
   text-align: center;
 }
 
+/* 날짜부분이 길어서 따로 설정했어요 */
 .priceInfo .pricearea .toptext > h4:last-child {
   width: 80px;
 }
 
+/* 상품에 대한 css ex:) 오징어 3000부분 */
 .productInfo {
   width: 100%;
   display: flex;
@@ -215,18 +314,17 @@
 
 .reviewInfo {
   margin-top: 20px;
-  width: calc(100% - 30px);
+  width: 100%;
   height: auto;
 }
 
 .reviewInfo > .reviewList {
-  width: 100%;
-  padding-left: 20px;
+  width: calc(100% - 40px);
+  padding: 20px;
 }
 
 .reviewInfo .reviewarea {
   margin-top: 10px;
-  position: relative;
   width: 100%;
   display: flex;
   overflow-x: scroll;
@@ -236,17 +334,18 @@
   height: auto;
 }
 
+/* 스크롤바 없애는 css */
 .reviewInfo .reviewarea::-webkit-scrollbar {
   display: none;
 }
 
 .reviewInfo .reviewarea .reviewBox {
-  position: relative;
+  margin: 5px;
   min-width: 152px;
   height: 200px;
   border-radius: 12.5px;
   border: 1px solid black;
-  margin: 0px 0px 0px 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .reviewInfo .reviewarea .reviewBox:first-child {
@@ -270,19 +369,13 @@
   border-bottom-right-radius: 12.5px;
 }
 
+/* 리뷰박스 안에 글자크기 설정 css */
 .reviewInfo .reviewarea .reviewBox .reviewText span {
   font-size: 13px;
 }
 
 .reviewInfo .reviewarea .reviewBox .reviewText p {
   font-size: 15px;
-}
-
-.bottom {
-  margin-top: 20px;
-  width: 100%;
-  height: 300px;
-  background-color: #676767;
 }
 
 
@@ -298,4 +391,47 @@
   text-decoration: none;
   color: gray;
   font-size: 12px;
+}
+
+/* 바텀 */
+
+.bottom {
+  margin-top: 20px;
+  width: 100%;
+  height: 230px;
+  background-color: #d7d7d7;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+
+.bottom .topText {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.bottom .centerText {
+  width: 95%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 25px;
+}
+
+.bottom .bottomText {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.bottom .bottomText h4 {
+  margin: 5px;
 }

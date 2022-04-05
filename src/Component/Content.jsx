@@ -128,16 +128,24 @@ function Content() {
     return (
         // 이미지 있는 부분까지
         <>
+        <Header></Header>
         <div className="Content">
-            <Header></Header>
+           
             {/* 이미지 안쪽에 텍스트와 버튼 */}
             <div className="explanation">
-                <h2>안녕하세요</h2>
-                <h2>텍스트를 입력해주세요</h2>
+                <div>
+                    <h2>안녕하세요</h2>
+                    <h2>텍스트를 입력해주세요</h2>
+                </div>
                 {/* 버튼 div */}
                 <div className="btnbox">
-                    <button>코스보기</button>
-                    <button>리뷰보기</button>
+                    <div className="innerbtnbox">
+                        <button>코스보기</button>
+                    </div>
+                    
+                    <div className="innerbtnbox">
+                        <button>리뷰보기</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -150,7 +158,7 @@ function Content() {
                     <h3>추천 여행지</h3>
                 </div>
                 {recommend.map(a => (
-                    <RecommendInfo recommend={a}/>
+                    <RecommendInfo recommend={a} key={recommend.recommendId}/>
                 ))}
             </div>
 
@@ -197,7 +205,7 @@ function Content() {
 
                 <div className="reviewarea">
                     {review.map(review => (
-                        <ReviewInfo review={review}/>
+                        <ReviewInfo review={review} key={review.reviewId}/>
                     ))}
                 </div>
             </div>
