@@ -1,9 +1,10 @@
 import { toBePartiallyChecked } from '@testing-library/jest-dom/dist/matchers';
 import React,{useState} from 'react';
-
 import {AiOutlineMenu} from "react-icons/ai";
 import { useEffect} from 'react';
-function Header() {
+import { Link } from 'react-router-dom';
+
+function Header(props) {
 
     const [isOpen, setMenu] = useState(false); // 메뉴창이 열린지 안열린지 판단
 
@@ -11,11 +12,13 @@ function Header() {
         setMenu(isOpen => !isOpen);
     }
 
+    props.menuCheck(isOpen)
+
     let y = window.scrollY;
 
     const tempStyle={
         background:"black",
-        color: "white",
+        color: "white"
     }
 
     // Y축 스크롤값을 확인하기 위해
@@ -43,7 +46,10 @@ function Header() {
     return(
         <>
             <header className="Header" style={isOpen ? tempStyle : (Scrolly > 0) ? tempStyle : null}>
-                <h3>Three Go</h3>
+                <Link to='/' style={{ textDecoration: 'none' }}>
+                    <h3>Three Go</h3>
+                </Link>
+                
                 <AiOutlineMenu className="menuIcon" onClick={() => toggleMenu()}/>
                 <ul className={isOpen ? "show-menu" : "hide-menu"}>
                     <li>아직추가X</li>
@@ -53,7 +59,7 @@ function Header() {
                     <li>
                         <div className='loginBox'>
                             <button className='loginButton'>
-                                <a href="https://m.mcdonalds.co.kr/kor/main.do">로그인</a>
+                                <Link to='/Login'>로그인</Link>
                             </button>
 
                             <button className='loginButton'>

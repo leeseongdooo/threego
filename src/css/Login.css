@@ -1,0 +1,67 @@
+form {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: calc(100%);
+}
+
+
+.LoginBox {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.LoginBox .Text {
+    width: 90%;
+    margin: 5px;
+}
+
+.LoginBox .Text h1 {
+    font-size: 44px;
+}
+
+.LoginBox .Text .BackIcon {
+    width: 25px;
+    height: 25px;
+    color: black;
+}
+
+.LoginBox input {
+    width: calc(90% - 15px);
+    margin: 5px;
+    height: 50px;
+    padding-left: 10px;
+}
+
+.LoginBox input[type="submit"]{
+    padding-left: 0px;
+    width: 90%;
+    border-radius: 5px;
+    background-color: black;
+    border: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.LoginBox .subText {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.LoginBox .subText li {
+    margin: 10px;
+    width: calc(100%/3);
+    font-size: 12px;
+    text-align: center;
+}
