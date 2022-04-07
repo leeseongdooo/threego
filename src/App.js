@@ -6,6 +6,7 @@ import './App.css';
 // 컴포넌트 import
 import MainPage from './Component/MainPage';
 import Login from './Component/Login';
+import SignIn from './Component/SignIn';
 
 function App() {
   
@@ -20,17 +21,23 @@ function App() {
   return (
     <Router>
       <Switch>
+        {/* 주소가 /라면 아래 실행 */}
         <Route exact path="/">
           <div className="App" style={scrollfix ? fixcss : null}>
             <MainPage path="/" scrollfix={(aa) => {setScrollfix(aa)}}></MainPage>
           </div>
         </Route>
 
+        {/* 주소가 /Login이라면 아래 실행 */}
         <Route exact path="/Login">
-            <div className="App" style={scrollfix ? fixcss : null}>
-                <Login/>
-            </div>
+            <Login/>
         </Route>
+
+        <Route exact path="/SingIn">
+            <SignIn/>
+        </Route>
+
+
       </Switch>
     </Router>
   );

@@ -5,6 +5,7 @@ import { useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
 function Header(props) {
+    let y = window.scrollY;
 
     const [isOpen, setMenu] = useState(false); // 메뉴창이 열린지 안열린지 판단
 
@@ -14,7 +15,7 @@ function Header(props) {
 
     props.menuCheck(isOpen)
 
-    let y = window.scrollY;
+
 
     const tempStyle={
         background:"black",
@@ -63,7 +64,7 @@ function Header(props) {
                             </button>
 
                             <button className='loginButton'>
-                                <a href="https://m.mcdonalds.co.kr/kor/main.do">회원가입</a>
+                                <Link to='/SingIn'>회원가입</Link>
                             </button>
                         </div>
                     </li>
