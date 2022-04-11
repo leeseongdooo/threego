@@ -7,19 +7,15 @@ import { Link } from "react-router-dom";
 
 function Login() {
     
-    const [textlength, setTextLength] = useState(1);
-    const [pwdlength, setPwdLength] = useState(1);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
-    const textSize = (e)=> {
-        console.log(e.target.value);
-        console.log(e.target.value.length);
-        setTextLength(e.target.value.length);
+    const idSize = (e)=> {
+        setUsername(e.target.value.length);
      }
 
      const pwdSize = (e)=> {
-        console.log(e.target.value);
-        console.log(e.target.value.length);
-        setPwdLength(e.target.value.length);
+        setPassword(e.target.value.length);
      }
 
     return(
@@ -33,10 +29,10 @@ function Login() {
                     <h1>Threego</h1>
                 </div>
 
-                <input type="text" placeholder="ID" onChange={textSize}/>
+                <input type="text" placeholder="ID" onChange={idSize}/>
                 <input type="password" placeholder="pwd" onChange={pwdSize}/>
-                {(textlength > 0 && pwdlength > 0) ? null : <span> 빈칸을 채워주세요!! </span>}
-                <button onClick={console.log("A")}><Link to='/' className="LoginLink">로그인</Link></button>
+                {(username > 0 && password > 0) ? null : <span> 빈칸을 채워주세요!! </span>}
+                <button onClick={() => {document.location.href = "/"}}><Link to='/' className="LoginLink">로그인</Link></button>
                
                 <ul className="subText">
                     <li><Link to='/SingIn' className="SignInLink">회원가입</Link></li>
