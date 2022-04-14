@@ -3,6 +3,7 @@ import React,{useState} from 'react';
 import {AiOutlineMenu} from "react-icons/ai";
 import { useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import '../css/Header.css'
 
 function Header(props) {
     let y = window.scrollY;
@@ -13,7 +14,7 @@ function Header(props) {
         setMenu(isOpen => !isOpen);
     }
 
-    props.menuCheck(isOpen)
+   
 
 
 

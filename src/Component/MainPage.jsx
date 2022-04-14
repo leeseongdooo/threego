@@ -43,8 +43,6 @@ function ReviewInfo({review}) {
 
 function MainPage(props) {
    
-    const [menuCheck, setMenuCheck] = useState(false);
-
     // 상품정보 오브젝트
     const [product, setProduct] = useState([
         {
@@ -127,12 +125,12 @@ function MainPage(props) {
         },
     ])
 
-    props.scrollfix(menuCheck);
+   
     
     return (
         // 이미지 있는 부분까지
         <>
-        <Header menuCheck={(check) => { setMenuCheck(check);}}></Header>
+        <Header ></Header>
         
         <div className="Content">
            

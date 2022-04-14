@@ -23,34 +23,31 @@ function SignIn() {
 
 
     // 아이디에 대한 유효성 검사
-    const IdCheck = (e) => {setId(e.target.value);}
-
-    useEffect(() => {
-        const reg = /^[a-z]+[a-z0-9]{7,19}$/g;
+    const IdCheck = useCallback((e) => {
+        setId(e.target.value);
+        const reg = /^[a-zA-Z]{4,14}$/g;
         if(!reg.test(id))
         {
-            setIsId(false);
-            setIdMessage("최소 8자이상 문자와 숫자를 같이 넣어주세요");  
-            if(id.length < 8 && id.length >= 1) {
+            if(e.target.value.length < 8 && e.target.value.length >= 1) {
                 setIsId(false);
                 setIdMessage("최소 8자이상 문자와 숫자를 같이 넣어주세요");  
-            } else if(id.length> 20) {
+            } else if(e.target.value.length > 14) {
                 setIsId(false);
                 setIdMessage("문자가 너무 커요 ㅜㅜ 줄여주세요");
             }
-            else if(id.length < 1)
+            else if(e.target.value.length < 1)
             {
-                setIdMessage(null);
+                setIdMessage("");
             }
         } else { 
             // 조건이 있어야 될듯 첫문자가 참으로 나옴.
             setIdMessage("멋진 아이디네요!");
             setIsId(true);
         }
-    })
+    }, [id])
 
     // 닉네임 체크
-    const NickNameCheck = (e) => {
+    const NickNameCheck = useCallback((e) => {
         setNickname(e.target.value);
        
         if(e.target.value.length < 3 && e.target.value.length >= 1) {
@@ -69,40 +66,35 @@ function SignIn() {
             setNicknameMessage("멋진 닉네임이네요");
             setIsNickName(true);
         }
-    }
+    }, [nickname])
+
 
     // 비밀번호
-    const PasswordCheck = (e) => {setPassword(e.target.value);}
-    
-
-    useEffect(() => {
+    const PasswordCheck = useCallback((e) => {
+        setPassword(e.target.value);
         const reg = /(?=.*\d{1,50})(?=.*[~`!@#$%\^&*()-+=]{1,50})(?=.*[a-zA-Z]{2,50}).{8,50}$/;
 
         if(!reg.test(password))
         {
-            setIsPwd(false);
-            setPwdMessage("최소 8 자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수 문자");   
-            if(password.length< 8 && password.length >= 1) {
+            if(e.target.value.length < 8 && e.target.value.length >= 1) {
                 setIsPwd(false);
-                console.log(password.length)
                 setPwdMessage("최소 8 자, 하나 이상의 문자, 하나의 숫자 및 하나의 특수 문자");    
-            } else if(password.length > 15) {   
+            } else if(e.target.value.length > 15) {
                 setIsPwd(false);
                 setPwdMessage("문자가 너무 커요 ㅜㅜ 줄여주세요");
-            } else if(password.length == 0)
+            } else if(e.target.value.length == 0)
             {
                 setPwdMessage(null);
             }
         }
         else { 
         // 조건이 있어야 될듯 첫문자가 참으로 나옴.
-            console.log(password.length)
             setIsPwd(true);
             setPwdMessage("멋진 비밀번호네요!");
         }
-    })
+    }, [password])
     
-    
+
     const PasswordCheckCheck = (e) => setPwdChk(e.target.value);
 
     useEffect(() => {

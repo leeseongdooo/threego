@@ -7,6 +7,7 @@ import './App.css';
 import MainPage from './Component/MainPage';
 import Login from './Component/Login';
 import SignIn from './Component/SignIn';
+import RecommendList from './Component/RecommendList';
 
 function App() {
   
@@ -37,6 +38,9 @@ function App() {
             <SignIn/>
         </Route>
 
+        <Route exact path="/RecommendList">
+            <RecommendList/>
+        </Route>
 
       </Switch>
     </Router>
