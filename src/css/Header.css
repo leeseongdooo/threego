@@ -1,4 +1,18 @@
 /* 헤더 로고 */
+
+.Header{
+  top: 0;
+  position: fixed;
+  width: 100%;
+  z-index: 3;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: black;
+  transition: 0.3s;
+}
+
 .Header h3 {
     width: 115px;
     font-size: 24px;

@@ -86,8 +86,76 @@
 
 }
 
+
+/* 슬라이드 박스 */
+
+.slideBigBox {
+  position: relative;
+}
+
+.slide-Box {
+  display: flex;
+  overflow: hidden;
+}
+
+
+.slideBigBox > p {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  z-index: 100;
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  justify-content: center;
+  width: 55px;
+  height: 23px;
+  line-height: 23px;
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.slideBtnBox {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.slideBtnBox:hover {
+  opacity: 1;
+}
+
+.slideBtnBox div {
+    width: 85%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.slideBtnBox button {
+    background-color: rgba(14, 14, 14, 0.6);
+    border-radius: 100%;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border: none;
+}
+
+
+
 /* 컨텐트 영역 (사진이 배경인 부분) */
 .Content {
+  transition: 0.3s;
+  flex-shrink: 0;
   color: white;
   display: flex;
   flex-direction: column;
@@ -157,25 +225,51 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  background-image: url('./img/exampleImg.jpg');
+  justify-content: flex-end;
   background-repeat: no-repeat;
+  background-size: cover;
   height: 250px;
 }
 
 .recommend > .travelList .infotext {
   padding: 10px;
+  padding-bottom: 0px;
 }
 
 .recommend > .travelList .infotext > h3 {
-  width: 68%;
+  width: 85%;
+  font-size: 18px;
   margin-top: 10px;
 }
 
 .recommend > .travelList .infotext > a {
-  color: rgb(215, 215, 215);
+  color: rgb(255, 255, 255);
 }
 
+.ButtonBox {
+  margin: 5px;
+  width: 90%;
+  display: flex;
+}
+
+.ButtonBox button {
+  margin: 5px;
+  border: none;
+  padding: 9px;
+  border-radius: 40px;
+  font-weight: bold;
+  color: white;
+  background-color: black;
+  width: 100%;
+  max-width: 100px;
+}
+
+.ButtonBox button:first-child {
+  margin-left: 0;
+  color: black;
+  border: 1px solid #676767;
+  background-color: white;
+}
 
 /* 주변가격정보 */
 
@@ -307,45 +401,4 @@
   font-size: 12px;
 }
 
-/* 바텀 */
 
-.bottom {
-  margin-top: 20px;
-  width: 100%;
-  height: 230px;
-  background-color: #d7d7d7;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-
-.bottom .topText {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.bottom .centerText {
-  width: 95%;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 25px;
-}
-
-.bottom .bottomText {
-  width: 100%;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.bottom .bottomText h4 {
-  margin: 5px;
-}

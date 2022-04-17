@@ -117,8 +117,8 @@ function SignIn() {
     return(
         <>
             {/* 전체를 묶어주는 div */}
-            <div className="SignInBox ">
-            <h1>ThreeGo</h1>
+            <div className="SignInBox">
+                <h1>ThreeGo</h1>
                 <div className="shapebox">
                     <h4>아이디</h4>
                     <input type="text" className="idInput" placeholder="아이디" onChange={IdCheck}/>
@@ -143,7 +143,9 @@ function SignIn() {
                     <span className={isPwdChk ? "true" : "false"}>{pwdChkMessage}</span>
                 </div>
 
+                <div className="shapebox">
                 <button>가입하기</button>
+                </div>
             </div>
         </>
     );

@@ -1,32 +1,44 @@
-import {React,useState} from "react";
+import {React,useEffect,useState} from "react";
 import Header from "./Header";
 import Bottom from "./Bottom";
 import '../css/RecommendList.css'
 
 function Categorie(props) {
 
+    const [click, setClick] = useState(false);
+
+    const [clickStyle, setClickStyle] = useState(
+        {
+            backgroundColor: 'black',
+            color: 'white'
+        }
+    )
+    
+
+
     return(
         <>
+        <Header/>
+        <h1 className="NowLocation">대구광역시</h1>
             <div className="Category-Box">
                 <div className="Small-Box">
-                    <div className="SmallBtn" onClick={(e) => {props.all()}}>
+                    <div className="SmallBtn" onClick={(e) => {props.all();  setClick(e.target.outerText); }} style={click==="전체" ? clickStyle : null} >
                         <span>전체</span>
-                        
                     </div>
 
-                    <div className="SmallBtn" onClick={(e)=>{props.categorie(e.target.outerText)}}>
+                    <div className="SmallBtn" onClick={(e)=>{props.categorie(e.target.outerText); setClick(e.target.outerText)}} style={click==="카페" ? clickStyle : null} >
                         <span>카페</span>
                     </div>
 
-                    <div className="SmallBtn" onClick={(e)=>{props.categorie(e.target.outerText)}}>
+                    <div className="SmallBtn" onClick={(e)=>{props.categorie(e.target.outerText); setClick(e.target.outerText)}} style={click==="맛집" ? clickStyle : null} >
                         <span>맛집</span>
                     </div>
 
-                    <div className="SmallBtn" onClick={(e)=>{props.categorie(e.target.outerText)}}>
+                    <div className="SmallBtn" onClick={(e)=>{props.categorie(e.target.outerText); setClick(e.target.outerText)}} style={click==="숙소" ? clickStyle : null} >
                         <span>숙소</span>
                     </div>
 
-                    <div className="SmallBtn" onClick={(e)=>{props.categorie(e.target.outerText)}}>
+                    <div className="SmallBtn" onClick={(e)=>{props.categorie(e.target.outerText); setClick(e.target.outerText)}} style={click==="액티비티" ? clickStyle : null} >
                         <span>액티비티</span>
                     </div>
                 </div>
@@ -90,28 +102,6 @@ function TravelCard() {
     )
 }
 
-function TravelCard2() {
-    return(
-        <div className="TravelBox">
-            <div className="travelList">
-                <div className="imgarea">
-                    <div className="TextBox">
-                        <h3>대구광역시</h3>
-                        <span>꽃배경 인생샷 성지와 든든해지는 맛집이 있어요</span>
-                    
-                    </div>
-                    
-                    <div className="ButtonBox">
-                        <button>여행시작</button>
-                        <button>리뷰보기</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-
 function RecommendList() {
 
     // 전체 카테고리를 누르면 모두 나오게 다른 카테고리 누르면 false되서 카테고리 항목만 나오게 했습니다
@@ -149,8 +139,7 @@ function RecommendList() {
 
     return(
     <>
-        <div>
-            <Header/>     
+        <div className="RecommendBox">   
             <Categorie categorie={(categorie) => {setCategorie(categorie); setAll(false)}} 
                         all={() => {setAll(true)}}/>
             <div className="TravelBox">

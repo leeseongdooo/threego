@@ -8,6 +8,7 @@ import MainPage from './Component/MainPage';
 import Login from './Component/Login';
 import SignIn from './Component/SignIn';
 import RecommendList from './Component/RecommendList';
+import ErrorPage from './Component/ErrorPage';
 
 function App() {
   
@@ -25,7 +26,7 @@ function App() {
         {/* 주소가 /라면 아래 실행 */}
         <Route exact path="/">
           <div className="App" style={scrollfix ? fixcss : null}>
-            <MainPage path="/" scrollfix={(aa) => {setScrollfix(aa)}}></MainPage>
+            <MainPage path="/" scrollfix={(aa) => {setScrollfix(aa)}} ></MainPage>
           </div>
         </Route>
 
@@ -34,12 +35,16 @@ function App() {
             <Login/>
         </Route>
 
-        <Route exact path="/SingIn">
+        <Route path="/SingIn">
             <SignIn/>
         </Route>
 
-        <Route exact path="/RecommendList">
+        <Route path="/RecommendList">
             <RecommendList/>
+        </Route>
+
+        <Route path="*">
+            <ErrorPage/>
         </Route>
 
       </Switch>

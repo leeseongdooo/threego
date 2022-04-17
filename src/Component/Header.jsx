@@ -14,10 +14,6 @@ function Header(props) {
         setMenu(isOpen => !isOpen);
     }
 
-   
-
-
-
     const tempStyle={
         background:"black",
         color: "white"
@@ -29,10 +25,6 @@ function Header(props) {
     const handleFollow = () => {
         setScrolly(window.pageYOffset); // window 스크롤 값을 ScrollY에 저장
     }
-
-    useEffect(() => {
-        console.log("ScrollyScrolly is ",Scrolly); // ScrollY가 변화할때마다 값을 콘솔에 출력
-    }, [Scrolly])
 
     useEffect(() => {
         const watch = () => {
