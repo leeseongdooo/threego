@@ -43,9 +43,13 @@ function App() {
             <RecommendList/>
         </Route>
 
-        <Route path="*">
+        <Route path="/Error/:error">
             <ErrorPage/>
         </Route>
+
+          <Route path="*">
+              <ErrorPage/>
+          </Route>
 
       </Switch>
     </Router>

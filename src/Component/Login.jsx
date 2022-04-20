@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Header from "./Header";
 import { useState } from "react";
 import '../css/Login.css';
@@ -6,21 +6,57 @@ import {IoMdArrowBack} from "react-icons/io";
 import { Link } from "react-router-dom";
 
 function Login() {
-    
-    const [textlength, setTextLength] = useState(1);
-    const [pwdlength, setPwdLength] = useState(1);
 
-    const textSize = (e)=> {
-        console.log(e.target.value);
-        console.log(e.target.value.length);
-        setTextLength(e.target.value.length);
+    const [username,setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const [validate, setValidate] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    const usernameOnchange = (e)=> {
+        setUsername(e.target.value);
      }
 
-     const pwdSize = (e)=> {
-        console.log(e.target.value);
-        console.log(e.target.value.length);
-        setPwdLength(e.target.value.length);
+     const pwdOnchange = (e)=> {
+        setPassword(e.target.value);
      }
+
+     const loginAccess = (e) => {
+        if(username.length === 0){
+            setValidate(true);
+            setErrorMessage("아이디를 입력 해 주세요.");
+            return;
+        }
+
+         if(password.length === 0){
+             setValidate(true);
+             setErrorMessage("비밀번호를 입력 해 주세요.");
+             return;
+         }
+
+         fetch("http://localhost:3527/login",{
+             method: "POST",
+             headers: {
+                 "Content-Type": "application/json",
+             },
+             body: JSON.stringify({
+                 "username": username,
+                 "password": password,
+             }),
+         }).then((response) =>{
+             console.log("로그인 서버 접속 성공");
+             if(response.ok){
+                document.location.href = "/";
+             }else {
+                 setValidate(true);
+                 setErrorMessage("로그인 서버 접속 실패");
+             }
+         }).catch((error) => {
+             setValidate(true);
+             setErrorMessage("로그인 서버 접속 실패");
+         });
+     }
+
 
     return(
       <div className="LoginBox">
@@ -33,10 +69,10 @@ function Login() {
                     <h1>Threego</h1>
                 </div>
 
-                <input type="text" placeholder="ID" onChange={textSize}/>
-                <input type="password" placeholder="pwd" onChange={pwdSize}/>
-                {(textlength > 0 && pwdlength > 0) ? null : <span> 빈칸을 채워주세요!! </span>}
-                <button onClick={console.log("A")}><Link to='/' className="LoginLink">로그인</Link></button>
+                <input type="text" placeholder="ID" onChange={usernameOnchange}/>
+                <input type="password" placeholder="pwd" onChange={pwdOnchange}/>
+                {validate ? <span> {errorMessage} </span> : null}
+                <button  onClick={loginAccess} >로그인</button>
                
                 <ul className="subText">
                     <li><Link to='/SingIn' className="SignInLink">회원가입</Link></li>
