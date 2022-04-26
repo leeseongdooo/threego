@@ -103,7 +103,6 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
-  z-index: 100;
   display: flex;
   -webkit-box-align: center;
   align-items: center;

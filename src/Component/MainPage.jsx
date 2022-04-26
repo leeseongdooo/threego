@@ -1,14 +1,15 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 import Bottom from "./Bottom";
 import { Link } from 'react-router-dom';
-
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 // 추천 여행지 영역
 function RecommendInfo({recommend}) {
     return(
       <div className="imgarea" style={{backgroundImage: "url(" + recommend.background + ")"}}>
         <div className="infotext">
             <h3>{recommend.recommendTitle}</h3>
+            <h3>{recommend.recommendSmallTitle}</h3>
         </div>
 
         <div className="ButtonBox">
@@ -42,6 +43,21 @@ function ReviewInfo({review}) {
                 <p>{review.reviewStar}</p>
             </div>
         </div>
+    )
+}
+
+function Slide({content, slidex, slideInfo}) {
+    
+    return (
+        <div className="Content" style={{transform: `translateX(${slidex}px)`, backgroundImage: "url(" + slideInfo.LocationImg + ")"}} ref={content}>
+                    {/* 이미지 안쪽에 텍스트와 버튼 */}
+            <div className="explanation">
+                <div>
+                    <h1>{slideInfo.BigLocation}</h1>
+                    <h2>{slideInfo.SmallLocation}</h2>
+                </div>
+            </div>
+        </div>   
     )
 }
 
@@ -80,28 +96,30 @@ function MainPage(props) {
         }
     ]);
 
+    // 추천 여행지에 대한 정보입니다.
     const [recommend, setRecommend] = useState([
         {
             // 배경이미지도 추가할 예정 
             recommendId: 1,
-            recommendTitle: '엄마, 아빠도 좋아하시는 대구 여행 코스',
+            recommendTitle: '대구광역시',
             recommendSmallTitle: '꽃배경 인생샷 성지와 배가 든든해지는 맛집',
             background:  "https://cdn.pixabay.com/photo/2021/09/02/16/48/cat-6593947_960_720.jpg"
         },
         {
             recommendId: 2,
-            recommendTitle: '커피를 좋아하는 사람들이 만든 대구 여행 코스',
+            recommendTitle: '대구광역시',
             recommendSmallTitle: '꽃배경 인생샷 성지와 배가 든든해지는 맛집',
             background: '/img/Daegu.jpg'
         },
         {
             recommendId: 3,
-            recommendTitle: '등산을 좋아하는 사람들이 만든 대구 여행 코스',
+            recommendTitle: '순천시',
             recommendSmallTitle: '꽃배경 인생샷 성지와 배가 든든해지는 맛집',
             background: '../img/exampleImg.jpg'
         }
     ])
 
+    // 리뷰에 대한 정보입니다.
     const [review, setReview] = useState([
         {
             //리뷰이미지 추가할 예정
@@ -133,68 +151,108 @@ function MainPage(props) {
         },
     ])
 
-   const [slide, setSlide] = useState(1)
+    // 메인페이지 슬라이드에 대한 정보
+    const [slideInfo, setSlideInfo] = useState([
+        {
+            id: 1,
+            BigLocation: "Daegu", // ex:) 대구, 서울, 광주 등등 
+            SmallLocation: "스파크 랜드", // BigLocaion 안에 관광지 혹은 가게이름
+            LocationImg: '/img/Daegu.jpg' // 이미지 파일
+        },
+        {
+            id: 2,
+            BigLocation: "Yeosu", // ex:) 대구, 서울, 광주 등등 
+            SmallLocation: "여수 라피끄 카페", // BigLocaion 안에 관광지 혹은 가게이름
+            LocationImg: '/img/Yeosu.jpg' // 이미지 파일
+        },
+        {
+            id: 3,
+            BigLocation: "Daegu", // ex:) 대구, 서울, 광주 등등 
+            SmallLocation: "모노릭 카페", // BigLocaion 안에 관광지 혹은 가게이름
+            LocationImg: '/img/DaeguCafe.jpg' // 이미지 파일
+        },
+        {
+            id: 4,
+            BigLocation: "Gangwon-do", // ex:) 대구, 서울, 광주 등등 
+            SmallLocation: "스위밍 터틀 카페", // BigLocaion 안에 관광지 혹은 가게이름
+            LocationImg: '/img/SwimmingTuttleCafe.jpg' // 이미지 파일
+        }
+    ])
 
+//  slide와 slidex는 slideInfo에 넣게 되면 setSlide / setSlidex가 힘들어지기 때문에 따로 만들었습니다.
+   const [slide, setSlide] = useState(1)
    const [slidex, setSlidex] = useState(0);
 
-   const content = useRef();
-    return (
-        // 이미지 있는 부분까지
+   // ref를 통해 요소에 대한 정보를 가져오기 위해 만들었습니다.
+   const content = useRef(null);
+    
+   let timer = "";
+   return (
         <>
-        <Header ></Header>
+        <Header/>
         
         <div className="slideBigBox">
             <div className="slide-Box">
-                <div className="Content" style={{transform: `translateX(${slidex}px)`}} ref={content}>
-                    {/* 이미지 안쪽에 텍스트와 버튼 */}
-                    <div className="explanation">
-                        <div>
-                            <h1>DAEGU</h1>
-                            <h2>복현오거리 막창골목</h2>
-                        </div>
-                        {/* 버튼 div */}
-                        
-                    </div>
-                </div>            
-                <div className="Content" style={{transform: `translateX(${slidex}px)`}}>
-                    {/* 이미지 안쪽에 텍스트와 버튼 */}
-                    <div className="explanation">
-                        <div>
-                            <h1>DAEG3U</h1>
-                            <h2>복현오거리 막창골목2</h2>
-                        </div>
-                        {/* 버튼 div */}
-                        
-                    </div>
-                </div>
+         
+            {slideInfo.map(slide =>(
+                <Slide key={slide.id} slideInfo={slide} content={content} slidex={slidex} />
+            ))}
+
+            {
+                useEffect(() => {
+                    timer = setTimeout(() => {
+                        setSlidex((slidex - content.current.clientWidth))
+                        setSlide(slide + 1);
+                    }, 4000);
+
+                    if(slide == slideInfo.length + 1)
+                    {
+                        setSlidex(0);
+                        setSlide(1);
+                    }
+                }, [slidex])
+            }
+
             </div>
             
-            <p>{slide} / 3</p>
+            {/* 현재 슬라이드 위치와 전체길이를 확인할 수 있습니다. */}
+            <p>{slide} / {slideInfo.length}</p>
 
-        <div className="slideBtnBox">
-            <div>
-                <button onClick={(e) => {
-                if(slide > 1){
-                    setSlidex(slidex + content.current.clientWidth)
-                    setSlide(slide - 1)
-                    console.log(slidex)
-                }
-                }}>뒤</button>
-
-                <button onClick={() => {
-                    if(slide >= 1){
-                    setSlidex(slidex - content.current.clientWidth)
-                    setSlide(slide + 1)
-                    console.log(slidex)
-                    if(slide == 3)
-                    {
-                        setSlidex(slidex);
-                        setSlide(3)
+            <div className="slideBtnBox">
+                <div>
+                    {/* 왼쪽 버튼 */}
+                    <button onClick={() => {
+                    
+                    clearTimeout(timer);
+                    if(slide > 1){
+                        setSlidex(slidex + content.current.clientWidth)
+                        setSlide(slide - 1)
                     }
-                }
-                }}>앞</button>
+                    else if(slide == 1)
+                    {
+                        console.log(content.current.clientWidth);
+                        setSlidex(-((slideInfo.length - 1) * content.current.clientWidth));
+                        setSlide(slideInfo.length);
+                    }
+                    }}><AiOutlineArrowLeft/></button>
+
+                    {/* 오른쪽 버튼 */}
+                    <button onClick={() => {
+                         clearTimeout(timer);
+                        // 슬라이드가 1보다 크거나 같다면
+                        if(slide >= 1){
+                        setSlidex(slidex - content.current.clientWidth)
+                        setSlide(slide + 1)
+                        console.log(slidex)
+                        if(slide == slideInfo.length)
+                        {
+                            setSlidex(0);
+                            setSlide(1);
+                        }
+                    }
+                    }}><AiOutlineArrowRight/></button>
+                </div>
             </div>
-        </div>
 
         </div>
        
@@ -208,7 +266,7 @@ function MainPage(props) {
                     <Link to='/RecommendList'>더보기</Link>
             </div>
                 {recommend.map(a => (
-                    <RecommendInfo recommend={a} key={recommend.recommendId}/>
+                    <RecommendInfo recommend={a} key={a.recommendId}/>
                 ))}
             </div>
 
