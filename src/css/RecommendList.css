@@ -92,7 +92,6 @@
     height: 200px;
     max-height: 200px;
     border-radius: 10px;
-    background-image: url('../img/Daegu.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -103,11 +102,10 @@
 }
 
 .TextBox h3 {
-    margin: 5px;
+
 }
 
  .TextBox span {
-    margin: 5px;
     font-size: 12px;
 }
 

@@ -8,8 +8,8 @@ function RecommendInfo({recommend}) {
     return(
       <div className="imgarea" style={{backgroundImage: "url(" + recommend.background + ")"}}>
         <div className="infotext">
-            <h3>{recommend.recommendTitle}</h3>
-            <h3>{recommend.recommendSmallTitle}</h3>
+            <h2>{recommend.recommendTitle}</h2>
+            <h3 width="350">{recommend.recommendSmallTitle}</h3>
         </div>
 
         <div className="ButtonBox">
@@ -101,21 +101,21 @@ function MainPage(props) {
         {
             // 배경이미지도 추가할 예정 
             recommendId: 1,
-            recommendTitle: '대구광역시',
-            recommendSmallTitle: '꽃배경 인생샷 성지와 배가 든든해지는 맛집',
-            background:  "https://cdn.pixabay.com/photo/2021/09/02/16/48/cat-6593947_960_720.jpg"
+            recommendTitle: '영진전문대학',
+            recommendSmallTitle: '대구광역시 북구 복현로 35',
+            background:  "/img/Yeongjin.jpg"
         },
         {
             recommendId: 2,
-            recommendTitle: '대구광역시',
-            recommendSmallTitle: '꽃배경 인생샷 성지와 배가 든든해지는 맛집',
+            recommendTitle: '스파크랜드',
+            recommendSmallTitle: '대구광역시 중구 동성로2길 61',
             background: '/img/Daegu.jpg'
         },
         {
             recommendId: 3,
-            recommendTitle: '순천시',
-            recommendSmallTitle: '꽃배경 인생샷 성지와 배가 든든해지는 맛집',
-            background: '../img/exampleImg.jpg'
+            recommendTitle: '신세계 백화점',
+            recommendSmallTitle: '대구광역시 동구 동부로 149',
+            background: '../img/DaeguShinsaegae.jpg'
         }
     ])
 
@@ -262,8 +262,8 @@ function MainPage(props) {
           
             <div className="travelList">
             <div className="textarea">
-                    <h3>추천 여행지</h3>
-                    <Link to='/RecommendList'>더보기</Link>
+                <h3>추천 여행지</h3>
+                <Link to='/RecommendList'>더보기</Link>
             </div>
                 {recommend.map(a => (
                     <RecommendInfo recommend={a} key={a.recommendId}/>

@@ -69,7 +69,6 @@
 
   .imgarea {
     width: 75%;
-    height: 150px;
     border-radius: 12.5px;
     display: flex;
     flex-direction: column;
@@ -227,7 +226,7 @@
   justify-content: flex-end;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 250px;
+  height: 350px;
 }
 
 .recommend > .travelList .infotext {
@@ -236,9 +235,9 @@
 }
 
 .recommend > .travelList .infotext > h3 {
-  width: 85%;
-  font-size: 18px;
-  margin-top: 10px;
+  width: 100%;
+  font-size: 17px;
+  margin-top: 5px;
 }
 
 .recommend > .travelList .infotext > a {
@@ -255,19 +254,22 @@
   margin: 5px;
   border: none;
   padding: 9px;
-  border-radius: 40px;
+  border-radius: 25px;
+  font-size: 12px;
   font-weight: bold;
   color: white;
   background-color: black;
+  height: 35px;
   width: 100%;
-  max-width: 100px;
+  max-width: 75px;
+  text-align: center;
 }
 
 .ButtonBox button:first-child {
   margin-left: 0;
   color: black;
-  border: 1px solid #676767;
   background-color: white;
+  border: 1px solid #676767;
 }
 
 /* 주변가격정보 */
@@ -351,8 +353,7 @@
   min-width: 152px;
   height: 200px;
   border-radius: 12.5px;
-  border: 1px solid black;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .reviewInfo .reviewarea .reviewBox:first-child {
