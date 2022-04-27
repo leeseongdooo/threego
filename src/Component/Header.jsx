@@ -46,10 +46,11 @@ function Header(props) {
                 
                 <AiOutlineMenu className="menuIcon" onClick={() => toggleMenu()}/>
                 <ul className={isOpen ? "show-menu" : "hide-menu"}>
-                    <li>추천 여행지</li>
-                    <li>주변 가격정보</li>
-                    <li>여행 리뷰보기</li>
-                    <li>고객센터</li>
+                    <li><Link to="/RecommendList">추천 여행지</Link></li>
+                    <li><Link to="#">주변 가격정보</Link></li>
+                    <li><Link to="#">여행 리뷰보기</Link></li>
+                    <li><Link to="#">고객센터</Link></li>
+                    
                     <li>
                         <div className='loginBox'>
                             <button className='loginButton'>

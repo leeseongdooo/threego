@@ -1,4 +1,9 @@
 /* 헤더 로고 */
+a {
+  text-decoration: none;
+  color: black;
+}
+
 
 .Header{
   top: 0;
