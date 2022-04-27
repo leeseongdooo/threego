@@ -66,7 +66,7 @@ function Login() {
                     {/* <Link to='/'>
                         <IoMdArrowBack className="BackIcon"/>
                     </Link> */}
-                    <h1>ThreeGo</h1>
+                    <Link to="/"><h1>ThreeGo</h1></Link>
                 </div>
 
                 <input type="text" placeholder="ID" onChange={usernameOnchange}/>

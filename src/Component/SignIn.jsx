@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import '../css/SignIn.css'
-
+import { Link } from "react-router-dom";
 function SignIn() {
 
     // 아이디, 닉네임, 비밀번호, 비밀번호 확인,
@@ -118,7 +118,7 @@ function SignIn() {
         <>
             {/* 전체를 묶어주는 div */}
             <div className="SignInBox">
-                <h1>ThreeGo</h1>
+            <Link to="/"><h1>ThreeGo</h1></Link>
                 <div className="shapebox">
                     <h4>아이디</h4>
                     <input type="text" className="idInput" placeholder="아이디" onChange={IdCheck}/>
