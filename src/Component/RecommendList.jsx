@@ -47,61 +47,6 @@ function Categorie(props) {
     );
 }
 
-// 혹시 모르니 남겨둘게요~
-function TravelCard() {
-
-
-    return(
-        <div className="TravelBox">
-           <div className="TravelCard">
-                <div className="ImageBox"></div>
-                
-                <div className="TextBox">
-                    <h3>대구광역시</h3>
-                    <span>꽃배경 인생샷 성지와 든든해지는 맛집이 있어요</span>
-                    <span></span>
-                </div>
-                
-                <div className="ButtonBox">
-                    <button >여행시작</button>
-                    <button>리뷰보기</button>
-                </div>
-           </div>
-
-
-           <div className="TravelCard" >
-                <div className="ImageBox"></div>
-                
-                <div className="TextBox">
-                    <h3>대구광역시</h3>
-                    <span>꽃배경 인생샷 성지와 든든해지는 맛집이 있어요</span>
-                    <span></span>
-                </div>
-                
-                <div className="ButtonBox">
-                    <button >여행시작</button>
-                    <button>리뷰보기</button>
-                </div>
-           </div>
-
-
-           <div className="TravelCard">
-                <div className="ImageBox"></div>
-                <div className="TextBox">
-                    <h3>대구광역시</h3>
-                    <span>꽃배경 인생샷 성지와 든든해지는 맛집이 있어요</span>
-                    <span></span>
-                </div>
-                
-                <div className="ButtonBox">
-                    <button >여행시작</button>
-                    <button>리뷰보기</button>
-                </div>
-           </div>
-       </div>
-    )
-}
-
 function RecommendList() {
 
     // 전체 카테고리를 누르면 모두 나오게 다른 카테고리 누르면 false되서 카테고리 항목만 나오게 했습니다
@@ -154,7 +99,9 @@ function RecommendList() {
                         return (
                             <div className="TravelCard" key={travel.recommendId}>
 
-                                <div className="ImageBox" style={{backgroundImage: "url(" + travel.recommendImage + ")"}}></div>
+                                <div className="ImageBox" >
+                                    <img src={travel.recommendImage} alt="추천 여행지 이미지" className="recommandImg" />
+                                </div>
                                 <div className="TextBox">
                                     <h3>{travel.recommendTitle}</h3>
                                     <span>{travel.recommendSmallTitle}</span>
@@ -172,7 +119,9 @@ function RecommendList() {
                     {
                         return (
                             <div className="TravelCard" key={travel.recommendId}>
-                                <div className="ImageBox" style={{backgroundImage: "url(" + travel.recommendImage + ")"}}></div>
+                                <div className="ImageBox" >
+                                    <img src={travel.recommendImage} alt="추천 여행지 이미지" className="recommandImg" />
+                                </div>
                                 <div className="TextBox">
                                     <h3>{travel.recommendTitle}</h3>
                                     <span>{travel.recommendSmallTitle}</span>

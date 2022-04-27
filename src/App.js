@@ -9,6 +9,8 @@ import Login from './Component/Login';
 import SignIn from './Component/SignIn';
 import RecommendList from './Component/RecommendList';
 import ErrorPage from './Component/ErrorPage';
+import ReviewList from './Component/ReviewList';
+
 
 function App() {
   
@@ -41,6 +43,10 @@ function App() {
 
         <Route path="/RecommendList">
             <RecommendList/>
+        </Route>
+
+        <Route path="/ReviewList">
+            <ReviewList/>
         </Route>
 
         <Route path="/Error/:error">

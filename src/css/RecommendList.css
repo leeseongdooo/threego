@@ -89,20 +89,21 @@
 .TravelCard .ImageBox {
     margin: 10px;
     width: 90%;
-    height: 200px;
-    max-height: 200px;
     border-radius: 10px;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
+.TravelCard .ImageBox .recommandImg {
+    width: 100%;
+    max-height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
 .TextBox {
     margin: 5px;
     width: 90%;
-}
-
-.TextBox h3 {
-
 }
 
  .TextBox span {
