@@ -39,7 +39,9 @@ function ReviewForm({review}) {
             </div>             
 
             <div className="more">
-              <span onClick={()=> {console.log("AA")}}>더보기</span>
+                <Link to='/ReviewDetail'>
+                    <span>더보기</span>
+                </Link>
             </div>
         </div>
     </div>
@@ -94,7 +96,11 @@ function ReviewList() {
                     <FaStar className="star"/>
                     <FaStar className="star"/>
                 </div>
-                <button>리뷰 작성</button>
+                {/* 리뷰 작성 버튼 누르면 작성 페이지로 이동합니다. */}
+                <Link to='/ReviewWrite'>
+                    <button>리뷰 작성</button>
+                </Link>
+                
 
             </div>
 

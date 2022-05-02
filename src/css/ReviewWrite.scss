@@ -1,0 +1,33 @@
+header {
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.MiddleArea {
+
+.ScoreBox {
+    width: 99%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .Score {
+        font-size: 50px;
+        color: gray;
+    }
+
+    .yellowStar {
+        color: royalblue;
+    }
+}
+
+h2 {
+    text-align: center;
+}
+
+}
