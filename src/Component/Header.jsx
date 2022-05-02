@@ -48,7 +48,7 @@ function Header(props) {
                 <ul className={isOpen ? "show-menu" : "hide-menu"}>
                     <li><Link to="/RecommendList">추천 여행지</Link></li>
                     <li><Link to="#">주변 가격정보</Link></li>
-                    <li><Link to="#">여행 리뷰보기</Link></li>
+                    <li><Link to="/ReviewList">여행 리뷰보기</Link></li>
                     <li><Link to="#">고객센터</Link></li>
                     
                     <li>
