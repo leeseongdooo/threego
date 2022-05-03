@@ -1,33 +1,114 @@
-header {
-    border: 1px solid black;
+.ReviewWriteHeader {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 18px;
-    font-weight: bold;
+    font-size: 24px;
+    font-weight: 700;
+    height: 50px;
+    background-color: black;
+    color: white;
 }
 
-.MiddleArea {
 
-.ScoreBox {
-    width: 99%;
-    border: 1px solid black;
+.ReviewArea {
+
     display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .Score {
-        font-size: 50px;
-        color: gray;
-    }
-
-    .yellowStar {
-        color: royalblue;
-    }
+    flex-direction: column;
+    justify-content: space-around;
+    height: clac(100%);
+    .PointArea {
+        margin: 40px 0px 35px 0px;
+        
+        h3 {
+            text-align: center;
+        }
+        
+        .ScoreBox {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+            .Score {
+                font-size: 50px;
+                color: gray;
+            }
+        
+            .yellowStar {
+                color: royalblue;
+            }
+        }
+        
+        h2 {
+            text-align: center;
+        }
+        
+        }
+        
+        .WriteArea {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        
+            input[type=text] {
+                width: 80%;
+                padding: 10px;
+                min-height: 25px;
+                border-radius: 3px;
+                border: 1px solid black;
+                margin: 5px;
+                font-size: 16px;
+            }
+            .WriteContent {
+                width: 80%;
+                padding: 10px;
+                text-align: left;
+                min-height: 120px;
+                height: auto;
+                font-size: 16px;
+                resize: none;
+                border-radius: 3px;
+                margin: 5px;
+            }
+        
+            .ReviewWriteImageArea {
+                width: 85%;
+                padding: 10px;
+                .ImageGuideText {
+                    display: flex;
+                    justify-content: space-between;
+                }
+        
+                .SampleImage {
+                    background-size: cover;
+                    min-width: 80px;
+                    min-height: 80px;
+                    max-width: 80px;
+                    max-height: 80px;
+                    margin: 2px;
+                    border: 1px solid lightgray;
+                    border-radius: 5px;
+                }
+            }
+        }
+        
+        .ReviewWriteBottom {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+            button {
+                width: 85%;
+                height: 40px;
+                border-radius: 5px;
+                border: none;
+                background-color: black;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
 }
 
-h2 {
-    text-align: center;
-}
-
-}
