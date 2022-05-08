@@ -1,0 +1,161 @@
+.ReviewDetailHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 700;
+    height: 50px;
+    background-color: black;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.imageSlide {
+    position: fixed;
+    width: 100%;
+    height: calc(100%);
+    background-color: #0000008a;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .Arrow {
+        color: white;
+        font-size: 30px;
+    }
+
+    .SlideTop {
+        button {
+            margin-bottom: 10px;
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: white;
+            border: none;
+            color: black;
+        }
+    }
+
+    .ImageArea {
+        position: relative;
+        width: 260px;
+        height: 260px;
+        justify-content: flex-start;
+        align-items: center;
+        display: flex;
+        overflow: hidden;
+        img {         
+            width: 250px;
+            height: 250px;
+            border-radius: 10px;
+            margin: 5px;
+        }
+    }
+
+    .ArrowArea {
+        position: fixed;
+        margin-top: 60px;
+        width: 370px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.imageSlidenone {
+    display: none;
+}
+
+
+.ReviewDetailContent {
+    width: 90%;
+    height: auto;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid black;
+    margin-bottom: 30px;
+    // 상세 디테일 부분에 TOP영역
+    .ContentTopArea {
+        margin: 10px;
+        border: 1px solid red;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .ContentScore {
+        margin-top: 0px;
+        margin: 10px;
+        border: 1px solid blue;
+
+        .star {
+            font-size: 24px;
+            color: skyblue;
+        }
+    }
+
+    .ContentText {
+        margin: 10px;
+        margin-bottom: 0px;
+
+        .imageArea {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            img {
+                max-width: 75px;
+                max-height: 75px;
+                border-radius: 10px;
+                margin: 5px;
+            }
+            img:first-child {
+                margin-left: 0px;
+            }
+        }
+    }
+
+    .ReviewBtn {
+        button {
+            background-color: black;
+            color: white;
+            font-weight: 700;
+            width: 70px;
+            height: 35px;
+            border-radius:30px;
+            border: none;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        button:last-child {
+            background-color: white;
+            color: black;
+            border: 1px solid #676767;
+            margin: 0px;
+
+        }
+    }
+}
+
+.GoBack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    button {
+        width: calc(90%);
+        height: 40px;
+        padding: 5px;
+        border-radius: 5px;
+        border: none;
+        background-color: black;
+        color: white;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+}

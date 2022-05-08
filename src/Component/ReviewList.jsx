@@ -4,6 +4,7 @@ import Header from "./Header";
 import { useState } from "react";
 import { Link } from 'react-router-dom';
 import { FaStar } from 'react-icons/fa';
+import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
 // css
 import "../css/ReviewList.scss";
 
@@ -78,6 +79,48 @@ function ReviewList() {
             UserName: '리리2',
             ReviewDate: '2022.04.29',
             ReviewContent: '너무 재미있었어요'
+        },
+        {
+            id: 5,
+            ReviewImg: '/img/Yeosu.jpg',
+            UserName: '리리',
+            ReviewDate: '2022.04.28',
+            ReviewContent: '너무 재미있었어요'
+        },
+        {
+            id: 6,
+            ReviewImg: '/img/Yeosu.jpg',
+            UserName: '리리2',
+            ReviewDate: '2022.04.29',
+            ReviewContent: '너무 재미있었어요'
+        },
+        {
+            id: 7,
+            ReviewImg: '/img/Yeosu.jpg',
+            UserName: '리리2',
+            ReviewDate: '2022.04.29',
+            ReviewContent: '너무 재미있었어요'
+        },
+        {
+            id: 8,
+            ReviewImg: '/img/Yeosu.jpg',
+            UserName: '리리2',
+            ReviewDate: '2022.04.29',
+            ReviewContent: '너무 재미있었어요'
+        },
+        {
+            id: 9,
+            ReviewImg: '/img/Yeosu.jpg',
+            UserName: '리리',
+            ReviewDate: '2022.04.28',
+            ReviewContent: '너무 재미있었어요'
+        },
+        {
+            id: 10,
+            ReviewImg: '/img/Yeosu.jpg',
+            UserName: '리리2',
+            ReviewDate: '2022.04.29',
+            ReviewContent: '너무 재미있었어요'
         }
     ]);
 
@@ -121,6 +164,18 @@ function ReviewList() {
 
 
             </div>
+            
+            <footer className="ReviewBottomArea">
+            <BsFillArrowLeftCircleFill className="ArrowBtn"/>
+               <ul className="ReviewListNumber">
+                   <li>1</li>
+                   <li>2</li>
+                   <li>3</li>
+                   <li>4</li>
+                   <li>5</li>
+               </ul>
+               <BsFillArrowRightCircleFill className="ArrowBtn" />
+            </footer>
 
             <Bottom/>
         </>
