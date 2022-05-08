@@ -8,7 +8,21 @@ import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-ico
 // css
 import "../css/ReviewList.scss";
 
+
+function ReviewScore({review})
+{
+    const rendering = () => {
+      const result = [];
+      for (let i = 0; i < review.ReviewScore; i++) {
+        result.push(<FaStar className="star"/>);
+      }
+      return result;
+    };
+    return <div>{rendering()}</div>;
+}
+
 function ReviewForm({review}) {
+  
 
     return (
         <div className="UserReviewForm">
@@ -19,7 +33,9 @@ function ReviewForm({review}) {
             <img src={review.ReviewImg} alt="유저 이미지" />
             <div className="NameAndReview">
                 <h3 className="userName">{review.UserName}</h3>
-                <p className="ReviewPoint">★★★★★</p>
+                <p className="ReviewPoint">
+                    <ReviewScore review={review}/>
+                </p>
             </div>
           </div>
 
@@ -50,81 +66,90 @@ function ReviewForm({review}) {
 }
 
 function ReviewList() {
-
+    
     const [review, setReview] = useState([ 
         {
             id: 1,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리',
             ReviewDate: '2022.04.28',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 3
         },
         {
             id: 2,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리2',
             ReviewDate: '2022.04.29',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 2
         },
         {
             id: 3,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리2',
             ReviewDate: '2022.04.29',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 1
         },
         {
             id: 4,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리2',
             ReviewDate: '2022.04.29',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 4
         },
         {
             id: 5,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리',
             ReviewDate: '2022.04.28',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 5
         },
         {
             id: 6,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리2',
             ReviewDate: '2022.04.29',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 2
         },
         {
             id: 7,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리2',
             ReviewDate: '2022.04.29',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 5
         },
         {
             id: 8,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리2',
             ReviewDate: '2022.04.29',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 5
         },
         {
             id: 9,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리',
             ReviewDate: '2022.04.28',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 5
         },
         {
             id: 10,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리2',
             ReviewDate: '2022.04.29',
-            ReviewContent: '너무 재미있었어요'
+            ReviewContent: '너무 재미있었어요',
+            ReviewScore: 5
         }
     ]);
 
-    const [num, setNum] = useState(0);
     return(
         <>
             <Header/>
@@ -159,7 +184,7 @@ function ReviewList() {
                 </div>
                 {/* 리뷰내용들 */}
                {review.map(a => (
-                      <ReviewForm review={a} key={a.id} />
+                      <ReviewForm review={a} key={a.id}  />
                 ))}
 
 
@@ -174,7 +199,7 @@ function ReviewList() {
                    <li>4</li>
                    <li>5</li>
                </ul>
-               <BsFillArrowRightCircleFill className="ArrowBtn" />
+            <BsFillArrowRightCircleFill className="ArrowBtn" />
             </footer>
 
             <Bottom/>

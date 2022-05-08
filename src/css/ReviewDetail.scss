@@ -11,7 +11,7 @@
 }
 
 .imageSlide {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: calc(100%);
     background-color: #0000008a;
@@ -40,13 +40,18 @@
     }
 
     .ImageArea {
-        position: relative;
         width: 260px;
         height: 260px;
         justify-content: flex-start;
         align-items: center;
         display: flex;
         overflow: hidden;
+        
+        .ImageBox {
+            display: flex;
+            transition: 0.4s;
+        }
+
         img {         
             width: 250px;
             height: 250px;
@@ -75,12 +80,12 @@
     height: auto;
     margin: auto;
     border-radius: 10px;
-    border: 1px solid black;
+    box-shadow: 2px 5px 7px rgba(0, 0, 0, 0.3);
     margin-bottom: 30px;
     // 상세 디테일 부분에 TOP영역
     .ContentTopArea {
+        padding-top: 20px;
         margin: 10px;
-        border: 1px solid red;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -89,7 +94,6 @@
     .ContentScore {
         margin-top: 0px;
         margin: 10px;
-        border: 1px solid blue;
 
         .star {
             font-size: 24px;
@@ -142,10 +146,14 @@
 }
 
 .GoBack {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
+
+    .Link {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     button {
         width: calc(90%);
         height: 40px;
