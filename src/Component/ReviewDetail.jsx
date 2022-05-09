@@ -52,7 +52,7 @@ function ReviewDetail() {
     }
 
     return (
-        <>
+        <div className="ReviewDetailBigBox">
          <div className={modalView==true ? "imageSlide" : "imageSlidenone"}>
 
             <div className="SlideTop">
@@ -99,15 +99,10 @@ function ReviewDetail() {
             {/* 내용이 들어갈 div */}
             <div className="ContentText" >
                <p>
-                우리나라에서 가장 더운 지역 대구. 하지만 매년 여름 열리는 치맥 페스티벌과 함께라면 더위도 문제없다. 
-                놀이동산 이월드는 가족과 함께 나들이하기에 좋으며, 두류공원도 산책코스로 제격! 
-                음악 분수쇼로 유명한 수성못과 독특한 외관이 인상적인 전시공간 디아크는 대구의 야경 명소로 손꼽힌다. 
-                우리나라 3대 시장인 서문시장 야시장도 대구의 대표 핫플레이스!
-
-                우리나라에서 가장 더운 지역 대구. 하지만 매년 여름 열리는 치맥 페스티벌과 함께라면 더위도 문제없다. 
-                놀이동산 이월드는 가족과 함께 나들이하기에 좋으며, 두류공원도 산책코스로 제격! 
-                음악 분수쇼로 유명한 수성못과 독특한 외관이 인상적인 전시공간 디아크는 대구의 야경 명소로 손꼽힌다. 
-                우리나라 3대 시장인 서문시장 야시장도 대구의 대표 핫플레이스!
+               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                </p>
                
                <div className="imageArea">                    
@@ -133,7 +128,7 @@ function ReviewDetail() {
                 </Link>
           
         </footer>
-        </>
+        </div>
     )
 }
 

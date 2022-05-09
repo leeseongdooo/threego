@@ -11,32 +11,28 @@ function ReviewWrite() {
 
     // 별의 갯수만큼 ARRAY 설정
     const ARRAY = [0, 1, 2, 3, 4];
+    // 제목 글자수 입니다.
     const [titleSize, setTitleSize] = useState();
+    // 리뷰내용 글자수 입니다.
     const [contentSize, setContentSize] = useState();
-
+    // 숫자로 된 점수입니다.
+    const [ScoreNumebr, setScoreNumber] = useState(0);
+    // 이미지를 저장할 오브젝트 변수입니다.
     const [PreviewImage, setPreviewImage] = useState([
-        {
-            id:1,
-            Image:'/Daegu.jpg'
-        },
-        {
-            id:2,
-            Image:'/DaeguCafe.jpg'
-        },
-        {
-            id:3,
-            Image:'/DaeguCafe.jpg'
-        } 
+
     ]);
 
+    // 제목 글자가 적혀질 때 setState를 통해 변경된 값을 저장합니다.
     const TitlesizeCalculation = (e) => {
         setTitleSize(e.target.value.length);
     }
 
+    // 리뷰 내용 글자가 적혀질 때 setState를 통해 변경된 값을 저장합니다.
     const ContentsizeCalculation = (e) => {
         setContentSize(e.target.value.length);
     }
 
+    // 리뷰 Star에 대한 변수입니다.
     const [active, setActive] = useState([
         {
             id:1,
@@ -69,7 +65,7 @@ function ReviewWrite() {
         setActive(Actives);
       };
 
-      // useEffect를 통해서 active값이 변하거나 페이지가 렌더링 될 때 console.log에 active를 나타나게 설정
+    // useEffect를 통해서 active값이 변하거나 페이지가 렌더링 될 때 console.log에 active를 나타나게 설정
     useEffect(()=>{
         console.log(active)
         sendReview();
@@ -89,25 +85,43 @@ function ReviewWrite() {
         console.log(score);
     };
 
-
+    // 리뷰 이미지에 대한 함수입니다.
     const ReviewImage = (e) => {
+        // 현재 파일에 대한 정보를 가져옵니다.
         const ReviewImg = e.target.files;
+        // 콘솔에 출력해봅니다.
         console.log(ReviewImg[0].name)
 
+        // newPreviewImg의 id는 현재 PreviewImage의 길이에서 + 1을 해주고, Image는 ReviewImg파일에 대한 정보를 저장합니다.
         const newPreviewImg = {
             id: PreviewImage.length + 1,
             Image: ReviewImg[0].name
         }
 
+        // 새로운 PreviewImg에 대한 정보를 출력해봅니다.
         console.log(newPreviewImg);
-        PreviewImage.push(newPreviewImg);
+        // 값을 갱신하여 화면에 출력되도록 합니다.
+        setPreviewImage([...PreviewImage, newPreviewImg]);
         console.log(PreviewImage);
     }
 
+    // 만약 이미지 갯수가 3개가 넘었다면 FIle을 추가하는 div를 숨기는 스타일을 적용하기 위한 변수입니다.
     const ImgFilePreview={
         display: 'none'
     }
+
+    const BtnBackColor={
+        backgroundColor: "Gray"
+    }
+
     console.log(PreviewImage.length)
+
+    const remove = (id) => {
+        const NewPreviewImage = PreviewImage.filter(Image => Image.id !== id);
+        setPreviewImage(NewPreviewImage);
+    }
+
+
     return (
         <>
             {/* 상단부분 */}
@@ -116,6 +130,7 @@ function ReviewWrite() {
             </header>
 
             <div className="ReviewArea">
+                
                 <div className="PointArea">
                     <h2>여행은 어떠셨나요??</h2>
                     <div className="ScoreBox">
@@ -160,9 +175,9 @@ function ReviewWrite() {
                         {/* <img src={"/img/" + Image} alt="Image" /> */}
                         {/* accept="image/*"은 이미지만 업로드 가능하게 하는것 */}
 
-                        {PreviewImage.map(a => (<img src={"/img/" + a.Image} alt="" key={a.id}/>))}
+                        {PreviewImage.map(a => (<img src={"/img/" + a.Image} alt="" key={a.id} onClick={()=>{remove(a.id)}}/>))}
                      
-                        
+                        {/* 이미지가 3개가 넘으면 display:none이 되도록 설정 */}
                         <label className="ReviewImgLabel" style={PreviewImage.length >=3 ? ImgFilePreview : {}} >
                             <IoDocumentAttachOutline size="40px"/>
                             <span>이미지 추가</span>
@@ -173,7 +188,7 @@ function ReviewWrite() {
                 </div>
 
                 <footer className="ReviewWriteBottom">
-                    <button onClick={()=>{console.log("A")}} disabled={titleSize>=10  && contentSize>=10 ? "" : "disabled"}>등록하기</button>
+                    <button  disabled={titleSize>=10  && contentSize>=10 ? "" : "disabled"} style={titleSize>=10  && contentSize>=10 ? {} : BtnBackColor}>등록하기</button>
                 </footer>
             </div>
                 

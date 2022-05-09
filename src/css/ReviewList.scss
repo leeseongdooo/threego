@@ -16,10 +16,6 @@
             font-size: 40px;
             color: skyblue;
         }
-        .star:last-child {
-            font-size: 40px;
-            color: gray;
-        }
     }
     button {
         width: 100px;
@@ -94,7 +90,7 @@
             }
         }
         
-        .ReviewContent {
+        .ReviewTitle {
             padding: 10px;
             max-height: 150px;
             overflow: hidden;
