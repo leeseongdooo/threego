@@ -74,7 +74,9 @@ function ReviewList() {
             ReviewTitle: '이곳은 제목',
             ReviewScore: 1,
             GoodPoint: 10,
-            BadPoint: 3
+            BadPoint: 3,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 2,
@@ -84,7 +86,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 5,
             GoodPoint: 50,
-            BadPoint: 20
+            BadPoint: 20,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 3,
@@ -94,7 +98,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 1,
             GoodPoint: 5,
-            BadPoint: 0
+            BadPoint: 0,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 4,
@@ -104,7 +110,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 4,
             GoodPoint: 3,
-            BadPoint: 0
+            BadPoint: 0,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 5,
@@ -114,7 +122,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 5,
             GoodPoint: 0,
-            BadPoint: 20
+            BadPoint: 20,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 6,
@@ -124,7 +134,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 2,
             GoodPoint: 10,
-            BadPoint: 30
+            BadPoint: 30,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 7,
@@ -134,7 +146,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 5,
             GoodPoint: 40,
-            BadPoint: 50
+            BadPoint: 50,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 8,
@@ -144,7 +158,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 5,
             GoodPoint: 60,
-            BadPoint: 0
+            BadPoint: 0,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 9,
@@ -154,7 +170,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 5,
             GoodPoint: 0,
-            BadPoint: 0
+            BadPoint: 0,
+            pointUpBool: false,
+            pointDownBool: false
         },
         {
             id: 10,
@@ -164,7 +182,9 @@ function ReviewList() {
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 5,
             GoodPoint: 0,
-            BadPoint: 0
+            BadPoint: 0,
+            pointUpBool: false,
+            pointDownBool: false
         }
     ]);
 
@@ -194,10 +214,10 @@ function ReviewList() {
     const [RecBool, SetRecBool] = useState()
     
     // Good버튼 누를 때 활성화 됩니다. (한명단 한번만 체크되게 하기 위해서 선언)
-    const [GoodPointBool, setGoodPointBool] = useState();
+    const [GoodPointBool, setGoodPointBool] = useState(true);
 
     // Bad버튼 누를 때 활성화 됩니다.
-    const [BadPointBool, setBadPointBool] = useState();
+    const [BadPointBool, setBadPointBool] = useState(true);
     
 
 
@@ -233,51 +253,31 @@ function ReviewList() {
 
     
    
-    // 좋아요버튼 눌렀을 때 
+    // 좋아요버튼 눌렀을 때
     const GoodToggle = id => {
-
-        if(GoodPointBool == true || GoodPointBool == null)
+        
+        if(GoodPointBool == true)
         {
-            setGoodPointBool(false);
-            setReview(
-                review.map(rev =>
-                  rev.id === id ? { ...rev, GoodPoint: rev.GoodPoint + 1 } : rev,
-                ),
-              );
-        }
-
-        if(GoodPointBool == false)
-        {
-            setGoodPointBool(true);
-            setReview(
-                review.map(rev =>
-                  rev.id === id ? { ...rev, GoodPoint: rev.GoodPoint - 1 } : rev,
-                ),
+            setReview((arr) => 
+                review.map(rev => 
+                    rev.id === id ? rev.pointUpBool === false ? { ...rev, GoodPoint: rev.GoodPoint + 1, pointUpBool: true} : { ...rev, GoodPoint: rev.GoodPoint - 1, pointUpBool: false}  : rev,
+                )
             );
-        } 
+            console.log(review);
+            
+        }  
     };
 
     const BadToggle = id => {
       
         if(BadPointBool == true || BadPointBool == null)
         {
-            setBadPointBool(false);
             setReview(
-                review.map(rev =>
-                  rev.id === id ? { ...rev, BadPoint: rev.BadPoint + 1 } : rev,
-                ), 
-              );   
+                review.map(rev => 
+                    rev.id === id ? rev.pointDownBool === false ? { ...rev, BadPoint: rev.BadPoint + 1, pointDownBool: true} : { ...rev, BadPoint: rev.BadPoint - 1, pointDownBool: false}  : rev,
+                )
+            );   
         }
-
-        if(BadPointBool == false)
-        {
-            setBadPointBool(true);
-            setReview(
-                review.map(rev =>
-                  rev.id === id ? { ...rev, BadPoint: rev.BadPoint - 1 } : rev,
-                ),
-            );
-        } 
     };
     
 

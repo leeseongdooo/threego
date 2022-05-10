@@ -12,7 +12,7 @@ import ErrorPage from './Component/ErrorPage';
 import ReviewList from './Component/ReviewList';
 import ReviewWrite from './Component/ReviewWrite';
 import ReviewDetail from './Component/ReviewDetail';
-
+import List from './Component/List';
 
 function App() {
   
@@ -59,13 +59,18 @@ function App() {
           <ReviewDetail/>
         </Route>
 
+        <Route path="/List">
+          <List/>
+        </Route>
+
+
         <Route path="/Error/:error">
             <ErrorPage/>
         </Route>
 
-          <Route path="*">
-              <ErrorPage/>
-          </Route>
+        <Route path="*">
+            <ErrorPage/>
+        </Route>
 
       </Switch>
     </Router>
