@@ -120,9 +120,12 @@
                 min-height: 75px;
                 max-width: 75px;
                 max-height: 75px;
+                min-width: 75px;
+                min-height: 75px;
                 border-radius: 10px;
                 background-size: cover;
                 margin: 5px;
+                cursor: pointer;
             }
             img:first-child {
                 margin-left: 0px;

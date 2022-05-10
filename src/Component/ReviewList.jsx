@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Bottom from "./Bottom";
 import Header from "./Header";
 import { useState } from "react";
@@ -7,6 +7,7 @@ import { FaStar } from 'react-icons/fa';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
 // css
 import "../css/ReviewList.scss";
+
 
 
 function ReviewScore({review})
@@ -21,7 +22,8 @@ function ReviewScore({review})
     return <div>{rendering()}</div>;
 }
 
-function ReviewForm({review}) {
+
+function ReviewForm({review, GoodToggle,BadToggle}) {
 
     return (
         <div className="UserReviewForm">
@@ -47,8 +49,8 @@ function ReviewForm({review}) {
 
         <div className="BoxTwo">
             <div className="ReviewBtn">
-                <button onClick={()=>{console.log("A")}}>{review.GoodPoint} GOOD</button>
-                <button onClick={()=>{console.log("A")}}>{review.BadPoint} Bad</button>
+                <button onClick={()=>{GoodToggle(review.id)}}>{review.GoodPoint} GOOD</button>
+                <button onClick={()=>{BadToggle(review.id)}}>{review.BadPoint} Bad</button>
             </div>             
 
             <div className="more">
@@ -148,7 +150,7 @@ function ReviewList() {
             id: 9,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리',
-            ReviewDate: '2022.04.28',
+            ReviewDate: '2023.04.27',
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 5,
             GoodPoint: 0,
@@ -158,7 +160,7 @@ function ReviewList() {
             id: 10,
             ReviewImg: '/img/Yeosu.jpg',
             UserName: '리리2',
-            ReviewDate: '2022.04.29',
+            ReviewDate: '2022.05.29',
             ReviewTitle: '너무 재미있었어요',
             ReviewScore: 5,
             GoodPoint: 0,
@@ -176,7 +178,7 @@ function ReviewList() {
     AllReviewScore = Math.round(AllReviewScore/10);
 
 
-    // 전체를 합해서 나누기 한 후 반올림한 값
+    // 전체를 합해서 나누기 한 후 반올림한 값 (상단 별점 부분)
     const TopScore = () => {
         const result = [];
         for (let i = 0; i < AllReviewScore; i++) {
@@ -184,6 +186,100 @@ function ReviewList() {
         }
           return result;
     };
+
+    // 최신값 논리값 변수
+    const [LatestBool, SetLatestBool] = useState()
+
+    //추천순 논리값 변수
+    const [RecBool, SetRecBool] = useState()
+    
+    // Good버튼 누를 때 활성화 됩니다. (한명단 한번만 체크되게 하기 위해서 선언)
+    const [GoodPointBool, setGoodPointBool] = useState();
+
+    // Bad버튼 누를 때 활성화 됩니다.
+    const [BadPointBool, setBadPointBool] = useState();
+    
+
+
+    useEffect(() => {
+        console.log(RecBool, LatestBool)
+    }, [RecBool])
+
+    useEffect(() => {
+        console.log(GoodPointBool);
+    }, [GoodPointBool])
+    
+    
+    if(RecBool === true)
+    {
+        review.sort(function(a,b){ return b.ReviewScore - a.ReviewScore })
+    } 
+    else if(LatestBool === true) {
+        review.sort(function(a, b) {
+            let x = a.ReviewDate.toLowerCase();
+            let y = b.ReviewDate.toLowerCase();
+    
+            if(x > y)
+            {
+                return 1;
+            } 
+            if(x < y)
+            {
+                return -1;
+            }
+            return 0;
+        })
+    }
+
+    
+   
+    // 좋아요버튼 눌렀을 때 
+    const GoodToggle = id => {
+
+        if(GoodPointBool == true || GoodPointBool == null)
+        {
+            setGoodPointBool(false);
+            setReview(
+                review.map(rev =>
+                  rev.id === id ? { ...rev, GoodPoint: rev.GoodPoint + 1 } : rev,
+                ),
+              );
+        }
+
+        if(GoodPointBool == false)
+        {
+            setGoodPointBool(true);
+            setReview(
+                review.map(rev =>
+                  rev.id === id ? { ...rev, GoodPoint: rev.GoodPoint - 1 } : rev,
+                ),
+            );
+        } 
+    };
+
+    const BadToggle = id => {
+      
+        if(BadPointBool == true || BadPointBool == null)
+        {
+            setBadPointBool(false);
+            setReview(
+                review.map(rev =>
+                  rev.id === id ? { ...rev, BadPoint: rev.BadPoint + 1 } : rev,
+                ), 
+              );   
+        }
+
+        if(BadPointBool == false)
+        {
+            setBadPointBool(true);
+            setReview(
+                review.map(rev =>
+                  rev.id === id ? { ...rev, BadPoint: rev.BadPoint - 1 } : rev,
+                ),
+            );
+        } 
+    };
+    
 
     return(
         <>
@@ -209,13 +305,13 @@ function ReviewList() {
                      <h2 className="ReviewCount">{review.length}개</h2>
                      
                      <ul>
-                         <li>최신순</li>
-                         <li>추천순</li>
+                         <li onClick={()=>{SetLatestBool(true); SetRecBool(false);}} style={LatestBool ? {color: "royalblue"} : {color: "#676767"}}>최신순</li>
+                         <li onClick={()=>{SetRecBool(true); SetLatestBool(false);}} style={RecBool ? {color: "royalblue"} : {color: "#676767"}}>별점순</li>
                      </ul>
                 </div>
                 {/* 리뷰내용들 */}
                {review.map(a => (
-                      <ReviewForm review={a} key={a.id}  />
+                      <ReviewForm review={a} key={a.id} GoodToggle={GoodToggle} BadToggle={BadToggle}/>
                 ))}
 
 

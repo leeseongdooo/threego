@@ -19,7 +19,6 @@ function ReviewWrite() {
     const [ScoreNumebr, setScoreNumber] = useState(0);
     // 이미지를 저장할 오브젝트 변수입니다.
     const [PreviewImage, setPreviewImage] = useState([
-
     ]);
 
     // 제목 글자가 적혀질 때 setState를 통해 변경된 값을 저장합니다.
@@ -85,6 +84,9 @@ function ReviewWrite() {
         console.log(score);
     };
 
+
+    const formData = new FormData();
+
     // 리뷰 이미지에 대한 함수입니다.
     const ReviewImage = (e) => {
         // 현재 파일에 대한 정보를 가져옵니다.
@@ -103,6 +105,7 @@ function ReviewWrite() {
         // 값을 갱신하여 화면에 출력되도록 합니다.
         setPreviewImage([...PreviewImage, newPreviewImg]);
         console.log(PreviewImage);
+    
     }
 
     // 만약 이미지 갯수가 3개가 넘었다면 FIle을 추가하는 div를 숨기는 스타일을 적용하기 위한 변수입니다.
@@ -121,6 +124,7 @@ function ReviewWrite() {
         setPreviewImage(NewPreviewImage);
     }
 
+   
 
     return (
         <>
