@@ -4,6 +4,7 @@ import '../css/ReviewWrite.scss'
 import { useEffect } from "react";
 import { IoDocumentAttachOutline } from "react-icons/io5";
 import { isDisabled } from "@testing-library/user-event/dist/utils";
+import axios from "axios";
 
 
 function ReviewWrite() {
@@ -85,15 +86,13 @@ function ReviewWrite() {
     };
 
 
-    const formData = new FormData();
 
     // 리뷰 이미지에 대한 함수입니다.
-    const ReviewImage = (e) => {
+    const ReviewImage = async (e) => {
+    
         // 현재 파일에 대한 정보를 가져옵니다.
         const ReviewImg = e.target.files;
-        // 콘솔에 출력해봅니다.
-        console.log(ReviewImg[0].name)
-
+        
         // newPreviewImg의 id는 현재 PreviewImage의 길이에서 + 1을 해주고, Image는 ReviewImg파일에 대한 정보를 저장합니다.
         const newPreviewImg = {
             id: PreviewImage.length + 1,
@@ -102,10 +101,9 @@ function ReviewWrite() {
 
         // 새로운 PreviewImg에 대한 정보를 출력해봅니다.
         console.log(newPreviewImg);
+        console.log(axios);
         // 값을 갱신하여 화면에 출력되도록 합니다.
         setPreviewImage([...PreviewImage, newPreviewImg]);
-        console.log(PreviewImage);
-    
     }
 
     // 만약 이미지 갯수가 3개가 넘었다면 FIle을 추가하는 div를 숨기는 스타일을 적용하기 위한 변수입니다.
@@ -185,7 +183,7 @@ function ReviewWrite() {
                         <label className="ReviewImgLabel" style={PreviewImage.length >=3 ? ImgFilePreview : {}} >
                             <IoDocumentAttachOutline size="40px"/>
                             <span>이미지 추가</span>
-                            <input type="file" accept="image/*" onChange={ReviewImage}/>
+                            <input type="file" name="file" accept="image/*" onChange={ReviewImage}/>
                         </label>
 
                     </div>

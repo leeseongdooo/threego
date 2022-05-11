@@ -12,7 +12,8 @@ import ErrorPage from './Component/ErrorPage';
 import ReviewList from './Component/ReviewList';
 import ReviewWrite from './Component/ReviewWrite';
 import ReviewDetail from './Component/ReviewDetail';
-import List from './Component/List';
+import CustomerService from './Component/CustomerService';
+import NoticeList from './Component/NoticeList';
 
 function App() {
   
@@ -59,8 +60,12 @@ function App() {
           <ReviewDetail/>
         </Route>
 
-        <Route path="/List">
-          <List/>
+        <Route path="/CustomerService">
+          <CustomerService/>
+        </Route>
+
+        <Route path="/NoticeList">
+          <NoticeList/>
         </Route>
 
 

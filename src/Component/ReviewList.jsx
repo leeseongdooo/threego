@@ -208,7 +208,7 @@ function ReviewList() {
     };
 
     // 최신값 논리값 변수
-    const [LatestBool, SetLatestBool] = useState()
+    const [LatestBool, SetLatestBool] = useState(true)
 
     //추천순 논리값 변수
     const [RecBool, SetRecBool] = useState()
@@ -230,6 +230,7 @@ function ReviewList() {
     }, [GoodPointBool])
     
     
+    // 최신순 별점순 리뷰정렬
     if(RecBool === true)
     {
         review.sort(function(a,b){ return b.ReviewScore - a.ReviewScore })

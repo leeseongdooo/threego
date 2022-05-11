@@ -3,7 +3,7 @@ import React,{useState} from 'react';
 import {AiOutlineMenu} from "react-icons/ai";
 import { useEffect} from 'react';
 import { Link } from 'react-router-dom';
-import '../css/Header.css'
+import '../css/Header.scss'
 
 function Header(props) {
     let y = window.scrollY;
@@ -16,9 +16,12 @@ function Header(props) {
 
     const tempStyle={
         background:"black",
-        color: "white"
     }
 
+    const fontColor = {
+        color: "white",
+    }
+    
     // Y축 스크롤값을 확인하기 위해
     let [Scrolly, setScrolly] = useState(0);
  
@@ -39,17 +42,17 @@ function Header(props) {
 
     return(
         <>
-            <header className="Header" style={isOpen ? tempStyle : (Scrolly > 0) ? tempStyle : null}>
+            <header className="Header" style={isOpen ? tempStyle : (Scrolly > 0) ? tempStyle :  {color: props.fontColor}}>
                 <Link to='/' style={{ textDecoration: 'none' }}>
-                    <h3>Three Go</h3>
+                    <h3 style={isOpen ? fontColor : (Scrolly > 0) ? fontColor : {color: props.fontColor}}>Three Go</h3>
                 </Link>
                 
-                <AiOutlineMenu className="menuIcon" onClick={() => toggleMenu()}/>
+                <AiOutlineMenu className="menuIcon" onClick={() => toggleMenu()} style={isOpen ? fontColor : (Scrolly > 0) ? fontColor :  {color: props.fontColor}}/>
                 <ul className={isOpen ? "show-menu" : "hide-menu"}>
                     <li><Link to="/RecommendList">추천 여행지</Link></li>
                     <li><Link to="#">주변 가격정보</Link></li>
                     <li><Link to="/ReviewList">여행 리뷰보기</Link></li>
-                    <li><Link to="#">고객센터</Link></li>
+                    <li><Link to="/CustomerService">고객센터</Link></li>
                     
                     <li>
                         <div className='loginBox'>
