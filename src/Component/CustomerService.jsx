@@ -33,7 +33,7 @@ function CustomerService() {
                     </div>
                 </Link>
 
-                <Link to="/NoticeList">
+                <Link to="/InquireList">
                     <div>
                         <FiUsers className="icons"/>
                         <p>문의내역 보기</p>

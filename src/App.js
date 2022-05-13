@@ -14,6 +14,9 @@ import ReviewWrite from './Component/ReviewWrite';
 import ReviewDetail from './Component/ReviewDetail';
 import CustomerService from './Component/CustomerService';
 import NoticeList from './Component/NoticeList';
+import NoticeDetail from './Component/NoticeDetail';
+import InquireList from './Component/InquireList';
+import InquireWrite from './Component/InquireWrite';
 
 function App() {
   
@@ -68,6 +71,17 @@ function App() {
           <NoticeList/>
         </Route>
 
+        <Route path="/NoticeDetail">
+          <NoticeDetail/>
+        </Route>
+
+        <Route path="/InquireList">
+          <InquireList/>
+        </Route>
+
+        <Route path="/InquireWrite">
+          <InquireWrite/>
+        </Route>
 
         <Route path="/Error/:error">
             <ErrorPage/>

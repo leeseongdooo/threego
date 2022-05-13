@@ -2,8 +2,9 @@ import {React, useState} from "react";
 import Header from "./Header";
 import Bottom from "./Bottom";
 import { FiArrowRightCircle, FiArrowLeftCircle } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import '../css/NoticeList.scss'
-
+import {useHistory} from "react-router";
 
 
 function NoticeList() {
@@ -69,7 +70,7 @@ function NoticeList() {
         },
         {
             id: 9,
-            title: '0510공지사항',
+            title: '0510공지사항1313',
             content: '얼씨구 절씨구',
             writedays: '2022-05-09',
             readbool: false
@@ -84,6 +85,8 @@ function NoticeList() {
 
     ])
 
+    const history = useHistory();
+
     const readCheck = (id) => {
         setNotice(
             Notice.map(check => 
@@ -97,13 +100,15 @@ function NoticeList() {
                 <h1>공지사항</h1>
                 <hr />
                 {Notice.map((ref) => (
-                    <div className="ListForm" key={ref.id} onClick={()=>{readCheck(ref.id)}} style={ref.readbool ? {color: 'gray'} : {}}>
-                        <div className="Text">
-                            <p className="Title">{ref.title}</p>
-                            <p className="WriteDay">{ref.writedays}</p>
+                    
+                        <div className="ListForm" key={ref.id} onClick={()=>{readCheck(ref.id); history.push({pathname: "/NoticeDetail",state: {Notice: ref}})}} style={ref.readbool ? {color: 'gray'} : {}}>
+                            <div className="Text">
+                                <p className="Title">{ref.title}</p>
+                                <p className="WriteDay">{ref.writedays}</p>
+                            </div>
+                            <FiArrowRightCircle className="Icons"/>
                         </div>
-                        <FiArrowRightCircle className="Icons"/>
-                    </div>
+                   
                 ))}
             
             <footer className="NoticeListBottomArea">
