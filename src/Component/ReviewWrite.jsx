@@ -19,8 +19,7 @@ function ReviewWrite() {
     // 숫자로 된 점수입니다.
     const [ScoreNumebr, setScoreNumber] = useState(0);
     // 이미지를 저장할 오브젝트 변수입니다.
-    const [PreviewImage, setPreviewImage] = useState([
-    ]);
+    const [PreviewImage, setPreviewImage] = useState([]);
 
     // 제목 글자가 적혀질 때 setState를 통해 변경된 값을 저장합니다.
     const TitlesizeCalculation = (e) => {
@@ -88,7 +87,7 @@ function ReviewWrite() {
 
 
     // 리뷰 이미지에 대한 함수입니다.
-    const ReviewImage = async (e) => {
+    const ReviewImage = (e) => {
     
         // 현재 파일에 대한 정보를 가져옵니다.
         const ReviewImg = e.target.files;

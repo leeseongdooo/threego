@@ -5,72 +5,120 @@
     justify-content: space-between;
 
     .InquireWriteContentBox {
-        
-        h2 {
-            margin: 5px;
-        }
-
+    
         margin: 10px;
         margin-top: 50px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-
-        p {
-            margin: 5px;
-            font-size: 16px;
-            font-weight: 700;
+       
+        h2 {
+            margin: 10px;
         }
 
-        
-    
-        input[type=text] {
-            width: 90%;
-            padding: 10px;
-            min-height: 25px;
-            border-radius: 3px;
-            border: 1px solid black;
-            margin: 5px;
-            font-size: 16px;
-        }
-    
-        .WriteContent {
-            width: 90%;
-            padding: 10px;
-            text-align: left;
-            height: auto;
-            min-height: 120px;
-            font-size: 16px;
-            resize: none;
-            border-radius: 3px;
-            margin: 5px;
-        }
-    
-    
-        .InquireImgLabel {
-            input[type=file] {
-                display: none;
-            }
-            span {
-                margin-top: 5px;
-                font-size: 14px;
-            }
-            cursor: pointer;
+        .WriteArea {
+            margin: 10px;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-repeat: no-repeat;
-            min-width: 80px;
-            max-width: 80px;
-            min-height: 80px;
-            max-height: 80px;
-            border: 1px dashed black;
-            margin: 5px;
-            margin-bottom: 0px;
-            border-radius: 5px;
+            flex-direction: column;
+
+            .GuideText {
+                margin: 3px;
+                margin-bottom: 0px;
+                // input에서 padding: 10을 해서 20px 추가
+                width: calc(80% + 22px);
+                min-height: 25px;
+                display: flex;
+                justify-content: space-between;
+        
+                p {
+                    color: #2e2e2e;
+                    font-weight: 500;
+                }
+            }
+
+            .SelectBox {
+                width: calc(80% + 20px);
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                
+                select {
+                    width: 50%;
+                    padding: 10px;
+                    min-height: 25px;
+                    border-radius: 3px;
+                    font-size: 16px;
+                }
+
+                select:first-child {
+                    margin-right: 10px;
+                }
+            }
+
+            input[type=text] {
+                width: 80%;
+                padding: 10px;
+                min-height: 25px;
+                border-radius: 3px;
+                border: 1px solid black;
+                margin: 5px;
+                font-size: 16px;
+            }
+            .WriteContent {
+                width: 80%;
+                padding: 10px;
+                text-align: left;
+                min-height: 120px;
+                height: auto;
+                font-size: 16px;
+                resize: none;
+                border-radius: 3px;
+                margin: 5px;
+            }
+        
+            .ReviewWriteImageArea {
+                display: flex;
+                width: calc(80% + 22px);
+                padding: 3px;
+
+                img {
+                    min-width: 80px;
+                    max-width: 80px;
+                    min-height: 80px;
+                    max-height: 80px;
+                    margin: 5px;
+                    margin-bottom: 0px;
+                    border-radius: 5px;
+                }
+
+                .InquireImgLabel {
+                    input[type=file] {
+                        display: none;
+                    }
+                    span {
+                        margin-top: 5px;
+                        font-size: 14px;
+                    }
+                    cursor: pointer;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    background-repeat: no-repeat;
+                    min-width: 80px;
+                    max-width: 80px;
+                    min-height: 80px;
+                    max-height: 80px;
+                    border: 1px dashed black;
+                    margin: 5px;
+                    margin-bottom: 0px;
+                    border-radius: 5px;
+                }
+            }
         }
-    
+        
         .InquireWriteBottom {
             width: 100%;
             display: flex;
@@ -79,7 +127,7 @@
         
             button {
                 margin-top: 30px;
-                width: 90%;
+                width: calc(80% + 22px);
                 height: 40px;
                 border-radius: 5px;
                 border: none;
@@ -91,7 +139,6 @@
                 cursor: pointer;
             }
         }
-
     }
 
    
