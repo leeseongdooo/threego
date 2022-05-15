@@ -17,6 +17,7 @@ import NoticeList from './Component/NoticeList';
 import NoticeDetail from './Component/NoticeDetail';
 import InquireList from './Component/InquireList';
 import InquireWrite from './Component/InquireWrite';
+import InquireDetail from './Component/InquireDetail';
 
 function App() {
   
@@ -81,6 +82,10 @@ function App() {
 
         <Route path="/InquireWrite">
           <InquireWrite/>
+        </Route>
+
+        <Route path="/InquireDetail">
+          <InquireDetail/>
         </Route>
 
         <Route path="/Error/:error">

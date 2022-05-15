@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import Header from "./Header";
 import Bottom from "./Bottom";
 import { Link } from "react-router-dom";
+import {useHistory} from "react-router";
 import '../css/InquireList.scss'
 
-function InquireListForm({Inquire}) {
+function InquireListForm({Inquire, Detail}) {
+
     return (
         <>
-            <div className="InquireListForm">
+            <div className="InquireListForm"  onClick={()=>{Detail.push({pathname: "/InquireDetail", state: {Inquire: Inquire}})}}>
                 
                 <div className="TextContentArea">
                     <p>{Inquire.Title}</p>
@@ -16,6 +18,7 @@ function InquireListForm({Inquire}) {
 
                 <h4 style={Inquire.Process==false ? {color: 'royalblue'} : {}}>{Inquire.Process==true ? '처리완료' : '처리중'}</h4>
             </div>
+            
             <hr/>
         </>
     )       
@@ -30,27 +33,27 @@ function NoInquire() {
 }
 
 function InquireList() {
-
+    const Detail = useHistory();
     const [Inquire, setInquire] = useState([
         {
             id: 1,
             Title: '제목입니다',
             WriteDays: '2022-05-13',
-            Content: '얼씨구',
-            Process: false
+            Content: '얼씨구1',
+            Process: true
         },
         {
             id: 2,
             Title: '제목입니다',
             WriteDays: '2022-05-13',
-            Content: '얼씨구',
+            Content: '얼씨구2',
             Process: false
         },
         {
             id: 3,
             Title: '제목입니다',
             WriteDays: '2022-05-13',
-            Content: '얼씨구',
+            Content: '얼씨구3',
             Process: false
         },
     ])
@@ -70,7 +73,7 @@ function InquireList() {
                 <hr />
 
 
-                {Inquire.length > 0 ? Inquire.map(inq => (<InquireListForm Inquire={inq} key={inq.id}/>)) : <NoInquire/>}
+                {Inquire.length > 0 ? Inquire.map(inq => (<InquireListForm Inquire={inq} key={inq.id} Detail={Detail}/>)) : <NoInquire/>}
                 
                 
                 <div className="InquireListBtnBox">

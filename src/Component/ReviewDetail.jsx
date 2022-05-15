@@ -5,9 +5,14 @@ import { FaStar } from 'react-icons/fa';
 import Header from "./Header";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import '../css/ReviewDetail.scss'
-
+import {useLocation} from "react-router";
 
 function ReviewDetail() {
+
+    const location = useLocation();
+    const ReviewInfo = location.state.Review;
+    const ReviewScore = [];
+    console.log(ReviewInfo)
 
     const [ImageSize, setImageSize] = useState(0);
     
@@ -32,6 +37,13 @@ function ReviewDetail() {
         }
     ])
 
+    for(let i=0; i<ReviewInfo.ReviewScore; i++)
+    {
+        ReviewScore.push(i);
+    }
+
+    console.log(ReviewScore.length);
+
     useEffect(()=>{
         ImageBox.current.style.transform = `translateX(-${ImageSize}px)`;
     }, [ImageSize]);
@@ -53,6 +65,7 @@ function ReviewDetail() {
 
     return (
         <div className="ReviewDetailBigBox">
+        {/* 이미지 슬라이더 부분입니다 position:fixed로 설정해서 여기에 배치하였습니다. */}
          <div className={modalView==true ? "imageSlide" : "imageSlidenone"}>
 
             <div className="SlideTop">
@@ -83,32 +96,22 @@ function ReviewDetail() {
         <div className="ReviewDetailContent">
             {/* 제목과 작성일을 나타내는 div */}
             <div className="ContentTopArea">
-                <h2>제목을 입력해주세요</h2>
-                <p>2022.05.07</p>
+                <h2>{ReviewInfo.ReviewTitle}</h2>
+                <p>{ReviewInfo.ReviewDate}</p>
             </div>
             
              {/* 리뷰 스코어가 들어갈 div */}
             <div className="ContentScore">
-                <FaStar className="star"/>
-                <FaStar className="star"/>
-                <FaStar className="star"/>
-                <FaStar className="star"/>
-                <FaStar className="star"/>
+                {ReviewScore.map(a=> (<FaStar className="star"/>))}
             </div>
             
             {/* 내용이 들어갈 div */}
             <div className="ContentText" >
                <p>
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
                 aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-               Lorem ipsum dolor sit amet, consectetur adipisicing elit, 
-               sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-               Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
-               ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit 
-               esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-               proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                </p>
                
                <div className="imageArea">                    
@@ -123,8 +126,8 @@ function ReviewDetail() {
 
             {/* 작성글 추천이 들어갈 btn */}
             <div className="ReviewBtn">
-                <button onClick={()=>{console.log("A")}}>GOOD</button>
-                <button onClick={()=>{console.log("A")}}>Bad</button>
+                <button onClick={()=>{console.log("A")}}>{ReviewInfo.GoodPoint} GOOD</button>
+                <button onClick={()=>{console.log("A")}}>{ReviewInfo.BadPoint} Bad</button>
             </div>      
         </div>
 

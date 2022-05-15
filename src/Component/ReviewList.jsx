@@ -7,7 +7,7 @@ import { FaStar } from 'react-icons/fa';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from "react-icons/bs";
 // css
 import "../css/ReviewList.scss";
-
+import {useHistory} from "react-router";
 
 
 function ReviewScore({review})
@@ -23,7 +23,7 @@ function ReviewScore({review})
 }
 
 
-function ReviewForm({review, GoodToggle,BadToggle}) {
+function ReviewForm({review, GoodToggle,BadToggle, history}) {
 
     return (
         <div className="UserReviewForm">
@@ -54,9 +54,9 @@ function ReviewForm({review, GoodToggle,BadToggle}) {
             </div>             
 
             <div className="more">
-                <Link to='/ReviewDetail'>
-                    <span>더보기</span>
-                </Link>
+                
+                    <span onClick={()=>{history.push({pathname: "/ReviewDetail", state: {Review: review}})}}>더보기</span>
+                
             </div>
         </div>
     </div>
@@ -65,6 +65,8 @@ function ReviewForm({review, GoodToggle,BadToggle}) {
 
 function ReviewList() {
     
+    const history = useHistory();
+
     const [review, setReview] = useState([ 
         {
             id: 1,
@@ -312,7 +314,7 @@ function ReviewList() {
                 </div>
                 {/* 리뷰내용들 */}
                {review.map(a => (
-                      <ReviewForm review={a} key={a.id} GoodToggle={GoodToggle} BadToggle={BadToggle}/>
+                      <ReviewForm review={a} key={a.id} GoodToggle={GoodToggle} BadToggle={BadToggle} history={history}/>
                 ))}
 
 

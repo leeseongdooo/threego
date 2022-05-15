@@ -64,19 +64,14 @@ function InquireWrite() {
                 <div className="WriteArea">
 
 
-                    <div className="GuideText" >
-                        <p>유형</p>
-                    </div>
+                <div className="GuideText" >
+                    <p>유형</p>
+                </div>
 
                  <div className="SelectBox">
                     <select> 
                         <option value="1번">유형적기</option>
                         <option value="1번">1번</option>
-                    </select>
-
-                    <select disabled> 
-                        <option value="1번">상세유형</option>
-                        <option value="1번">??</option>
                     </select>
                  </div>
                    
