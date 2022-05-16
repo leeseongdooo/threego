@@ -26,7 +26,7 @@ function CustomerService() {
                     </div>
                 </Link>
 
-                <Link to="/NoticeList">
+                <Link to="/CustomerQuestion">
                     <div>
                         <FiHelpCircle className="icons"/>
                         <p>자주묻는 질문</p>

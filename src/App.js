@@ -13,6 +13,7 @@ import ReviewList from './Component/ReviewList';
 import ReviewWrite from './Component/ReviewWrite';
 import ReviewDetail from './Component/ReviewDetail';
 import CustomerService from './Component/CustomerService';
+import CustomerQuestion from './Component/CustomerQuestion';
 import NoticeList from './Component/NoticeList';
 import NoticeDetail from './Component/NoticeDetail';
 import InquireList from './Component/InquireList';
@@ -87,6 +88,11 @@ function App() {
         <Route path="/InquireDetail">
           <InquireDetail/>
         </Route>
+
+        <Route path="/CustomerQuestion">
+          <CustomerQuestion/>
+        </Route>
+
 
         <Route path="/Error/:error">
             <ErrorPage/>
