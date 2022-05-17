@@ -53,7 +53,7 @@ function Header(props) {
                     <li><Link to="#">주변 가격정보</Link></li>
                     <li><Link to="/ReviewList">여행 리뷰보기</Link></li>
                     <li><Link to="/CustomerService">고객센터</Link></li>
-                    
+                    <li><Link to="/MyPageMain">임시 마이페이지</Link></li>
                     <li>
                         <div className='loginBox'>
                             <button className='loginButton'>

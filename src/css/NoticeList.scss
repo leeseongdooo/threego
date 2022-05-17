@@ -1,13 +1,18 @@
 .NoticeListBigBox {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 100vh;
     overflow-x: hidden;
     .NoticeListMiddleBox {
         margin-top: 70px;
         
         h1 {
+            text-align: center;
+        }
+
+        h3 {
+            margin: 10px;
             text-align: center;
         }
 
@@ -37,22 +42,26 @@
         }
         .NoticeListBottomArea {
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
             margin-top: 20px;
+            
+            .PageNumberBox {
+                display: flex;
+            }
+
             .NoticeListNumber {
                 display: flex;
                 list-style: none;
                 justify-content: space-around;
-        
+                
                 li {
                     margin: 5px;
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    font-size: 24px;
+                    font-size: 20px;
                     border-radius: 100%;
-                    min-width: 40px;
-                    min-height: 30px;
                 }
             }
 
@@ -66,7 +75,8 @@
                 min-width: 35px;
                 min-height: 35px;
                 color: black;
-                background-color: white
+                background-color: white;
+                cursor: pointer;
             }
         }
     }

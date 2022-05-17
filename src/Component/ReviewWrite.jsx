@@ -91,7 +91,7 @@ function ReviewWrite() {
     
         // 현재 파일에 대한 정보를 가져옵니다.
         const ReviewImg = e.target.files;
-        
+        console.log(ReviewImg);
         // newPreviewImg의 id는 현재 PreviewImage의 길이에서 + 1을 해주고, Image는 ReviewImg파일에 대한 정보를 저장합니다.
         const newPreviewImg = {
             id: PreviewImage.length + 1,
@@ -103,6 +103,7 @@ function ReviewWrite() {
         console.log(axios);
         // 값을 갱신하여 화면에 출력되도록 합니다.
         setPreviewImage([...PreviewImage, newPreviewImg]);
+      
     }
 
     // 만약 이미지 갯수가 3개가 넘었다면 FIle을 추가하는 div를 숨기는 스타일을 적용하기 위한 변수입니다.
@@ -114,11 +115,11 @@ function ReviewWrite() {
         backgroundColor: "Gray"
     }
 
-    console.log(PreviewImage.length)
-
+    console.log(PreviewImage);
     const remove = (id) => {
         const NewPreviewImage = PreviewImage.filter(Image => Image.id !== id);
         setPreviewImage(NewPreviewImage);
+        
     }
 
    

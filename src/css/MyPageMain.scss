@@ -1,0 +1,125 @@
+// 전체 감싸는 div
+.MyPageMainBigBox {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    // 내용이 들어가는 영역
+    .MyPageMainContentBox {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        
+        // 사용자 프로필 (배경색 검정색 부분)
+        .UserInfo {
+            width: 90%;
+            margin: 0 auto;
+            padding: 10px;
+            display: flex;
+            border: 1px solid #67676750;
+            border-radius: 10px;
+            flex-direction: column;
+            align-items: center;
+            min-height: 180px;
+            // 사용자 이미지, 닉네임, 프로필변경 관련
+            .TopArea {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: flex-start;
+                margin: 5px;
+
+                // 사용자 이미지 img태그
+                img {
+                    min-width: 50px;
+                    min-height: 50px;
+                    max-width: 70px;
+                    max-height: 70px;
+                    border-radius: 100%;
+                    margin: 10px;
+                    border: 1px solid #676767;
+                    background-size: cover;
+                }
+
+                // 프로필 변경 버튼
+                .EditProfile {
+                    border-radius: 10px;
+                    padding: 7px;
+                    background-color: transparent;
+                    color: black;
+                    border: 1px solid #676767;
+                    margin: 10px;
+                    font-weight: 700;
+                }
+            }
+
+            // 자주쓰는 메뉴 바로가기 div
+            .MiddleArea {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                margin: 5px;
+               
+                div {
+                    display: flex;
+                    text-align: center;
+                    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+                    justify-content: center;
+                    align-items: center;
+                    width: calc(100% / 3);
+                    min-height: 100px;
+                    padding: 5px;
+                    margin: 5px;
+                    border-radius: 10px;
+                    font-weight: 700;
+                    font-size: 18px;
+
+                    a {
+                        width: 100%;
+                        color: black;
+                    }
+                }
+            }
+        }
+
+        // 카테고리 별로 나오게 설정
+        .MyPageCategory {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            // 카테고리 div 박스
+            .CategoryParentBox {
+                margin: 15px;
+                margin-bottom: 0px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+
+                // ul 
+                .CategoryChildBox {
+                    display: flex;
+                    flex-wrap: wrap;
+                    list-style-type: none;
+                    justify-content: space-between;
+                    li {
+                        width: calc(50% - 22px);
+                        font-size: 16px;
+                        font-weight: 500;
+                        text-align: left;
+                        padding: 6px;
+                    }
+
+                    a {
+                        width: calc(50% - 22px);
+                        font-size: 16px;
+                        font-weight: 500;
+                        text-align: left;
+                        padding: 6px;
+                    }
+                }
+            }
+        }
+    }
+
+}
