@@ -221,6 +221,29 @@ function ReviewList() {
     // Bad버튼 누를 때 활성화 됩니다.
     const [BadPointBool, setBadPointBool] = useState(true);
     
+    // Loading 변수
+    const [Loading, setLoading] = useState(false);
+
+    // 페이지 번호 입니다.
+    const [PageNumber, setPageNumber] = useState(1);
+
+    const PageNumberClick = (e) => {
+        let pageNumber = parseInt(e.target.innerHTML);
+        console.log(typeof pageNumber);
+        setPageNumber(pageNumber);        
+    }
+
+    const RightIconClick = () => {
+        setPageNumber(PageNumber + 1);
+    }
+
+    const LeftIconClick = () => {
+        setPageNumber(PageNumber - 1);
+    }
+
+    useEffect(()=> {
+        console.log(PageNumber)
+    }, [PageNumber])
 
 
     useEffect(() => {
@@ -253,12 +276,9 @@ function ReviewList() {
             return 0;
         })
     }
-
-    
    
     // 좋아요버튼 눌렀을 때
-    const GoodToggle = id => {
-        
+    const GoodToggle = id => {  
         if(GoodPointBool == true)
         {
             setReview((arr) => 
@@ -266,13 +286,11 @@ function ReviewList() {
                     rev.id === id ? rev.pointUpBool === false ? { ...rev, GoodPoint: rev.GoodPoint + 1, pointUpBool: true} : { ...rev, GoodPoint: rev.GoodPoint - 1, pointUpBool: false}  : rev,
                 )
             );
-            console.log(review);
-            
+            console.log(review);       
         }  
     };
 
-    const BadToggle = id => {
-      
+    const BadToggle = id => {      
         if(BadPointBool == true || BadPointBool == null)
         {
             setReview(
@@ -283,9 +301,49 @@ function ReviewList() {
         }
     };
     
+    const MiddleForm = () => {
+        return (
+            <>
+               <div className="ReviewMiddleArea">
+                    
+                    <div className="UmmName">
+                        <h2 className="ReviewCount">{review.length}개</h2>
+                        
+                        <ul>
+                            <li onClick={()=>{SetLatestBool(true); SetRecBool(false);}} style={LatestBool ? {color: "royalblue"} : {color: "#676767"}}>최신순</li>
+                            <li onClick={()=>{SetRecBool(true); SetLatestBool(false);}} style={RecBool ? {color: "royalblue"} : {color: "#676767"}}>별점순</li>
+                        </ul>
+                    </div>
+                    {/* 리뷰내용들 */}
+                    {review.map(a => (
+                            <ReviewForm review={a} key={a.id} GoodToggle={GoodToggle} BadToggle={BadToggle} history={history}/>
+                        ))}
+
+
+                </div>
+                
+                <footer className="ReviewBottomArea">
+                    <BsFillArrowLeftCircleFill className="ArrowBtn" onClick={()=>{LeftIconClick()}} style={PageNumber <= 1 ? {opacity: 0} : {}}/>
+                        <ul className="ReviewListNumber">
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>1</li>
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>2</li>
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>3</li>  
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>4</li>
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>5</li>
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>6</li>
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>7</li>
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>8</li>  
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>9</li>
+                                    <li onClick={(e)=>{PageNumberClick(e)}}>10</li>
+                        </ul>
+                    <BsFillArrowRightCircleFill className="ArrowBtn" onClick={() => {RightIconClick()}}/>
+                </footer>
+            </>
+        )
+    }
 
     return(
-        <>
+        <div className="ReviewListBigBox">
             <Header/>
             
             <div className="ReviewTopArea">
@@ -298,42 +356,13 @@ function ReviewList() {
                 <Link to='/ReviewWrite'>
                     <button>리뷰 작성</button>
                 </Link>
-                
-
             </div>
 
-            <div className="ReviewMiddleArea">
-                
-                <div className="UmmName">
-                     <h2 className="ReviewCount">{review.length}개</h2>
-                     
-                     <ul>
-                         <li onClick={()=>{SetLatestBool(true); SetRecBool(false);}} style={LatestBool ? {color: "royalblue"} : {color: "#676767"}}>최신순</li>
-                         <li onClick={()=>{SetRecBool(true); SetLatestBool(false);}} style={RecBool ? {color: "royalblue"} : {color: "#676767"}}>별점순</li>
-                     </ul>
-                </div>
-                {/* 리뷰내용들 */}
-               {review.map(a => (
-                      <ReviewForm review={a} key={a.id} GoodToggle={GoodToggle} BadToggle={BadToggle} history={history}/>
-                ))}
-
-
-            </div>
-            
-            <footer className="ReviewBottomArea">
-            <BsFillArrowLeftCircleFill className="ArrowBtn"/>
-               <ul className="ReviewListNumber">
-                   <li>1</li>
-                   <li>2</li>
-                   <li>3</li>
-                   <li>4</li>
-                   <li>5</li>
-               </ul>
-            <BsFillArrowRightCircleFill className="ArrowBtn" />
-            </footer>
+            {Loading == true ? <h2 className="Loading">로딩중입니다.</h2> : <MiddleForm/> }
+         
 
             <Bottom/>
-        </>
+        </div>
     )
 }
 

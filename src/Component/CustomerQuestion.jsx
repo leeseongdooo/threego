@@ -30,7 +30,6 @@ function QnAForm({qna,QnA, setQnA}) {
 }
 
 function CustomerQuestion() {
-
     
     const [QnA, setQnA] = useState([
         {
@@ -82,7 +81,6 @@ function CustomerQuestion() {
     function ChangeCategory(e) {
         console.log(e.target.value)
         setQnA(QnA.map(qna => qna.QuestionCategory == e.target.value || e.target.value == "전체" ? {...qna, categoryBool: true} : {...qna, categoryBool: false}));
-       
     }
 
     return (
