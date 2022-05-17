@@ -1,4 +1,4 @@
-import {useState, React} from "react";
+import {useState, React, useEffect} from "react";
 import '../css/CommentsForm.scss'
 
 // 사용자 댓글 폼
@@ -16,7 +16,7 @@ function UserCommentsForm({CommentsList, GoodToggle, BadToggle}) {
 
                 <div className="ContentsArea">
                     <p className="ContentsText">
-                    Lorem ipsum dolor sit amet, consectetur qui officia deserunt mollit anim id est laborum.
+                    {CommentsList.WriteContents}
                     </p>
                 </div>
 
@@ -29,25 +29,65 @@ function UserCommentsForm({CommentsList, GoodToggle, BadToggle}) {
     )
 }
 
-function UserCommentsWriteForm()
+function UserCommentsWriteForm({CommentsList, setCommentsList})
 {
 
     const [WriteLength, setWriteLength] = useState(0);
+    const [Warning, setWarning] = useState(false);
+    const [WriteComments, setWriteComments] = useState();
+    const [CommentsListLength, setCommentsListLength] = useState(CommentsList.length + 1);   
+    const [NewComments, setNewComments] = useState({
+        id: CommentsListLength,
+        UserImg: '',
+        UserName: '이성두',
+        WriteDate: '2022.04.28',
+        WriteContents:WriteComments,
+        GoodPoint: 0,
+        BadPoint: 0,
+        pointUpBool: false,
+        pointDownBool: false 
+     })
+
+
+
+    useEffect(()=>{
+        if(WriteLength >= 300) {
+            setWarning(true);
+        } else {
+            console.log(WriteComments);
+            setWarning(false);
+        }
+    }, [WriteLength,WriteComments]);
+
+    useEffect(()=>{
+        setNewComments({...NewComments, id:CommentsListLength, WriteContents:WriteComments});
+    },[NewComments])
 
     return(
         <div className="WriteBigBox">
             <div className="WriteAreaBox">
                 <div className="WriterInfo">
                     <img src="" alt="" />
-                    <p>사용자 이름</p>
+                    <p>이성두</p>
                 </div>
                 
-                <textarea className="TextWrite" onChange={(e)=>{setWriteLength(e.target.value.length)}}></textarea>
+                <textarea className="TextWrite" onChange={(e)=>{
+                    setWriteComments(e.target.value);
+                    setWriteLength(e.target.value.length);
+                }} value={WriteComments}></textarea>
             </div>
 
             <div className="FinishArea">
-                <p>{WriteLength} / 300</p>
-                <button className="FinishWriteBtn">등록</button>
+                <p>{WriteLength} / 300 </p>
+                <p style={Warning ? {color: 'red'} : {display: 'none'}}>줄여주세요</p>
+               
+                <button className="FinishWriteBtn" onClick={()=> {
+                    setCommentsListLength(CommentsListLength + 1);
+                    setCommentsList([...CommentsList, NewComments]);
+                    setWriteComments("");
+                }} 
+                    style={Warning ? {backgroundColor: 'red'} : {}} 
+                    disabled={Warning ? true : false}>등록</button>
             </div>
         </div>
     )
@@ -61,42 +101,9 @@ function CommentsForm() {
             UserImg: '/img/Yeosu.jpg',
             UserName: '리리',
             WriteDate: '2022.04.28',
-            WriteContents: '이곳은 제목',
+            WriteContents: ' Lorem ipsum dolor sit amet, consectetur qui officia deserunt mollit anim id est laborum.',
             GoodPoint: 10,
             BadPoint: 3,
-            pointUpBool: false,
-            pointDownBool: false
-        },
-        {
-            id: 2,
-            UserImg: '/img/Yeosu.jpg',
-            UserName: '리리2',
-            WriteDate: '2022.04.29',
-            WriteContents: '너무 재미있었어요',
-            GoodPoint: 50,
-            BadPoint: 20,
-            pointUpBool: false,
-            pointDownBool: false
-        },
-        {
-            id: 3,
-            UserImg: '/img/Yeosu.jpg',
-            UserName: '리리2',
-            WriteDate: '2022.04.29',
-            WriteContents: '너무 재미있었어요',
-            GoodPoint: 5,
-            BadPoint: 0,
-            pointUpBool: false,
-            pointDownBool: false
-        },
-        {
-            id: 4,
-            UserImg: '/img/Yeosu.jpg',
-            UserName: '리리2',
-            WriteDate: '2022.04.29',
-            WriteContents: '너무 재미있었어요',
-            GoodPoint: 5,
-            BadPoint: 0,
             pointUpBool: false,
             pointDownBool: false
         }
@@ -115,8 +122,7 @@ function CommentsForm() {
                 CommentsList.map(rev => 
                     rev.id === id ? rev.pointUpBool === false ? { ...rev, GoodPoint: rev.GoodPoint + 1, pointUpBool: true} : { ...rev, GoodPoint: rev.GoodPoint - 1, pointUpBool: false}  : rev,
                 )
-            );
-            console.log(CommentsList);       
+            );    
         }  
     };
 
@@ -133,7 +139,7 @@ function CommentsForm() {
 
     return (
         <div className="CommentsFormBigBox"> 
-            <UserCommentsWriteForm/>
+            <UserCommentsWriteForm CommentsList={CommentsList} setCommentsList={setCommentsList}/>
             {CommentsList.map(List => (<UserCommentsForm CommentsList={List} GoodToggle={GoodToggle} BadToggle={BadToggle} key={List.id}/>))}
         </div>
     )

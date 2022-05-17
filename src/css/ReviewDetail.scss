@@ -19,9 +19,10 @@
 }
 
 .imageSlide {
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height: calc(100%);
+    min-height: 100vh;
+    height: auto;
     background-color: #0000008a;
     display: flex;
     flex-direction: column;

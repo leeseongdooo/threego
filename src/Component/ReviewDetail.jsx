@@ -14,7 +14,6 @@ function ReviewDetail() {
     const location = useLocation();
     const ReviewInfo = location.state.Review;
     const ReviewScore = [];
-    console.log(ReviewInfo)
 
     const [ImageSize, setImageSize] = useState(0);
     
@@ -82,8 +81,7 @@ function ReviewDetail() {
                     </div>                
                 </div>
                 
-                <div className="ArrowArea">
-                                                                    
+                <div className="ArrowArea">                                      
                     <AiOutlineArrowLeft className="Arrow" onClick={moveImg}/>
                     <AiOutlineArrowRight className="Arrow" onClick={moveImg2}/>
                 </div>
@@ -103,7 +101,7 @@ function ReviewDetail() {
                 
                 {/* 리뷰 스코어가 들어갈 div */}
                 <div className="ContentScore">
-                    {ReviewScore.map(a=> (<FaStar className="star"/>))}
+                    {ReviewScore.map((a, idx)=> (<FaStar className="star" key={idx}/>))}
                 </div>
                 
                 {/* 내용이 들어갈 div */}
@@ -117,7 +115,7 @@ function ReviewDetail() {
                 
                 <div className="imageArea">                    
                         {imgsource.map(a=> (
-                            <div>
+                            <div key={a.id}>
                                 <img src={a.Img} alt={a.id} key={a.id} onClick={()=>{setModalView(true); }}/>
                             </div>
                         ))}
