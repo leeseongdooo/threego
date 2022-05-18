@@ -2,16 +2,23 @@ import {useState, React, useEffect} from "react";
 import '../css/CommentsForm.scss'
 
 // 사용자 댓글 폼
-function UserCommentsForm({CommentsList, GoodToggle, BadToggle}) {
+function UserCommentsForm({CommentsList, GoodToggle, BadToggle, realComment, setCommentsList}) {
     return(
         <>
             <div className="User">    
                 <div className="TopArea">
-                    <img src={CommentsList.UserImg} alt="" />
-                    <div className="UserNameAndDay">
-                        <p>{CommentsList.UserName}</p>
-                        <p>{CommentsList.WriteDate}</p>
+                    <div className="TopAreaOneBox">    
+                        <img src={CommentsList.UserImg} alt="" />
+                        <div className="UserNameAndDay">
+                            <p>{CommentsList.UserName}</p>
+                            <p>{CommentsList.WriteDate}</p>
+                        </div>
+                    </div> 
+
+                    <div>
+                        <button className="DeleteBtn" onClick={()=>{setCommentsList(realComment.filter(List => List.id !== CommentsList.id))}}>삭제</button>
                     </div>
+                    
                 </div>
 
                 <div className="ContentsArea">
@@ -36,6 +43,7 @@ function UserCommentsWriteForm({CommentsList, setCommentsList})
     const [Warning, setWarning] = useState(false);
     const [WriteComments, setWriteComments] = useState();
     const [CommentsListLength, setCommentsListLength] = useState(CommentsList.length + 1);   
+    
     const [NewComments, setNewComments] = useState({
         id: CommentsListLength,
         UserImg: '',
@@ -47,8 +55,6 @@ function UserCommentsWriteForm({CommentsList, setCommentsList})
         pointUpBool: false,
         pointDownBool: false 
      })
-
-
 
     useEffect(()=>{
         if(WriteLength >= 300) {
@@ -80,14 +86,14 @@ function UserCommentsWriteForm({CommentsList, setCommentsList})
             <div className="FinishArea">
                 <p>{WriteLength} / 300 </p>
                 <p style={Warning ? {color: 'red'} : {display: 'none'}}>줄여주세요</p>
-               
+                <p style={WriteLength <= 0 ? {color: 'red'} : {display: 'none'}}>텍스트를 적어주세요</p>
                 <button className="FinishWriteBtn" onClick={()=> {
                     setCommentsListLength(CommentsListLength + 1);
                     setCommentsList([...CommentsList, NewComments]);
                     setWriteComments("");
                 }} 
                     style={Warning ? {backgroundColor: 'red'} : {}} 
-                    disabled={Warning ? true : false}>등록</button>
+                    disabled={Warning || WriteLength <= 0 ? true : false}>등록</button>
             </div>
         </div>
     )
@@ -95,19 +101,7 @@ function UserCommentsWriteForm({CommentsList, setCommentsList})
 
 
 function CommentsForm() {
-    const [CommentsList, setCommentsList] = useState([ 
-        {
-            id: 1,
-            UserImg: '/img/Yeosu.jpg',
-            UserName: '리리',
-            WriteDate: '2022.04.28',
-            WriteContents: ' Lorem ipsum dolor sit amet, consectetur qui officia deserunt mollit anim id est laborum.',
-            GoodPoint: 10,
-            BadPoint: 3,
-            pointUpBool: false,
-            pointDownBool: false
-        }
-    ]);
+    const [CommentsList, setCommentsList] = useState([ ]);
 
     // Good버튼 누르면 활성화
     const [GoodPointBool, setGoodPointBool] = useState(true);
@@ -136,11 +130,21 @@ function CommentsForm() {
             );   
         }
     };
-
+  
     return (
         <div className="CommentsFormBigBox"> 
             <UserCommentsWriteForm CommentsList={CommentsList} setCommentsList={setCommentsList}/>
-            {CommentsList.map(List => (<UserCommentsForm CommentsList={List} GoodToggle={GoodToggle} BadToggle={BadToggle} key={List.id}/>))}
+            
+            {
+                CommentsList.length == 0 ?  
+                <div className="NoComments">
+                    <h3>아직 댓글이 없어요 ㅜ.ㅜ</h3>
+                </div> : 
+                CommentsList.map(List => (<UserCommentsForm setCommentsList={setCommentsList} realComment={CommentsList} CommentsList={List} GoodToggle={GoodToggle} BadToggle={BadToggle} key={List.id}/>))
+            }          
+           
+
+            
         </div>
     )
 }
