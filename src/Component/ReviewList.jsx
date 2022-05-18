@@ -34,7 +34,7 @@ function ReviewForm({review, GoodToggle,BadToggle, history}) {
             <img src={review.ReviewImg} alt="유저 이미지" />
             <div className="NameAndReview">
                 <h3 className="userName">{review.UserName}</h3>
-                    <ReviewScore review={review}/>
+                <ReviewScore className="ReviewStar" review={review}/>
             </div>
           </div>
 
@@ -55,7 +55,7 @@ function ReviewForm({review, GoodToggle,BadToggle, history}) {
 
             <div className="more">
                 
-                    <span onClick={()=>{history.push({pathname: "/ReviewDetail", state: {Review: review}})}}>더보기</span>
+            <span onClick={()=>{history.push({pathname: "/ReviewDetail", state: {Review: review}})}}>더보기</span>
                 
             </div>
         </div>

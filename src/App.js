@@ -20,7 +20,7 @@ import InquireList from './Component/InquireList';
 import InquireWrite from './Component/InquireWrite';
 import InquireDetail from './Component/InquireDetail';
 import MyPageMain from './Component/MyPageMain';
-import CommentsForm from './Component/CommentsForm';
+import ReviewManagement from './Component/ReviewManagement';
 function App() {
   
   const fixcss = {
@@ -102,8 +102,8 @@ function App() {
           <MyPageMain/>
         </Route>
 
-        <Route path="/CommentsForm">
-          <CommentsForm/>
+        <Route path="/ReviewManagement">
+          <ReviewManagement/>
         </Route>
 
 

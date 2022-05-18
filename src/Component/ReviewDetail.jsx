@@ -1,24 +1,28 @@
 import React, { useEffect } from "react";
 import {useState, useRef} from "react";
-import { Link } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
-import Header from "./Header";
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
-import '../css/ReviewDetail.scss'
 import {useLocation} from "react-router";
 import Bottom from "./Bottom";
 import CommentsForm from "./CommentsForm";
+import '../css/ReviewDetail.scss'
 
 function ReviewDetail() {
 
     const location = useLocation();
+    
     const ReviewInfo = location.state.Review;
+    
     const ReviewScore = [];
 
     const [ImageSize, setImageSize] = useState(0);
     
     const [modalView, setModalView] = useState(false);
     
+    const [DetailReviewInfo, setDetailReviewInfo] = useState(ReviewInfo);
+
+    console.log(DetailReviewInfo);
+
     const ImageInfo = useRef(null);
     
     const ImageBox = useRef(null);
@@ -38,12 +42,42 @@ function ReviewDetail() {
         }
     ])
 
-    for(let i=0; i<ReviewInfo.ReviewScore; i++)
+    for(let i=0; i<DetailReviewInfo.ReviewScore; i++)
     {
         ReviewScore.push(i);
     }
 
-    console.log(ReviewScore.length);
+    // Good버튼 누를 때 활성화 됩니다. (한명단 한번만 체크되게 하기 위해서 선언)
+    const [GoodPointBool, setGoodPointBool] = useState(true);
+
+    const GoodToggle = () => {  
+        if(DetailReviewInfo.pointDownBool == true && DetailReviewInfo.pointUpBool == false) {
+            setDetailReviewInfo({...DetailReviewInfo,  GoodPoint: DetailReviewInfo.GoodPoint + 1, BadPoint: DetailReviewInfo.BadPoint - 1, pointDownBool: false, pointUpBool: true  });
+        } else if(DetailReviewInfo.pointUpBool == false)
+        {
+           setDetailReviewInfo({...DetailReviewInfo,  GoodPoint: DetailReviewInfo.GoodPoint + 1, pointUpBool: true });
+        } 
+    
+        if(DetailReviewInfo.pointUpBool == true) {
+            setDetailReviewInfo({...DetailReviewInfo,  GoodPoint: DetailReviewInfo.GoodPoint - 1, pointUpBool: false });
+        }
+    };
+
+    const BadToggle = () => {  
+
+        if(DetailReviewInfo.pointUpBool == true && DetailReviewInfo.pointDownBool == false) {
+            setDetailReviewInfo({...DetailReviewInfo,  GoodPoint: DetailReviewInfo.GoodPoint - 1, BadPoint: DetailReviewInfo.BadPoint + 1, pointDownBool: true, pointUpBool: false  });
+        }
+
+        else if(DetailReviewInfo.pointDownBool == false)
+        {
+           setDetailReviewInfo({...DetailReviewInfo,  BadPoint: DetailReviewInfo.BadPoint + 1, pointDownBool: true });
+        } else if(DetailReviewInfo.pointDownBool == true) {
+           setDetailReviewInfo({...DetailReviewInfo,  BadPoint: DetailReviewInfo.BadPoint - 1, pointDownBool: false });
+        }
+    };
+
+
 
     useEffect(()=>{
         ImageBox.current.style.transform = `translateX(-${ImageSize}px)`;
@@ -95,8 +129,8 @@ function ReviewDetail() {
             <div className="ReviewDetailContent">
                 {/* 제목과 작성일을 나타내는 div */}
                 <div className="ContentTopArea">
-                    <h2>{ReviewInfo.ReviewTitle}</h2>
-                    <p>{ReviewInfo.ReviewDate}</p>
+                    <h2>{DetailReviewInfo.ReviewTitle}</h2>
+                    <p>{DetailReviewInfo.ReviewDate}</p>
                 </div>
                 
                 {/* 리뷰 스코어가 들어갈 div */}
@@ -125,8 +159,12 @@ function ReviewDetail() {
 
                 {/* 작성글 추천이 들어갈 btn */}
                 <div className="ReviewBtn">
-                    <button onClick={()=>{console.log("A")}}>{ReviewInfo.GoodPoint} GOOD</button>
-                    <button onClick={()=>{console.log("A")}}>{ReviewInfo.BadPoint} Bad</button>
+
+                    {/* <button onClick={()=>{GoodToggle(review.id)}}>{review.GoodPoint} GOOD</button>
+                    <button onClick={()=>{BadToggle(review.id)}}>{review.BadPoint} Bad</button> */}
+
+                    <button onClick={()=>{GoodToggle()}}>{DetailReviewInfo.GoodPoint} GOOD</button>
+                    <button onClick={()=>{BadToggle()}}>{DetailReviewInfo.BadPoint} Bad</button>
                 </div> 
             </div>
             <CommentsForm/>

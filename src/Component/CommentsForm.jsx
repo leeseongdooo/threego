@@ -111,12 +111,13 @@ function CommentsForm() {
 
     const GoodToggle = id => {  
         if(GoodPointBool == true)
-        {
-            setCommentsList((arr) => 
+        {            
+            setCommentsList(
                 CommentsList.map(rev => 
-                    rev.id === id ? rev.pointUpBool === false ? { ...rev, GoodPoint: rev.GoodPoint + 1, pointUpBool: true} : { ...rev, GoodPoint: rev.GoodPoint - 1, pointUpBool: false}  : rev,
-                )
-            );    
+                    rev.id === id ? rev.pointUpBool === false && rev.pointDownBool === true ? { ...rev, GoodPoint: rev.GoodPoint + 1, BadPoint: rev.BadPoint - 1, pointDownBool: false, pointUpBool: true} :
+                    rev.pointUpBool === false ? { ...rev, GoodPoint: rev.GoodPoint + 1, pointUpBool: true} : { ...rev, GoodPoint: rev.GoodPoint - 1, pointUpBool: true}  : rev
+                )   
+            ) 
         }  
     };
 
