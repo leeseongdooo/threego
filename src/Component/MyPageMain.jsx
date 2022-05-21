@@ -45,10 +45,12 @@ function MyPageMain() {
                 </div>
 
                 <div className="PageMoveBox">
-                    <div>
-                        <span>개인정보 변경</span>
-                        <FiChevronRight/>
-                    </div>
+                    <Link to="/ProfileEdit">
+                        <div>
+                            <span>개인정보 변경</span>
+                            <FiChevronRight/>
+                        </div>
+                    </Link>
 
                     <div>
                         <span>고객센터</span>

@@ -21,6 +21,8 @@ import InquireWrite from './Component/InquireWrite';
 import InquireDetail from './Component/InquireDetail';
 import MyPageMain from './Component/MyPageMain';
 import ReviewManagement from './Component/ReviewManagement';
+import ProfileEdit from "./Component/ProfileEdit";
+
 function App() {
   
   const fixcss = {
@@ -104,6 +106,10 @@ function App() {
 
         <Route path="/ReviewManagement">
           <ReviewManagement/>
+        </Route>
+
+        <Route path="/ProfileEdit">
+          <ProfileEdit/>
         </Route>
 
 
