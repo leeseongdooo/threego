@@ -1,19 +1,45 @@
-import {React, useEffect, useState} from "react";
+import {React, useEffect, useRef, useState} from "react";
 import Header from "./Header";
 import Bottom from "./Bottom";
 import { FaStar } from 'react-icons/fa';
+import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import '../css/ReviewManagement.scss'
 
 
 function ReviewForm ({List, setReviewManage, ReviewManage}) {
 
     let ReviewStar = [];
-    
+
+    const [ReviewSize, setReviewSize] = useState(0);
+    const ReviewImage = useRef();
+
+    useEffect(()=>{
+        ReviewImage.current.style.transform = `translateX(-${ReviewSize}px)`;
+    }, [ReviewSize])
+
+    const RightSlide = () => {
+        const MaxSize = ReviewImage.current.clientWidth * 2
+        if(ReviewSize < MaxSize)
+        {
+            setReviewSize(ReviewSize + ReviewImage.current.clientWidth);
+        }        
+    }
+
+    const LeftSlide = () => {
+        if(ReviewSize > 0)
+        {
+            setReviewSize(ReviewSize - ReviewImage.current.clientWidth);
+        }
+    }    
+
+
 
     for(let i=0; i<List.ReviewScore; i++)
     {
         ReviewStar.push(i);
     }
+
+
     
     return (
         <div className="ReviewForm">
@@ -41,6 +67,22 @@ function ReviewForm ({List, setReviewManage, ReviewManage}) {
 
             </div>
 
+            <div className="MiddleImageArea" style={List.ReviewImage.length > 0 ? {} : {display: 'none'}}>
+                
+                <div className="ImageBox" ref={ReviewImage}>
+                    <img src={List.ReviewImage} alt="" />
+                    <img src="/img/DaeguShinsaegae.jpg" alt="" />
+                    <img src={List.ReviewImage} alt="" />
+                </div>
+        
+                <div className="SlideBtn">
+                    <div className="BtnArea">
+                    <AiOutlineArrowLeft onClick={LeftSlide} className="Arrow" />
+                    <AiOutlineArrowRight onClick={RightSlide} className="Arrow" />
+                    </div>
+                </div>
+            </div>
+
             <div className="MiddleMiddleArea">
                 <p>{List.ReviewContent}</p>
             </div>
@@ -54,7 +96,7 @@ function ReviewManagement() {
         {
             id: 1,
             TravelName: "여행지 이름1",
-            ReviewImage: [],
+            ReviewImage: "/img/Daegu.jpg",
             ReviewDate: '2022.04.28',
             ReviewTitle: '이곳은 제목',
             ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
@@ -64,7 +106,7 @@ function ReviewManagement() {
         {
             id: 2,
             TravelName: "여행지 이름12",
-            ReviewImage: [],
+            ReviewImage: '',
             ReviewDate: '2022.04.28',
             ReviewTitle: '이곳은 제목',
             ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
@@ -74,7 +116,7 @@ function ReviewManagement() {
         {
             id: 3,
             TravelName: "여행지 이름123",
-            ReviewImage: [],
+            ReviewImage: '',
             ReviewDate: '2022.04.28',
             ReviewTitle: '이곳은 제목',
             ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',

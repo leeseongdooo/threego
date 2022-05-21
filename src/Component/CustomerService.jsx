@@ -42,7 +42,9 @@ function CustomerService() {
             </div>
 
             <div className="BtnBox">
-                <button>1:1 문의 작성</button>
+                <Link to="/InquireWrite">
+                    <button>1:1 문의 작성</button>    
+                </Link>
             </div>
         </div>
 

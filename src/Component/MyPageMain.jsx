@@ -19,18 +19,28 @@ function MyPageMain() {
                     </div>
                      
                     <div className="MiddleArea">
-                        <div>
-                            <h4>1</h4>
-                            <h4>리뷰 관리</h4>
-                        </div>
-                        <div>
-                            <h4>11</h4>
-                            <h4>여행 관리</h4>
-                        </div>
-                        <div>
-                            <h4>1</h4>
-                            <h4>문의 관리</h4>
-                        </div>
+
+                        <Link to="/ReviewManagement">
+                            <div>
+                                <h4>1</h4>
+                                <h4>리뷰 관리</h4>
+                            </div>
+                        </Link>
+                        
+                        <Link to="/ReviewManagement">
+                            <div>
+                                <h4>1</h4>
+                                <h4>여행 관리</h4>
+                            </div>
+                        </Link>
+
+                        <Link to="">
+                            <div>
+                                <h4>1</h4>
+                                <h4>문의 관리</h4>
+                            </div>
+                        </Link>
+
                     </div>
                 </div>
 

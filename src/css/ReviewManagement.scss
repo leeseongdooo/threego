@@ -107,6 +107,43 @@
                     }
                 }
 
+                .MiddleImageArea {
+                    position: relative;
+                    margin-top: 10px;
+                    display: flex;
+                    overflow: hidden;
+                    
+                    .ImageBox {
+                        display: flex;
+                        transition: 0.7s;
+                        img {
+                            max-width: 100%;
+                            background-size: cover;
+                        }
+                    }
+
+                    .SlideBtn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 99%;
+                        height: 100%;
+                        position: absolute;
+
+                        .BtnArea {
+                            width: 90%;
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                        }
+
+                        .Arrow {
+                            color: white;
+                            font-size: 30px;
+                        }
+                    }
+                }
+
                 .MiddleMiddleArea {
                     margin-top: 10px;
                     text-overflow:ellipsis;
