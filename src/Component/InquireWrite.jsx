@@ -23,7 +23,6 @@ function InquireWrite() {
     }
 
     const ReviewImage = (e) => {
-    
         // 현재 파일에 대한 정보를 가져옵니다.
         const ReviewImg = e.target.files;
         

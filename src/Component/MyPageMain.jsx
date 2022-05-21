@@ -34,7 +34,7 @@ function MyPageMain() {
                             </div>
                         </Link>
 
-                        <Link to="">
+                        <Link to="/InquireList">
                             <div>
                                 <h4>1</h4>
                                 <h4>문의 관리</h4>
@@ -52,20 +52,27 @@ function MyPageMain() {
                         </div>
                     </Link>
 
-                    <div>
-                        <span>고객센터</span>
-                        <FiChevronRight/>
-                    </div>
+                    <Link to="/CustomerService">
+                        <div>
+                            <span>고객센터</span>
+                            <FiChevronRight/>
+                        </div>
+                    </Link>
+                    
+                    <Link to="/NoticeList">
+                        <div>
+                            <span>공지사항</span>
+                            <FiChevronRight/>
+                        </div>
+                    </Link>
 
-                    <div>
-                        <span>공지사항</span>
-                        <FiChevronRight/>
-                    </div>
 
-                    <div>
-                        <span>자주하는 질문</span>
-                        <FiChevronRight/>
-                    </div>
+                    <Link to="/CustomerQuestion">
+                        <div>
+                            <span>자주하는 질문</span>
+                            <FiChevronRight/>
+                        </div>
+                    </Link>
 
                     <div>
                         <span>로그아웃</span>

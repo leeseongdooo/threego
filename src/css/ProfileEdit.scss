@@ -3,7 +3,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid black;
     
     .ProfileContentBox {
         margin: auto;
@@ -12,6 +11,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
+
+
         .ProfileImage {
             width: 80px;
             height: 80px;
@@ -31,6 +32,15 @@
             input[type=file] {
                 display: none;
             }
+
+            img {
+                min-width: 80px;
+                max-width: 80px;
+                min-height: 80px;
+                max-height: 80px;
+                margin-bottom: 0px;
+                border-radius: 5px;
+            }
         }
 
         .InputInfo {
@@ -47,7 +57,11 @@
                 font-weight: 700;
             }
 
-            input[type=text]
+            span {
+                width: calc(80% + 12px);
+            }
+
+            input
             {
                 border-radius: 10px;
                 width: 80%;
