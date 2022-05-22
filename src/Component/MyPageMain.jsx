@@ -34,7 +34,7 @@ function MyPageMain() {
                             </div>
                         </Link>
 
-                        <Link to="/InquireList">
+                        <Link to="/InquireManagement">
                             <div>
                                 <h4>1</h4>
                                 <h4>문의 관리</h4>
@@ -74,7 +74,7 @@ function MyPageMain() {
                         </div>
                     </Link>
 
-                    <Link to="/CustomerQuestion">
+                    <Link to="/">
                         <div>
                             <span>로그아웃</span>
                             <FiChevronRight/>

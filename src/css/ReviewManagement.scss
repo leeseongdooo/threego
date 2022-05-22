@@ -121,6 +121,7 @@
                         display: flex;
                         transition: 0.7s;
                         img {
+                            min-width: auto;
                             max-width: 100%;
                             background-size: cover;
                         }

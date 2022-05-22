@@ -81,6 +81,7 @@ function TravelManagement() {
     
     const [AllSelectBool, setAllSelectBool] = useState(false);
     const [CheckTravelList, setCheckTravelList] = useState(0);
+    
     function SelectRemove() {
         setTravelList(TravelList.filter((List)=>List.checkBool == false))
     }
@@ -112,13 +113,14 @@ function TravelManagement() {
                 <div className="SelectAndDeleteBox">
                     <div>
                         <input type="checkbox" name='TravelList' onChange={AllSelect} checked={AllSelectBool}/>
-                        <span>전체선택 총 {TravelList.length}개</span>
+                        <h4>전체선택 </h4>
                     </div>
                     
-                    <span onClick={SelectRemove}>선택삭제</span>
+                    <h4 onClick={SelectRemove}>선택삭제</h4>
                 </div>
 
-                {TravelList.length > 0 ? TravelList.map((List)=><TravelListForm setCheckTravelList={setCheckTravelList} CheckTravelList={CheckTravelList} setAllSelectBool={setAllSelectBool} key={List.id} TravelList={TravelList} setTravelList={setTravelList} TravelInfo={List}/>) : <h3 className='NoTravelList'>아무것도 없어요 ㅜㅜ</h3>}
+                {TravelList.length > 0 ? TravelList.map((List)=><TravelListForm setCheckTravelList={setCheckTravelList} CheckTravelList={CheckTravelList} setAllSelectBool={setAllSelectBool} key={List.id} TravelList={TravelList} setTravelList={setTravelList} TravelInfo={List}/>) : 
+                <h3 className='NoTravelList'>아무것도 없어요 ㅜㅜ</h3>}
             </div>
             <Bottom/>
         </div>

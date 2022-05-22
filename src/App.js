@@ -23,6 +23,7 @@ import MyPageMain from './Component/MyPageMain';
 import ReviewManagement from './Component/ReviewManagement';
 import ProfileEdit from "./Component/ProfileEdit";
 import TravelManagement from "./Component/TravelManagement";
+import InquireManagement from "./Component/InquireManagement";
 
 function App() {
   
@@ -117,6 +118,9 @@ function App() {
           <TravelManagement/>
         </Route>
 
+        <Route path="/InquireManagement">
+          <InquireManagement/>
+        </Route>
 
         <Route path="/Error/:error">
             <ErrorPage/>
