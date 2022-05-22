@@ -7,10 +7,19 @@
 
     .TravelManagementContentBox {
         margin: 15px;
-        margin-top: 50px;
-        
+        margin-top: 50px; 
         display: flex;
         flex-direction: column;
+
+        input[type="checkbox"] {
+            margin: 5px;
+            min-width: 20px;
+            min-height: 20px;
+            border-radius: 50%;
+            border: 1px solid #999;
+            cursor: pointer;
+          }
+
         // 상단 타이틀
         .Title {
             margin-bottom: 10px;
@@ -21,10 +30,11 @@
             margin: 5px 0px;
             display: flex;
             justify-content: space-between;
-            
-            input[type="checkbox"]
-            {
-                margin: 5px;
+            align-items: center;
+
+            div {
+                display: flex;
+                align-items: center;
             }
         }
 

@@ -3,9 +3,7 @@ import Header from './Header';
 import Bottom from './Bottom';
 import { React,useEffect,useRef,useState } from 'react';
 
-function TravelListForm({TravelInfo, setTravelList, TravelList, AllSelectBool}) {
-
-    const checkboxInfo = useRef();
+function TravelListForm({TravelInfo, setTravelList, TravelList, setAllSelectBool, CheckTravelList, setCheckTravelList}) {
 
     function RemoveTravelList() {
        setTravelList(TravelList.filter((List)=>List.id !== TravelInfo.id));
@@ -14,9 +12,25 @@ function TravelListForm({TravelInfo, setTravelList, TravelList, AllSelectBool}) 
     function ChangeCheckInfo(e) {
         setTravelList(TravelList.map((List)=>List.id == TravelInfo.id ? {...List, checkBool: e.target.checked} : List ));
         
+        if(TravelInfo.checkBool == false)
+        {
+            setCheckTravelList(CheckTravelList + 1);
+        } else if(TravelInfo.checkBool == true) {
+            setCheckTravelList(CheckTravelList - 1);
+        }
+
     }
 
-    
+    useEffect(()=>{
+        console.log(CheckTravelList);
+        if(TravelList.length == CheckTravelList)
+        {
+            setAllSelectBool(true);
+        } else {
+            setAllSelectBool(false);
+        }
+    },[CheckTravelList])
+
 
     return (
         <div className="ListForm">
@@ -66,13 +80,13 @@ function TravelManagement() {
     ]); 
     
     const [AllSelectBool, setAllSelectBool] = useState(false);
-
+    const [CheckTravelList, setCheckTravelList] = useState(0);
     function SelectRemove() {
         setTravelList(TravelList.filter((List)=>List.checkBool == false))
     }
 
     useEffect(()=>{
-        console.log(AllSelectBool);
+        // console.log(AllSelectBool);
     }, [AllSelectBool]);
 
     function AllSelect(e) {
@@ -80,9 +94,9 @@ function TravelManagement() {
         {
             setAllSelectBool(e.target.checked);
             setTravelList(TravelList.map((List)=>({...List, checkBool: e.target.checked})));
-        } else {
-            setAllSelectBool(e.target.checked);
-            setTravelList(TravelList.map((List)=>({...List, checkBool: e.target.checked})))
+        } else if(AllSelectBool == true ) {
+            setAllSelectBool(false);
+            setTravelList(TravelList.map((List)=>({...List, checkBool: e.target.checked})));
         }
     }
 
@@ -97,14 +111,14 @@ function TravelManagement() {
                 
                 <div className="SelectAndDeleteBox">
                     <div>
-                        <input type="checkbox" name='TravelList' onClick={AllSelect} />
+                        <input type="checkbox" name='TravelList' onChange={AllSelect} checked={AllSelectBool}/>
                         <span>전체선택 총 {TravelList.length}개</span>
                     </div>
                     
                     <span onClick={SelectRemove}>선택삭제</span>
                 </div>
 
-                {TravelList.length > 0 ? TravelList.map((List)=><TravelListForm AllSelectBool={AllSelectBool} key={List.id} TravelList={TravelList} setTravelList={setTravelList} TravelInfo={List}/>) : <h3 className='NoTravelList'>아무것도 없어요 ㅜㅜ</h3>}
+                {TravelList.length > 0 ? TravelList.map((List)=><TravelListForm setCheckTravelList={setCheckTravelList} CheckTravelList={CheckTravelList} setAllSelectBool={setAllSelectBool} key={List.id} TravelList={TravelList} setTravelList={setTravelList} TravelInfo={List}/>) : <h3 className='NoTravelList'>아무것도 없어요 ㅜㅜ</h3>}
             </div>
             <Bottom/>
         </div>
