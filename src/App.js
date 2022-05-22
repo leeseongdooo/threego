@@ -22,6 +22,7 @@ import InquireDetail from './Component/InquireDetail';
 import MyPageMain from './Component/MyPageMain';
 import ReviewManagement from './Component/ReviewManagement';
 import ProfileEdit from "./Component/ProfileEdit";
+import TravelManagement from "./Component/TravelManagement";
 
 function App() {
   
@@ -110,6 +111,10 @@ function App() {
 
         <Route path="/ProfileEdit">
           <ProfileEdit/>
+        </Route>
+
+        <Route path="/TravelManagement">
+          <TravelManagement/>
         </Route>
 
 

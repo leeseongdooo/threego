@@ -151,7 +151,12 @@ function ReviewManagement() {
                     </div>
 
                     <div className="MiddleArea">
-                      {ReviewManage.map((List)=>(<ReviewForm ReviewManage={ReviewManage} setReviewManage={setReviewManage} List={List} key={List.id}/>))}
+                        {
+                            ReviewManage.length > 0 ? 
+                            ReviewManage.map((List)=>(<ReviewForm ReviewManage={ReviewManage} setReviewManage={setReviewManage} List={List} key={List.id}/>)) : 
+                            <h3 className="NoReview">리뷰가 없어요 ㅜ.ㅜ</h3> 
+                        }
+                      
                     </div>
                 </div>
             <Bottom/>

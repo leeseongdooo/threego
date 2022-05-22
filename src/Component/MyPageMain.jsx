@@ -27,7 +27,7 @@ function MyPageMain() {
                             </div>
                         </Link>
                         
-                        <Link to="/ReviewManagement">
+                        <Link to="/TravelManagement">
                             <div>
                                 <h4>1</h4>
                                 <h4>여행 관리</h4>
@@ -74,10 +74,12 @@ function MyPageMain() {
                         </div>
                     </Link>
 
-                    <div>
-                        <span>로그아웃</span>
-                        
-                    </div>
+                    <Link to="/CustomerQuestion">
+                        <div>
+                            <span>로그아웃</span>
+                            <FiChevronRight/>
+                        </div>
+                    </Link>
                 </div>
                 
             </div>

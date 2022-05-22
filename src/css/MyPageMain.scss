@@ -78,17 +78,29 @@
         }
 
         .PageMoveBox {
-            margin: 10px;
+            padding-top: 10px;
+            width: calc(90% + 20px);
+            margin: auto;
+           
+            a {
+                
+                div {
+                    padding: 10px;
+                    padding-left: 0px;
+                    width: calc(100% - 10px);
+                    margin-bottom: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-radius: 10px;
+                    border: 1px solid #979797;
 
-            div {
-                padding: 15px;
-                margin-bottom: 10px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-radius: 10px;
-                border: 1px solid #979797;
+                    span {
+                        margin: 5px;
+                    }
+                }
             }
+
         }
 
     }
