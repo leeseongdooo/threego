@@ -101,7 +101,7 @@ function UserCommentsWriteForm({CommentsList, setCommentsList})
 
 
 function CommentsForm() {
-    const [CommentsList, setCommentsList] = useState([ ]);
+    const [CommentsList, setCommentsList] = useState([]);
 
     // Good버튼 누르면 활성화
     const [GoodPointBool, setGoodPointBool] = useState(true);
@@ -115,10 +115,10 @@ function CommentsForm() {
             setCommentsList(
                 CommentsList.map(rev => 
                     rev.id === id ? rev.pointUpBool === false && rev.pointDownBool === true ? { ...rev, GoodPoint: rev.GoodPoint + 1, BadPoint: rev.BadPoint - 1, pointDownBool: false, pointUpBool: true} :
-                    rev.pointUpBool === false ? { ...rev, GoodPoint: rev.GoodPoint + 1, pointUpBool: true} : { ...rev, GoodPoint: rev.GoodPoint - 1, pointUpBool: true}  : rev
+                    rev.pointUpBool === false ? { ...rev, GoodPoint: rev.GoodPoint + 1, pointUpBool: true} : { ...rev, GoodPoint: rev.GoodPoint - 1, pointUpBool: false}  : rev
                 )   
-            ) 
-        }  
+            )
+        }
     };
 
     const BadToggle = id => {      
@@ -126,7 +126,8 @@ function CommentsForm() {
         {
             setCommentsList(
                 CommentsList.map(rev => 
-                    rev.id === id ? rev.pointDownBool === false ? { ...rev, BadPoint: rev.BadPoint + 1, pointDownBool: true} : { ...rev, BadPoint: rev.BadPoint - 1, pointDownBool: false}  : rev,
+                    rev.id === id ? rev.pointDownBool === false && rev.pointUpBool === true  ? { ...rev, GoodPoint: rev.GoodPoint - 1, BadPoint: rev.BadPoint + 1, pointDownBool: true, pointUpBool: false} : 
+                    rev.pointDownBool === false ? { ...rev, BadPoint: rev.BadPoint + 1, pointDownBool: true}  : { ...rev, BadPoint: rev.BadPoint - 1, pointDownBool: false} : rev,
                 )
             );   
         }

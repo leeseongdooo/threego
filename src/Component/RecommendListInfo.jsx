@@ -52,7 +52,7 @@ function RecommendListInfo() {
 
     return (
         <div className="RecommendListInfoBigBox">
-            <Header fontColor="black"/>
+            <Header/>
             
             <div className="TitleImageBox">
                 <img src="/img/Daegu.jpg" alt="지역에 대한 이미지" />

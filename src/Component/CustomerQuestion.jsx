@@ -87,7 +87,7 @@ function CustomerQuestion() {
         <div className="CustomerQuestionBigBox">
             <Header fontColor="black"/>
                 <div className="CustomerQuestionBox">
-                    <h3>자주하는질문</h3>
+                    <h3>자주묻는 질문</h3>
                     <select className="Category" onChange={(e)=> {ChangeCategory(e)}}>
                         <option value="전체">전체</option>
                         <option value="여행문의">여행문의</option>

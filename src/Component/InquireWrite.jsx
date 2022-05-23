@@ -90,22 +90,6 @@ function InquireWrite() {
 
                     <textarea name="" id="" className="WriteContent" placeholder="내용을 입력해주세요" onChange={ContentsizeCalculation}></textarea>
                     
-                    <div className="GuideText">
-                        <p>사진등록</p>
-                    </div>
-
-                    <div className="ReviewWriteImageArea">
-        
-
-                    {PreviewImage.map(a => (<img src={"/img/" + a.Image} alt="" key={a.id} onClick={()=>{remove(a.id)}}/>))}
-
-                    <label className="InquireImgLabel"  style={PreviewImage.length >=3 ? ImgFilePreview : {}}>
-                        <IoDocumentAttachOutline size="40px"/>
-                        <span>이미지 추가</span>
-                        <input type="file" name="file" accept="image/*" onChange={ReviewImage}/>
-                    </label>
-
-                    </div>
                     <footer className="InquireWriteBottom">
                     <button  disabled={titleSize>=10  && contentSize>=10 ? "" : "disabled"} style={titleSize>=10  && contentSize>=10 ? {} : BtnBackColor}>등록하기</button>
                     </footer>
