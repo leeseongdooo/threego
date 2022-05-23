@@ -141,8 +141,9 @@ function ReviewManagement() {
                         <div className="SelectAndDeleteBox">
                             
                             <div className="SelectBox">
-                                {/* <input type="checkbox" /> */}
-                                <h4>총 {ReviewManage.length}개</h4>
+                                <input type="checkbox" />
+                                
+                                <h4>전체선택</h4>
                             </div>
 
                             <h4 className="Delete" onClick={()=>{setReviewManage(ReviewManage.filter((check)=>check.checkBool !== true))}}>선택삭제</h4>

@@ -24,6 +24,8 @@ import ReviewManagement from './Component/ReviewManagement';
 import ProfileEdit from "./Component/ProfileEdit";
 import TravelManagement from "./Component/TravelManagement";
 import InquireManagement from "./Component/InquireManagement";
+import RecommendListInfo from "./Component/RecommendListInfo";
+
 
 function App() {
   
@@ -120,6 +122,10 @@ function App() {
 
         <Route path="/InquireManagement">
           <InquireManagement/>
+        </Route>
+
+        <Route path="/RecommendListInfo/:id">
+            <RecommendListInfo/>
         </Route>
 
         <Route path="/Error/:error">
