@@ -25,7 +25,9 @@ function SignIn() {
     // 아이디에 대한 유효성 검사
     const IdCheck = useCallback((e) => {
         setId(e.target.value);
+        
         const reg = /^[a-zA-Z]{4,14}$/g;
+
         if(!reg.test(id))
         {
             if(e.target.value.length < 8 && e.target.value.length >= 1) {

@@ -11,6 +11,7 @@ function ReviewForm ({List, setReviewManage, ReviewManage}) {
     let ReviewStar = [];
 
     const [ReviewSize, setReviewSize] = useState(0);
+
     const ReviewImage = useRef();
 
     useEffect(()=>{
@@ -32,27 +33,24 @@ function ReviewForm ({List, setReviewManage, ReviewManage}) {
         }
     }    
 
-
-
     for(let i=0; i<List.ReviewScore; i++)
     {
         ReviewStar.push(i);
     }
-
-
     
     return (
         <div className="ReviewForm">
+
+            
+            {/* 체크박스  */}
             <input type="checkbox" onClick={(e)=>{
                     if(List.checkBool == false)
                         setReviewManage(ReviewManage.map(user => user.id == List.id  ? {...user, checkBool: true} : user));
                     else if(List.checkBool == true) 
                         setReviewManage(ReviewManage.map(user => user.id == List.id  ? {...user, checkBool: false} : user))
-
                     } 
-                    
+            } />
 
-                    } />
             <div className="MiddleTopArea">
                 <div className="NameAndScore">
                     <h3>{List.ReviewTitle}</h3>
@@ -62,7 +60,9 @@ function ReviewForm ({List, setReviewManage, ReviewManage}) {
 
                 <div className="MiddleDeleteBtn">
                     {/* <button>수정</button> */}
-                    <button onClick={()=>{setReviewManage(ReviewManage.filter((kk)=>kk.id !== List.id)); console.log(ReviewManage)}} >삭제</button>
+
+                    {/* onClick={()=>{setReviewManage(ReviewManage.filter((kk)=>kk.id !== List.id));} */}
+                    <button>삭제</button>
                 </div>
 
             </div>
@@ -140,10 +140,8 @@ function ReviewManagement() {
 
                         <div className="SelectAndDeleteBox">
                             
-                            <div className="SelectBox">
-                                <input type="checkbox" />
-                                
-                                <h4>전체선택</h4>
+                            <div className="SelectBox">    
+                                <h4>총{111}개</h4>
                             </div>
 
                             <h4 className="Delete" onClick={()=>{setReviewManage(ReviewManage.filter((check)=>check.checkBool !== true))}}>선택삭제</h4>

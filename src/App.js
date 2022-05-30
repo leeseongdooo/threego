@@ -25,7 +25,7 @@ import ProfileEdit from "./Component/ProfileEdit";
 import TravelManagement from "./Component/TravelManagement";
 import InquireManagement from "./Component/InquireManagement";
 import RecommendListInfo from "./Component/RecommendListInfo";
-
+import ProductList from "./Component/ProductList";
 
 function App() {
   
@@ -126,6 +126,10 @@ function App() {
 
         <Route path="/RecommendListInfo/:id">
             <RecommendListInfo/>
+        </Route>
+
+        <Route path="/ProductList">
+          <ProductList/>
         </Route>
 
         <Route path="/Error/:error">

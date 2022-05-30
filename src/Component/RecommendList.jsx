@@ -2,6 +2,7 @@ import {React,useEffect,useState} from "react";
 import Header from "./Header";
 import Bottom from "./Bottom";
 import '../css/RecommendList.css'
+import { Link } from "react-router-dom";
 
 function Categorie(props) {
 
@@ -13,12 +14,10 @@ function Categorie(props) {
             color: 'white'
         }
     )
-    
-
-
     return(
         <>
         <Header/>
+
         <h1 className="NowLocation">대구광역시</h1>
             <div className="Category-Box">
                 <div className="Small-Box">
@@ -87,6 +86,7 @@ function RecommendList() {
         },
     ]);
 
+
     return(
     <>
         <div className="RecommendBox">   
@@ -109,7 +109,7 @@ function RecommendList() {
                                 </div>
                                 
                                 <div className="ButtonBox">
-                                    <button >여행시작</button>
+                                    <button><Link to={`/RecommendListInfo/${travel.recommendId}`}>여행시작</Link></button>
                                     <button>리뷰보기</button>
                                 </div>
                             </div>
