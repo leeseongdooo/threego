@@ -23,20 +23,33 @@
         .ProductListInfo {
             // 컨텐츠를 중앙부터 시작하기 위해 flex 사용했습니다.
             display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-     
             min-height: 300px;
             border-radius: 5px;
             width: 100%;
+        }
+
+        .SearchItemBtn {
+            width: 90%;
+            padding: 10px;
+            background-color: black;
+            border: none;
+            font-weight: 700;
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 5px;
+            cursor: pointer;
         }
     }
 
     // 상품정보를 나타내는 css입니다.
     .ItemListForm {
+        margin: 5px 0px;
         padding: 10px;
         width: calc(100% - 20px);
         height: auto;
-        max-height: 105px;
         border-radius: 10px;
         background-color: #191f28;
         color: white;
