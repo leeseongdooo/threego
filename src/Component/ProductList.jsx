@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useRef} from "react";
 import axios from "axios";
 import Header from "./Header";
 import Bottom from "./Bottom";
@@ -47,6 +47,8 @@ function ProductList() {
     const [newItems, setNewItems] = useState([]);
 
     const [error, setError] = useState(false);
+    
+    const secondSelect = useRef();
     
     // 유저가 select에서 선택한 값을 저장
     const [searchItem, setSearchItem] = useState({
@@ -120,14 +122,16 @@ function ProductList() {
 
                {/* 날짜 선택 */}
                <select name="" id=""  onChange={(e)=>{
+                   // value값이 0이 아니라면 clickbool= true
                    if(e.target.value !== "0")
                    {
-                    setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, clickBool:true}); 
+                    setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, itemName: '', clickBool:true}); 
                     onClickSelect(e);    
-                    console.log(DistinctTextName);
+                    // useRef인 secondSelect => 현재 상품선택 select문에 대한 정보를 가져오고 있고 if문이 참이라면 selectIndex를 0으로 만들어서 상품을 선택해주세요가 보이게 설정
+                    secondSelect.current.selectedIndex = 0
                    } else if(e.target.value == "0")
                    {
-                        setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, clickBool:false}); 
+                        setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, itemName: '', clickBool:false}); 
                    }
                    }}>
                    <option key="날짜를 선택해주세요" value="0">날짜를 선택해주세요</option>
@@ -135,10 +139,13 @@ function ProductList() {
                    <option key="2022-04-08" value="2">2022-04-08</option>
                    <option key="2022-03-04" value="3">2022-03-04</option>
                </select>
+
                {/* 상품 선택 */}
-               <select name="" id="" onChange={(e)=>{setSearchItem({...searchItem, itemName: e.target.value}); console.log(e)}}>
-                   <option defaultValue='1' >상품을 선택해주세요</option>
-                    {DistinctTextName.map((List, index) => (<option value={List} key={index}>{List}</option>))}
+               <select name="" id="" ref={secondSelect} onChange={(e)=>{setSearchItem({...searchItem, itemName: e.target.value}); }}>
+                   <option>상품을 선택해주세요</option>
+                    {DistinctTextName.map((List, index) => (
+                        <option value={List} key={index}>{List}</option>
+                    ))}
                </select>
                 
                 {/* 클릭시 조건에 맞는 ITEM들은 SET합니다. */}
