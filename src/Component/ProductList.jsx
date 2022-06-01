@@ -39,11 +39,15 @@ function ItemListForm({Info}) {
 function ProductList() {
 
     const [loading, setLoading] = useState(null);
+    
     // api값을 저장할 items
     const [items, setItems] = useState([]);
+    
     // items에서 filter를 거친 값을 저장
     const [newItems, setNewItems] = useState([]);
+
     const [error, setError] = useState(false);
+    
     // 유저가 select에서 선택한 값을 저장
     const [searchItem, setSearchItem] = useState({
         id: 1,
@@ -51,16 +55,17 @@ function ProductList() {
         itemName: '',
         clickBool: false,
     });
+    
     // 서비스 키를 저장하는 변수입니다. (env파일로 하면 안전하다고 해서 해봤는데 안되서 여기에 변수 만들었어욥 ㅜㅜ)
     const SERVICE_KEY = 's4sQT%2F2CNziwuHItpzeGE7tJ4gyBZ876iXoUvxDE4AQ4En96j9ISealB7QFnkf4GceyA3p2EPi0I6z3K7zqliQ%3D%3D'
 
     // URL은 날짜별로 API를 보관하는 변수입니다.
-    const url = [`https://api.odcloud.kr/api/15083256/v1/uddi:44980de3-b41a-488e-baf4-e08be5c7c76c?serviceKey=${SERVICE_KEY}&page=1&perPage=350&returnType=JSON`,
+    const url = [`https://api.odcloud.kr/api/15083256/v1/uddi:44980de3-b41a-488e-baf4-e08be5c7c76c?serviceKey=${SERVICE_KEY}&page=1&perPage=10&returnType=JSON`,
                  `https://api.odcloud.kr/api/15083256/v1/uddi:c5d5c5b8-4e92-4adb-9d4f-cf4a59192679?serviceKey=${SERVICE_KEY}&page=1&perPage=10&returnType=JSON`,
                  `https://api.odcloud.kr/api/15083256/v1/uddi:fa70d5d3-89c0-4d00-a17e-a54b1437f1bf?serviceKey=${SERVICE_KEY}&page=1&perPage=10&returnType=JSON`];
 
     // 0506에 대한 상품정보 API를 호출
-    const LoadData0506 = async(i) => {
+    const LoadData = async(i) => {
         try {
             const response = await axios.get(
               url[i]
@@ -75,7 +80,7 @@ function ProductList() {
     }
 
     const onClickSelect = (e) =>{
-        LoadData0506(e.target.value - 1);
+        LoadData(e.target.value - 1);
     }
 
     // LoadData0506을 실행
@@ -85,18 +90,24 @@ function ProductList() {
 
     // searchItem이 변경될때마다 setNewItems를 실행 
     useEffect(()=>{
-        console.log(searchItem);
         setNewItems(items.filter(List => List.상품명 == searchItem.itemName && List.조사일 == searchItem.itemDate));
     }, [searchItem])
 
     useEffect(()=>{
-        console.log(items);
-    }, [items])
+        console.log(newItems.length);
+    }, [newItems])
     
+
+    let DistinctTextName = [];
+
     // TextName은 items에서 상품명을 가져와서 저장하는 변수입니다 (중복제거X);
-    let TextName = [];
-    items.map((List)=> {TextName.push(List.상품명)}) // items에서 가져옴
-    let DistinctTextName = [...new Set(TextName)]; // DistinctTextName은 TextName에서 중복되는이름들을 제거한 값입니다.
+    if(searchItem.clickBool == true)
+    {
+        let TextName = [];
+        items.map((List)=> {TextName.push(List.상품명)}) // items에서 가져옴
+        DistinctTextName = [...new Set(TextName)]; // DistinctTextName은 TextName에서 중복되는이름들을 제거한 값입니다.
+    }
+  
     return (
         <div className="ProductListBigBox">
             
@@ -108,15 +119,25 @@ function ProductList() {
                 {/* 년도선택 박스  */}
 
                {/* 날짜 선택 */}
-               <select name="" id=""  onChange={(e)=>{setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText}); onClickSelect(e)}}>
-                   <option value="0">날짜를 선택해주세요</option>
-                   <option value="1">2022-05-06</option>
-                   <option value="2">2022-04-08</option>
-                   <option value="3">2022-03-04</option>
+               <select name="" id=""  onChange={(e)=>{
+                   if(e.target.value !== "0")
+                   {
+                    setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, clickBool:true}); 
+                    onClickSelect(e);    
+                    console.log(DistinctTextName);
+                   } else if(e.target.value == "0")
+                   {
+                        setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, clickBool:false}); 
+                   }
+                   }}>
+                   <option key="날짜를 선택해주세요" value="0">날짜를 선택해주세요</option>
+                   <option key="2022-05-06" value="1">2022-05-06</option>
+                   <option key="2022-04-08" value="2">2022-04-08</option>
+                   <option key="2022-03-04" value="3">2022-03-04</option>
                </select>
                {/* 상품 선택 */}
-               <select name="" id="" onChange={(e)=>{setSearchItem({...searchItem, itemName: e.target.value});}}>
-                   <option value="">상품을 선택해주세요</option>
+               <select name="" id="" onChange={(e)=>{setSearchItem({...searchItem, itemName: e.target.value}); console.log(e)}}>
+                   <option defaultValue='1' >상품을 선택해주세요</option>
                     {DistinctTextName.map((List, index) => (<option value={List} key={index}>{List}</option>))}
                </select>
                 
@@ -129,7 +150,7 @@ function ProductList() {
                     {/* searchItem = 사용자가 찾고자 하는 아이템 */}
                     {/* 사용자가 (년도, 날짜, 상품)을 선택했을 때 해당되는 값이 저장되도록 설정 */}
                     {/* ↓↓ searchItem이 비어있을 때 아직 상품이 없다는 로직 */}
-                    {searchItem.itemDate.length > 0 && searchItem.itemName.length > 0 ? newItems.map((List, index) => (<ItemListForm key={index} Info={List} />)) : 
+                    {newItems.length > 0 ? newItems.map((List, index) => (<ItemListForm key={index} Info={List} />)) : 
                                         <h3>해당되는 상품이 없습니다.</h3>}
 
                 </div>
