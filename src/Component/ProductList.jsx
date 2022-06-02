@@ -96,11 +96,28 @@ function ProductList() {
     }, [searchItem])
 
     useEffect(()=>{
-        console.log(newItems.length);
-    }, [newItems])
-    
+        console.log(newItems);
+    }, [newItems]);
 
-    let DistinctTextName = [];
+    // sort는 정렬을 의미합니다.
+    newItems.sort((a,b) => {
+        // a가 b보다 크다면 앞에 옵니다
+        if(a.판매가격 > b.판매가격)
+        {
+            return 1;
+        } 
+        // b가 a보다 크다면 앞에 옵니다
+        else if (a.판매가격 < b.판매가격)
+        {
+            return -1;
+        } 
+        // 0이라면 변경하지 않습니다.
+        else {
+            return 0;
+        }
+    });
+
+    let DistinctTextName = []; // 중복을 제거하는 변수입니다.
 
     // TextName은 items에서 상품명을 가져와서 저장하는 변수입니다 (중복제거X);
     if(searchItem.clickBool == true)
