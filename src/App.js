@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Link,Switch } from "react-router-dom";
-import './App.css';
+import './App.scss';
 
 // 컴포넌트 import
 import MainPage from './Component/MainPage';

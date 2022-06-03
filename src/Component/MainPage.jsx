@@ -4,6 +4,7 @@ import Bottom from "./Bottom";
 import { Link } from 'react-router-dom';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 // 추천 여행지 영역
+
 function RecommendInfo({recommend}) {
     return(
       <div className="imgarea" style={{backgroundImage: "url(" + recommend.background + ")"}}>
@@ -157,30 +158,31 @@ function MainPage(props) {
             id: 1,
             BigLocation: "Daegu", // ex:) 대구, 서울, 광주 등등 
             SmallLocation: "스파크 랜드", // BigLocaion 안에 관광지 혹은 가게이름
-            LocationImg: '/img/Daegu.jpg' // 이미지 파일
+            LocationImg: 'https://blog.kakaocdn.net/dn/R1wz6/btrlEJjGXWw/NGXBOwOXt2pYtOM9nzSqZK/img.jpg' // 이미지 파일
         },
         {
             id: 2,
             BigLocation: "Yeosu", // ex:) 대구, 서울, 광주 등등 
             SmallLocation: "여수 라피끄 카페", // BigLocaion 안에 관광지 혹은 가게이름
-            LocationImg: '/img/Yeosu.jpg' // 이미지 파일
+            LocationImg: 'https://blog.kakaocdn.net/dn/btWT9f/btrdet9Ehdc/RCGBLKIm8DBozZKoi2Y9Rk/img.jpg' // 이미지 파일
         },
         {
             id: 3,
             BigLocation: "Daegu", // ex:) 대구, 서울, 광주 등등 
-            SmallLocation: "모노릭 카페", // BigLocaion 안에 관광지 혹은 가게이름
-            LocationImg: '/img/DaeguCafe.jpg' // 이미지 파일
+            SmallLocation: "대도 양조장", // BigLocaion 안에 관광지 혹은 가게이름
+            LocationImg: 'https://i.pinimg.com/originals/8e/f2/c1/8ef2c1295378c0ee30685cffd55ab50d.jpg' // 이미지 파일
         },
         {
             id: 4,
             BigLocation: "Gangwon-do", // ex:) 대구, 서울, 광주 등등 
             SmallLocation: "스위밍 터틀 카페", // BigLocaion 안에 관광지 혹은 가게이름
-            LocationImg: '/img/SwimmingTuttleCafe.jpg' // 이미지 파일
+            LocationImg: 'https://mp-seoul-image-production-s3.mangoplate.com/1838073_1606098743043659.jpg' // 이미지 파일
         }
     ])
 
-//  slide와 slidex는 slideInfo에 넣게 되면 setSlide / setSlidex가 힘들어지기 때문에 따로 만들었습니다.
+   
    const [slide, setSlide] = useState(1)
+   // slidex는 slide가로 길이
    const [slidex, setSlidex] = useState(0);
 
    // ref를 통해 요소에 대한 정보를 가져오기 위해 만들었습니다.
@@ -188,83 +190,84 @@ function MainPage(props) {
     
    let timer = "";
    return (
-        <>
-        <Header/>
-        
-        <div className="slideBigBox">
-            <div className="slide-Box">
-         
-            {slideInfo.map(slide =>(
-                <Slide key={slide.id} slideInfo={slide} content={content} slidex={slidex} />
-            ))}
-
-            {
-                useEffect(() => {
-                    timer = setTimeout(() => {
-                        setSlidex((slidex - content.current.clientWidth))
-                        setSlide(slide + 1);
-                    }, 4000);
-
-                    if(slide == slideInfo.length + 1)
-                    {
-                        setSlidex(0);
-                        setSlide(1);
-                    }
-                }, [slidex])
-            }
-
-            </div>
+        <div className="MainPageBigBox">
+            <Header/>
             
-            {/* 현재 슬라이드 위치와 전체길이를 확인할 수 있습니다. */}
-            <p>{slide} / {slideInfo.length}</p>
+            <div className="slideBigBox">
+                
+                <div className="slide-Box">
+         
+                    {slideInfo.map(slide =>(
+                        <Slide key={slide.id} slideInfo={slide} content={content} slidex={slidex} />
+                    ))}
 
-            <div className="slideBtnBox">
-                <div>
-                    {/* 왼쪽 버튼 */}
-                    <button onClick={() => {
-                    
-                    clearTimeout(timer);
-                    if(slide > 1){
-                        setSlidex(slidex + content.current.clientWidth)
-                        setSlide(slide - 1)
-                    }
-                    else if(slide == 1)
                     {
-                        console.log(content.current.clientWidth);
-                        setSlidex(-((slideInfo.length - 1) * content.current.clientWidth));
-                        setSlide(slideInfo.length);
+                        useEffect(() => {
+                            timer = setTimeout(() => {
+                                if(slide < 4) {
+                                    setSlide(slide + 1);
+                                    setSlidex((slidex - content.current.clientWidth))
+                                } else if(slide == 4) {
+                                    setSlidex(0);
+                                    setSlide(1);
+                                }
+                            }, 3000);
+                        }, [slidex])
                     }
-                    }}><AiOutlineArrowLeft/></button>
 
-                    {/* 오른쪽 버튼 */}
-                    <button onClick={() => {
-                         clearTimeout(timer);
-                        // 슬라이드가 1보다 크거나 같다면
-                        if(slide >= 1){
-                        setSlidex(slidex - content.current.clientWidth)
-                        setSlide(slide + 1)
-                        console.log(slidex)
-                        if(slide == slideInfo.length)
-                        {
-                            setSlidex(0);
-                            setSlide(1);
-                        }
-                    }
-                    }}><AiOutlineArrowRight/></button>
                 </div>
-            </div>
+            
+                {/* 현재 슬라이드 위치와 전체길이를 확인할 수 있습니다. */}
+                <p>{slide} / {slideInfo.length}</p>
+
+                <div className="slideBtnBox">
+                    <div>
+                        {/* 왼쪽 버튼 */}
+                        <button onClick={() => {
+                            clearTimeout(timer);
+                                            
+                            if(slide > 1)
+                            {
+                                setSlidex(slidex + content.current.clientWidth)
+                                setSlide(slide - 1)
+                            }
+                            else if(slide == 1)
+                            {
+                                console.log(content.current.clientWidth);
+                                setSlidex(-((slideInfo.length - 1) * content.current.clientWidth));
+                                setSlide(slideInfo.length);
+                            }
+                        }}><AiOutlineArrowLeft/></button>
+
+                        {/* 오른쪽 버튼 */}
+                        <button onClick={() => {
+                            clearTimeout(timer);
+                            // 슬라이드가 1보다 크거나 같다면
+                            if(slide >= 1){
+                            setSlide(slide + 1);
+                            setSlidex(slidex - content.current.clientWidth);
+                            console.log(slidex)
+                            if(slide == slideInfo.length)
+                            {
+                                setSlidex(0);
+                                setSlide(1);
+                            }
+                        }
+                        }}><AiOutlineArrowRight/></button>
+                    </div>
+                </div>
 
         </div>
        
     
         {/* 추천 여행지 div */}
         <div className="recommend">
-          
-            <div className="travelList">
-            <div className="textarea">
+             <div className="textarea">
                 <h3>추천 여행지</h3>
                 <Link to='/RecommendList'>더보기</Link>
             </div>
+            
+            <div className="travelList">
                 {recommend.map(a => (
                     <RecommendInfo recommend={a} key={a.recommendId}/>
                 ))}
@@ -290,7 +293,9 @@ function MainPage(props) {
                     <h4>판매업소</h4>
                     <h4>날짜</h4>
                   </div>
+                  
                   <hr />
+                  
                   <div>
                     {product.map(product => (
                       <Price product={product} key={product.productId}/>
@@ -323,7 +328,7 @@ function MainPage(props) {
         <Bottom/>
 
      
-    </> 
+    </div> 
     );
 }
 

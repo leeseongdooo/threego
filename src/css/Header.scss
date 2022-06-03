@@ -1,14 +1,15 @@
+
 /* 헤더 로고 */
 a {
   text-decoration: none;
   color: black;
 }
 
-
-.Header{
+.Header {
   top: 0;
   position: fixed;
   width: 100%;
+  height: auto;
   z-index: 3;
   height: auto;
   display: flex;
@@ -17,17 +18,8 @@ a {
   color: black;
   transition: 0.2s;
 
-  h3 {
-    width: 115px;
-    font-size: 24px;
-    text-align: center;
-    margin: 10px;
-    color: whitesmoke;
-    text-decoration:none;
-  }
-
   li {
-    width: 65%;
+    width: 60%;
     margin: 10px;
     list-style: none outside;
     font-size: 16px;
@@ -45,45 +37,22 @@ a {
     color: white;
   }
 
-    /* 토글메뉴 */
-  .show-menu{
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    top: 51px;
-    width: 100%;
-    height: calc(100%);
-    right: 0;
-    background-color: rgb(255, 255, 255);
-    color: black;
-    transition: 0.3s;
-    z-index: 3;
-  }
-    
-  .hide-menu{
-    position: fixed;
-    right: 0;
-    top: 51px;
-    width: 0%;
-    height: 100%;
-    list-style-type: none;
-    background-color: white;
-    transition: 0.3s;
-    overflow: hidden;
-  }
-  
-  .loginButton {
-    background-color: royalblue;
-    width: 40%;
-    height: 40px;
-    border-radius: 25px;
+  /* 토글메뉴 */
+  .HeaderButton {
+    background-color: black;
+    min-width: 45%;
+    border-radius: 20px;
+    min-height: 40px;
+    max-height: 40px;
     border: none;
     margin: 5px;
   }
+
+  .HeaderButton:last-child {
+     background-color: gray;
+  }
   
-  .loginButton > a {
+  .HeaderButton > a {
     text-decoration: none;
     color: white;
     font-size: 18px;
@@ -91,7 +60,150 @@ a {
   }
 }
 
+
+// PC버전 CSS 입니다.
+@media all and (min-width:1024px) { 
+
+  .Header {
+    max-height: 80px;
+    // ThreeGo 
+    h3 {
+      width: 180px;
+      text-align: center;
+      font-size: 28px;
+      text-decoration:none;
+      // LINK TO
+      a {
+        width: 200px;
+        color: white;
+      }
+    }
+
+    // 메뉴아이콘은 PC버전에서 의미가 없기 때문에 none으로 처리한다.
+    .menuIcon {
+      display: none;
+    }
+
+    // PC버전에서는 메뉴아이콘이 없기 때문에 HIDE SHOW 의미가 없다 처음 기본값인 HIDE에 css속성을 부여함.     
+    .hide-menu{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      list-style-type: none;
+      background-color: transparent;
+      transition: 0.3s;
+      overflow: hidden;
+
+      // 자식요소들 폰트 css 지정
+      a {
+        font-size: 18px;
+        font-weight: 700;
+        color: white;
+      }
+
+      .loginBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+
+}
+
+
+// 태블릿 버전 css 입니다.
+@media all and (min-width:768px) and (max-width:1023px) { 
+
+
+  .Header { 
+    h3 {
+      width: 180px;
+      font-size: 24px;
+      margin: 10px;
+      color: whitesmoke;
+      text-decoration:none;
+
+      a {
+        color: white;
+      }
+    }
+
+    .show-menu{
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      top: 51px;
+      width: 100%;
+      height: calc(100%);
+      right: 0;
+      background-color: rgb(255, 255, 255);
+      color: black;
+      transition: 0.3s;
+      z-index: 3;
+    }
+      
+    .hide-menu{
+      position: fixed;
+      right: 0;
+      top: 51px;
+      width: 0%;
+      height: 100%;
+      list-style-type: none;
+      background-color: white;
+      transition: 0.3s;
+      overflow: hidden;
+    }
+  }
+}
+
+// 모바일 버전 css입니다.
+@media all and (min-width:0px) and(max-width:768px) {
   
 
+  .Header {
+    h3 {
+      width: 180px;
+      font-size: 24px;
+      margin: 10px;
+      color: whitesmoke;
+      text-decoration:none;
   
+      a {
+        color: white;
+      }
+    }
+  
+    .show-menu{
+      position: fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      top: 51px;
+      width: 100%;
+      height: calc(100%);
+      right: 0;
+      background-color: rgb(255, 255, 255);
+      color: black;
+      transition: 0.3s;
+      z-index: 3;
+    }
+      
+    .hide-menu{
+      position: fixed;
+      right: 0;
+      top: 51px;
+      width: 0%;
+      height: 100%;
+      list-style-type: none;
+      background-color: white;
+      transition: 0.3s;
+      overflow: hidden;
+    }
+  }
+}
   /* 헤더 끝 */

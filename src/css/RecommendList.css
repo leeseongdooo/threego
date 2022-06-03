@@ -82,6 +82,34 @@
     color: black;
 }
 
+.ButtonBox {
+    margin: 5px;
+    width: 90%;
+    display: flex;
+}
+
+.ButtonBox button {
+    margin: 5px;
+    border: none;
+    padding: 9px;
+    border-radius: 25px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    background-color: black;
+    height: 35px;
+    width: 100%;
+    max-width: 75px;
+    text-align: center;
+}
+
+.ButtonBox button:first-child {
+    margin-left: 0;
+    color: black;
+    background-color: white;
+    border: 1px solid #676767;
+}
+
 .TravelCard:last-child {
     margin-bottom: 20px;
 }

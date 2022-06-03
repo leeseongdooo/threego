@@ -16,6 +16,7 @@ function Header(props) {
 
     const tempStyle={
         background:"black",
+        color: "white"
     }
 
     const fontColor = {
@@ -43,24 +44,28 @@ function Header(props) {
     return(
         <>
             <header className="Header" style={isOpen ? tempStyle : (Scrolly > 0) ? tempStyle :  {color: props.fontColor}}>
-                <Link to='/' style={{ textDecoration: 'none' }}>
-                    <h3 style={isOpen ? fontColor : (Scrolly > 0) ? fontColor : {color: props.fontColor}}>Three Go</h3>
-                </Link>
+               
+                    <h3>
+                        <Link to='/'  style={isOpen ? fontColor : (Scrolly > 0) ? fontColor : {color: props.fontColor}} >
+                            Three Go
+                        </Link>
+                    </h3>
+               
                 
                 <AiOutlineMenu className="menuIcon" onClick={() => toggleMenu()} style={isOpen ? fontColor : (Scrolly > 0) ? fontColor :  {color: props.fontColor}}/>
                 <ul className={isOpen ? "show-menu" : "hide-menu"}>
                     <li><Link to="/RecommendList">추천 여행지</Link></li>
-                    <li><Link to="#">주변 가격정보</Link></li>
+                    <li><Link to="/ProductList">주변 가격정보</Link></li>
                     <li><Link to="/ReviewList">여행 리뷰보기</Link></li>
                     <li><Link to="/CustomerService">고객센터</Link></li>
-                    <li><Link to="/MyPageMain">임시 마이페이지</Link></li>
+                    <li><Link to="/MyPageMain">마이페이지</Link></li>
                     <li>
                         <div className='loginBox'>
-                            <button className='loginButton'>
+                            <button className='HeaderButton'>
                                 <Link to='/Login'>로그인</Link>
                             </button>
 
-                            <button className='loginButton'>
+                            <button className='HeaderButton'>
                                 <Link to='/SingIn'>회원가입</Link>
                             </button>
                         </div>
