@@ -276,23 +276,17 @@
             width: calc(100% - 40px);
             padding: 20px;
 
-            .textarea {
-
-            }
-
             .reviewarea {
                 margin-top: 10px;
                 width: 100%;
+                min-height: 200px;
                 display: flex;
                 overflow-x: scroll;
-                overflow-y: hidden;
-                flex-direction: row;
-                height: auto;
 
                 .reviewBox {
                     margin: 5px;
                     min-width: 152px;
-                    height: 200px;
+                    min-height: 200px;
                     border-radius: 12.5px;
                     box-shadow: 2px 5px 5px rgba(0, 0, 0, 0.2);
 
@@ -339,6 +333,7 @@
 
 
 @media all and (min-width:1024px) { 
+    
     .App {
       margin: 0 auto;
       display: flex;
@@ -346,7 +341,88 @@
       height: auto;
       overflow: hidden;
     }
-    
+
+    // 추천 여행지, 더보기 텍스트
+    .recommend {
+        
+        .textarea {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h3 {
+                font-size: 28px;
+            }
+
+            a {
+                margin-top: 5px;
+                font-size: 16px;
+            }
+        }
+    }
+
+
+    .priceInfo {
+        margin-bottom: 50px;
+        .textarea {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h3 {
+                font-size: 28px;
+            }
+
+            a {
+                margin-top: 5px;
+                font-size: 16px;
+            }
+        }
+
+        .pricearea {
+            
+        }
+    }
+
+    // 사용자 리뷰 영역
+    .reviewList {
+        // 리뷰리스트 크기 설정
+        .reviewarea {
+            width: 100%;
+            height: 180px;
+            display: flex;
+            padding: 10px 0px;
+            overflow-x:hidden;
+            overflow-y: hidden;
+
+            .reviewBox {
+                width: 340px;
+            
+                .reviewImg {
+                    min-height: 50px;
+                }
+            }
+        }
+        
+        // 텍스트 설정
+        .textarea {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            h3 {
+                font-size: 28px;
+            }
+
+            a {
+                margin-top: 5px;
+                font-size: 16px;
+            }
+        }
+    }
+
+
+
     .imgarea {
       width: 75%;
       height: 150px;

@@ -150,6 +150,21 @@ function MainPage(props) {
             reviewUser: '사용자명4',
             reviewStar: '별갯수4'
         },
+        {
+            //리뷰이미지 추가할 예정
+            reviewId: 5,
+            reviewTitle: '리뷰제목4',
+            reviewUser: '사용자명4',
+            reviewStar: '별갯수4'
+        },
+        {
+            //리뷰이미지 추가할 예정
+            reviewId: 6,
+            reviewTitle: '리뷰제목4',
+            reviewUser: '사용자명4',
+            reviewStar: '별갯수4'
+        },
+  
     ])
 
     // 메인페이지 슬라이드에 대한 정보
@@ -312,7 +327,7 @@ function MainPage(props) {
              <div className="reviewList">
         
                 <div className="textarea">
-                    <h3>리뷰</h3>
+                    <h3>사용자 리뷰</h3>
                     <a href="https://studiomeal.com/archives/197">더보기</a>  
                 </div>
 

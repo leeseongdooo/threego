@@ -90,3 +90,10 @@
     color: black;
     text-decoration: none;
 }
+
+@media all and (min-width:1024px) { 
+    .LoginShape {
+      max-width: 500px;
+      min-height: 400px;
+    }
+}

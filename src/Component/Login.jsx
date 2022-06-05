@@ -60,7 +60,6 @@ function Login() {
 
     return(
       <div className="LoginBox">
-
             <div className="LoginShape">
                 <div className="Text">
                     {/* <Link to='/'>

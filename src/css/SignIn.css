@@ -70,3 +70,9 @@
     height: 50px;
     text-decoration: none;
 }
+
+@media all and (min-width:1024px) { 
+    .shapebox {
+      max-width: 500px;
+    }
+}

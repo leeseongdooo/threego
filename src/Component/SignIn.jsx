@@ -120,7 +120,7 @@ function SignIn() {
         <>
             {/* 전체를 묶어주는 div */}
             <div className="SignInBox">
-            <Link to="/"><h1>ThreeGo</h1></Link>
+                <Link to="/"><h1>ThreeGo</h1></Link>
                 <div className="shapebox">
                     <h4>아이디</h4>
                     <input type="text" className="idInput" placeholder="아이디" onChange={IdCheck}/>
