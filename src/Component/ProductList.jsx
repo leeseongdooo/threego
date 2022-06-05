@@ -130,54 +130,62 @@ function ProductList() {
     return (
         <div className="ProductListBigBox">
             
-            <Header fontColor="black" />
-            {/* 상품정보가 들어갈 영역입니다. */}
-            <div className="ProductListContentBox">
-                {/* 어떤 페이지인지 알려주는 Text */}
-               <h3 className="TitleText">상품정보</h3>
-                {/* 년도선택 박스  */}
-
-               {/* 날짜 선택 */}
-               <select name="" id=""  onChange={(e)=>{
-                   // value값이 0이 아니라면 clickbool= true
-                   if(e.target.value !== "0")
-                   {
-                    setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, itemName: '', clickBool:true}); 
-                    onClickSelect(e);    
-                    // useRef인 secondSelect => 현재 상품선택 select문에 대한 정보를 가져오고 있고 if문이 참이라면 selectIndex를 0으로 만들어서 상품을 선택해주세요가 보이게 설정
-                    secondSelect.current.selectedIndex = 0
-                   } else if(e.target.value == "0")
-                   {
-                        setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, itemName: '', clickBool:false}); 
-                   }
-                   }}>
-                   <option key="날짜를 선택해주세요" value="0">날짜를 선택해주세요</option>
-                   <option key="2022-05-06" value="1">2022-05-06</option>
-                   <option key="2022-04-08" value="2">2022-04-08</option>
-                   <option key="2022-03-04" value="3">2022-03-04</option>
-               </select>
-
-               {/* 상품 선택 */}
-               <select name="" id="" ref={secondSelect} onChange={(e)=>{setSearchItem({...searchItem, itemName: e.target.value}); }}>
-                   <option>상품을 선택해주세요</option>
-                    {DistinctTextName.map((List, index) => (
-                        <option value={List} key={index}>{List}</option>
-                    ))}
-               </select>
-                
-                {/* 클릭시 조건에 맞는 ITEM들은 SET합니다. */}
-                {/* <div className="ButtonBox">
-                    <button className="SearchItemBtn" onClick={()=>{setItems(items.filter(List => List.상품명 == searchItem.itemName && List.조사일 == searchItem.itemDate));}}>검색하기</button>
-                </div> */}
-                {/* 선택한 상품정보에 대한 값이 나오는 박스입니다. */}
-                <div className="ProductListInfo">
-                    {/* searchItem = 사용자가 찾고자 하는 아이템 */}
-                    {/* 사용자가 (년도, 날짜, 상품)을 선택했을 때 해당되는 값이 저장되도록 설정 */}
-                    {/* ↓↓ searchItem이 비어있을 때 아직 상품이 없다는 로직 */}
-                    {newItems.length > 0 ? newItems.map((List, index) => (<ItemListForm key={index} Info={List} />)) : 
-                                        <h3>해당되는 상품이 없습니다.</h3>}
-
+            {/* flex하기 위해 만들었습니다. */}
+            <div className="ProductListContentBigBox">
+                <div className="HeaderParent">
+                    <Header fontColor="white" />
                 </div>
+
+                {/* 상품정보가 들어갈 영역입니다. */}
+                <div className="ProductListContentBox">
+                    {/* 어떤 페이지인지 알려주는 Text */}
+                <h3 className="TitleText">상품정보</h3>
+                    {/* 년도선택 박스  */}
+
+                {/* 날짜 선택 */}
+                <div className="SelectProductBox">
+                    <select name="" id=""  onChange={(e)=>{
+                        // value값이 0이 아니라면 clickbool= true
+                        if(e.target.value !== "0")
+                        {
+                            setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, itemName: '', clickBool:true}); 
+                            onClickSelect(e);    
+                            // useRef인 secondSelect => 현재 상품선택 select문에 대한 정보를 가져오고 있고 if문이 참이라면 selectIndex를 0으로 만들어서 상품을 선택해주세요가 보이게 설정
+                            secondSelect.current.selectedIndex = 0
+                        } else if(e.target.value == "0")
+                        {
+                                setSearchItem({ ...searchItem,  itemDate: e.target[e.target.value].innerText, itemName: '', clickBool:false}); 
+                        }
+                        }}>
+                        <option key="날짜를 선택해주세요" value="0">날짜를 선택해주세요</option>
+                        <option key="2022-05-06" value="1">2022-05-06</option>
+                        <option key="2022-04-08" value="2">2022-04-08</option>
+                        <option key="2022-03-04" value="3">2022-03-04</option>
+                    </select>
+
+                    {/* 상품 선택 */}
+                    <select name="" id="" ref={secondSelect} onChange={(e)=>{setSearchItem({...searchItem, itemName: e.target.value}); }}>
+                        <option>상품을 선택해주세요</option>
+                            {DistinctTextName.map((List, index) => (
+                                <option value={List} key={index}>{List}</option>
+                            ))}
+                    </select>
+                </div>
+                    
+                    {/* 클릭시 조건에 맞는 ITEM들은 SET합니다. */}
+                    {/* <div className="ButtonBox">
+                        <button className="SearchItemBtn" onClick={()=>{setItems(items.filter(List => List.상품명 == searchItem.itemName && List.조사일 == searchItem.itemDate));}}>검색하기</button>
+                    </div> */}
+                    {/* 선택한 상품정보에 대한 값이 나오는 박스입니다. */}
+                    <div className="ProductListInfo">
+                        {/* searchItem = 사용자가 찾고자 하는 아이템 */}
+                        {/* 사용자가 (년도, 날짜, 상품)을 선택했을 때 해당되는 값이 저장되도록 설정 */}
+                        {/* ↓↓ searchItem이 비어있을 때 아직 상품이 없다는 로직 */}
+                        {newItems.length > 0 ? newItems.map((List, index) => (<ItemListForm key={index} Info={List} />)) : 
+                                            <h3>해당되는 상품이 없습니다.</h3>}
+
+                    </div>
+                </div>          
             </div>
             
             <Bottom/>

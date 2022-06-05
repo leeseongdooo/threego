@@ -54,7 +54,7 @@ function Header(props) {
                 
                 <AiOutlineMenu className="menuIcon" onClick={() => toggleMenu()} style={isOpen ? fontColor : (Scrolly > 0) ? fontColor :  {color: props.fontColor}}/>
                 <ul className={isOpen ? "show-menu" : "hide-menu"}>
-                    <li><Link to="/RecommendList">추천 여행지</Link></li>
+                    <li><Link to="/RecommendList" >추천 여행지</Link></li>
                     <li><Link to="/ProductList">주변 가격정보</Link></li>
                     <li><Link to="/ReviewList">여행 리뷰보기</Link></li>
                     <li><Link to="/CustomerService">고객센터</Link></li>
