@@ -16,10 +16,12 @@ function TourForm({TravelInfo}) {
             
             <div className="ImageForm" >
                 <img src={TravelInfo.tourImage} alt="사진" />
+                <p className="GuideInfoText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
+            
             </div>
             
            
-            <p className="GuideInfoText">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in</p>
+           
         </div>
     )
 }
@@ -55,7 +57,7 @@ function RecommendListInfo() {
             <Header/>
             
             <div className="TitleImageBox">
-                <img src="/img/Daegu.jpg" alt="지역에 대한 이미지" />
+                <img src="/img/NewDaegu.jpg" alt="지역에 대한 이미지" />
             </div>
 
             <h1 className="TourName">대구 광역시 투어</h1>
