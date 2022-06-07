@@ -180,3 +180,46 @@
         cursor: pointer;
     }
 }
+
+// PC버전
+@media all and (min-width:1024px) { 
+
+    .ReviewDetailBigBox  {
+        .imageSlide {
+            display: none;
+        }
+    
+        .ReviewDetailHeader {
+            padding: 20px 0px;
+        }
+    
+        .ReviewDetailContent {
+           width: 50%;
+           .ContentText {
+               .imageArea {
+                   flex-direction: column;
+                   justify-content: flex-start;
+                   align-items: center;
+                   img {
+                        max-width: 600px;
+                        max-height: 600px;
+                   }
+                   
+               }
+           }
+        }
+    }
+    
+}
+
+
+// TAB 버전
+@media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+// MOBILE 버전
+@media all and (max-width:420px) {
+
+
+}

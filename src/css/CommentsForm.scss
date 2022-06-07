@@ -144,3 +144,23 @@
     }
     
 }
+
+// PC버전
+@media all and (min-width:1024px) { 
+    .CommentsFormBigBox {
+        width: 50%;
+    }
+
+}
+
+
+// TAB 버전
+@media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+// MOBILE 버전
+@media all and (max-width:420px) {
+
+
+}

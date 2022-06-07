@@ -26,7 +26,7 @@ function ReviewScore({review})
 function ReviewForm({review, GoodToggle,BadToggle, history}) {
 
     return (
-        <div className="UserReviewForm">
+    <div className="UserReviewForm">
                     
         {/* 사용자 정보 :) 유저 이미지, 이름, 별점 */}
         <div className="userInfo">  
@@ -303,7 +303,7 @@ function ReviewList() {
     
     const MiddleForm = () => {
         return (
-            <>
+            <div className="ReviewMiddleParent">
                <div className="ReviewMiddleArea">
                     
                     <div className="UmmName">
@@ -314,11 +314,13 @@ function ReviewList() {
                             <li onClick={()=>{SetRecBool(true); SetLatestBool(false);}} style={RecBool ? {color: "royalblue"} : {color: "#676767"}}>별점순</li>
                         </ul>
                     </div>
-                    {/* 리뷰내용들 */}
-                    {review.map(a => (
-                            <ReviewForm review={a} key={a.id} GoodToggle={GoodToggle} BadToggle={BadToggle} history={history}/>
-                        ))}
 
+                    <div className="ReviewListBox">                    
+                        {/* 리뷰내용들 */}
+                        {review.map(a => (
+                                <ReviewForm review={a} key={a.id} GoodToggle={GoodToggle} BadToggle={BadToggle} history={history}/>
+                            ))}
+                    </div>
 
                 </div>
                 
@@ -338,7 +340,7 @@ function ReviewList() {
                         </ul>
                     <BsFillArrowRightCircleFill className="ArrowBtn" onClick={() => {RightIconClick()}}/>
                 </footer>
-            </>
+            </div>
         )
     }
 

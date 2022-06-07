@@ -246,9 +246,54 @@
             content: '';
         }
 
-        .ReviewMiddleArea {
-            width: 70%;
-   
+        // display flex를 활용하여 center에 두기 위한 css
+        .ReviewMiddleParent {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .ReviewMiddleArea {
+                width: 70%;
+                display: flex;
+                flex-direction: column;
+
+                .UmmName {
+                    margin: 10px 0px;
+                    width: 100%;
+                    align-items: center;
+
+                    .ReviewCount {
+                        margin-left: 50px;
+                    }
+
+                    .ReviewCount::before {
+                        content: '리뷰 ';
+                    }
+
+                    ul {
+                        margin-right: 50px;
+
+                        li {
+                            font-size: 16px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+
+                .ReviewListBox {
+                    display: flex;   
+                    align-items: flex-start;
+                    justify-content: center;
+                    flex-wrap: wrap;
+
+                    .UserReviewForm {
+                        max-width: 400px;
+                        margin: 10px;
+                    }
+                }
+            }
         }
 
     }
