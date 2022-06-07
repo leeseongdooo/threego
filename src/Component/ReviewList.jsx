@@ -344,18 +344,23 @@ function ReviewList() {
 
     return(
         <div className="ReviewListBigBox">
-            <Header/>
+           <div className="HeaderParent">
+                    <Header fontColor="white" />
+            </div>
             
             <div className="ReviewTopArea">
-                <h1 className="ReviewLocation">대구광역시 </h1>
+                
+                <div className="TextArea">
+                    <h1 className="ReviewLocation">대구광역시 </h1>
 
-                <div className="Score">
-                    <TopScore/>
+                    <div className="Score">
+                        <TopScore/>
+                    </div>
+                    {/* 리뷰 작성 버튼 누르면 작성 페이지로 이동합니다. */}
+                    <Link to='/ReviewWrite'>
+                        <button>리뷰 작성</button>
+                    </Link>
                 </div>
-                {/* 리뷰 작성 버튼 누르면 작성 페이지로 이동합니다. */}
-                <Link to='/ReviewWrite'>
-                    <button>리뷰 작성</button>
-                </Link>
             </div>
 
             {Loading == true ? <h2 className="Loading">로딩중입니다.</h2> : <MiddleForm/> }
