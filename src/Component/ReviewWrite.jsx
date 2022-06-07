@@ -130,71 +130,72 @@ function ReviewWrite() {
             <header className="ReviewWriteHeader">
                 리뷰 작성 
             </header>
-
-            <div className="ReviewArea">
-                
-                <div className="PointArea">
-                    <h2>여행은 어떠셨나요??</h2>
-                    <div className="ScoreBox">
-                        {ARRAY.map((el, idx) => { // map을 통해 ARRAY값을 가져오고 
-                            return (
-                                <FaStar
-                                key={idx} // key = 0~4까지
-                                size="50" // 
-                                onClick={() => {handleStarClick(el);}} // 클릭시 handleStarClick 함수 실행 
-                                className={active[el] && 'yellowStar'} // 참이라면 yellowStar 활성화
-                                />
-                            );
-                        })}  
-                    </div>
-                    {/* <h2>{active.filter(Boolean).length}</h2> */}
-                </div>
-    
-                <div className="WriteArea">
-                    <div className="GuideText" >
-                        <p>제목</p>
-                        <p>최소 10자</p>
-                    </div>
-
-                    <input type="text" placeholder="제목을 입력해주세요" className="Title" onChange={TitlesizeCalculation}/>
-            
-                    <div className="GuideText">
-                        <p>내용</p>
-                        <p>최소 10자</p>
-                    </div>
-
-                    <textarea name="" id="" className="WriteContent" placeholder="내용을 입력해주세요" onChange={ContentsizeCalculation} ></textarea>
-   
+            <div className="ReviewAreaBigBox">
+                <div className="ReviewArea">
                     
-
-                    <div className="GuideText">
-                        <p>사진등록</p>
+                    <div className="PointArea">
+                        <h2>여행은 어떠셨나요??</h2>
+                        <div className="ScoreBox">
+                            {ARRAY.map((el, idx) => { // map을 통해 ARRAY값을 가져오고 
+                                return (
+                                    <FaStar
+                                    key={idx} // key = 0~4까지
+                                    size="50" // 
+                                    onClick={() => {handleStarClick(el);}} // 클릭시 handleStarClick 함수 실행 
+                                    className={active[el] && 'yellowStar'} // 참이라면 yellowStar 활성화
+                                    />
+                                );
+                            })}  
+                        </div>
+                        {/* <h2>{active.filter(Boolean).length}</h2> */}
                     </div>
-
-                    <div className="ReviewWriteImageArea">
         
-                        
-                        {/* <img src={"/img/" + Image} alt="Image" /> */}
-                        {/* accept="image/*"은 이미지만 업로드 가능하게 하는것 */}
+                    <div className="WriteArea">
+                        <div className="GuideText" >
+                            <p>제목</p>
+                            <p>최소 10자</p>
+                        </div>
 
-                        {PreviewImage.map(a => (<img src={"/img/" + a.Image} alt="" key={a.id} onClick={()=>{remove(a.id)}}/>))}
-                     
-                        {/* 이미지가 3개가 넘으면 display:none이 되도록 설정 */}
-                        <label className="ReviewImgLabel" style={PreviewImage.length >=3 ? ImgFilePreview : {}} >
-                            <IoDocumentAttachOutline size="40px"/>
-                            <span>이미지 추가</span>
-                            <input type="file" name="file" accept="image/*" onChange={ReviewImage}/>
-                        </label>
-
-                    </div>
-                </div>
-
-                <footer className="ReviewWriteBottom">
-                    <button  disabled={titleSize>=10  && contentSize>=10 ? "" : "disabled"} style={titleSize>=10  && contentSize>=10 ? {} : BtnBackColor}>등록하기</button>
-                </footer>
-            </div>
+                        <input type="text" placeholder="제목을 입력해주세요" className="Title" onChange={TitlesizeCalculation}/>
                 
-        </>
+                        <div className="GuideText">
+                            <p>내용</p>
+                            <p>최소 10자</p>
+                        </div>
+
+                        <textarea name="" id="" className="WriteContent" placeholder="내용을 입력해주세요" onChange={ContentsizeCalculation} ></textarea>
+    
+                        
+
+                        <div className="GuideText">
+                            <p>사진등록</p>
+                        </div>
+
+                        <div className="ReviewWriteImageArea">
+            
+                            
+                            {/* <img src={"/img/" + Image} alt="Image" /> */}
+                            {/* accept="image/*"은 이미지만 업로드 가능하게 하는것 */}
+
+                            {PreviewImage.map(a => (<img src={"/img/" + a.Image} alt="" key={a.id} onClick={()=>{remove(a.id)}}/>))}
+                        
+                            {/* 이미지가 3개가 넘으면 display:none이 되도록 설정 */}
+                            <label className="ReviewImgLabel" style={PreviewImage.length >=3 ? ImgFilePreview : {}} >
+                                <IoDocumentAttachOutline size="40px"/>
+                                <span>이미지 추가</span>
+                                <input type="file" name="file" accept="image/*" onChange={ReviewImage}/>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <footer className="ReviewWriteBottom">
+                        <button  disabled={titleSize>=10  && contentSize>=10 ? "" : "disabled"} style={titleSize>=10  && contentSize>=10 ? {} : BtnBackColor}>등록하기</button>
+                    </footer>
+                </div>
+                
+        </div>
+    </>
     )
 }
 
