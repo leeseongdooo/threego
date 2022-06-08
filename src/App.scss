@@ -334,12 +334,19 @@
 
 @media all and (min-width:1024px) { 
     
+    .HeaderParent {
+        width: 100%;
+        height: 70px;
+        background-color: black;
+    }
+
     .App {
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       height: auto;
       overflow: hidden;
+      
     }
 
     // 추천 여행지, 더보기 텍스트

@@ -9,8 +9,9 @@ function CustomerService() {
 
     return(
         <div className="CustomerServiceBigBox">
-        <Header fontColor="black"/>
-        <div></div>
+           <div className="HeaderParent">
+                    <Header fontColor="" />
+            </div>
         <div className="CustomerServiceHeader">
             
             <div className="TopText">
@@ -40,6 +41,7 @@ function CustomerService() {
                     </div>
                 </Link>
             </div>
+        
 
             <div className="BtnBox">
                 <Link to="/InquireWrite">

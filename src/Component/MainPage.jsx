@@ -206,7 +206,7 @@ function MainPage(props) {
    let timer = "";
    return (
         <div className="MainPageBigBox">
-            <Header/>
+            <Header fontColor="white"/>
             
             <div className="slideBigBox">
                 

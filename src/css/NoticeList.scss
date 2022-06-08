@@ -5,7 +5,7 @@
     justify-content: space-between;
     overflow-x: hidden;
     .NoticeListMiddleBox {
-        margin-top: 70px;
+        margin-top: 50px;
         
         h1 {
             text-align: center;
@@ -29,6 +29,11 @@
             border-bottom: 1px solid black;
             .Text {
                 margin: 10px;
+                width: 90%;
+      
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
                 .Title {
                     font-size: 20px;
                     font-weight: 500;
@@ -80,4 +85,84 @@
             }
         }
     }
+}
+@media all and (min-width:1024px) { 
+    .HeaderParent {
+        width: 100%;
+        background-color: black;
+        color: black;
+    }
+    .NoticeListBigBox {
+
+        .NoticeMiddleMotherBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .NoticeListMiddleBox {
+                width: 70%;
+                margin-top: 20px;
+            
+                .ListForm {
+                    min-height: 60px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 1px solid black;
+
+                    .WriteNumber {
+                        font-size: 20px;
+                        text-align: center;
+                        min-width: 70px;
+                        max-width: 70px;
+                    }
+
+                    .Text {
+                        margin: 10px;
+                        width: 90%;
+              
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .Title {
+                            font-size: 20px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+  // TAB 버전
+@media all and (min-width:768px) and (max-width:1023px) {
+
+    
+}
+
+// MOBILE 버전
+@media all and (max-width:420px) {
+    .HeaderParent {
+        width: 100%;
+        background-color: black;
+        color: black;
+    }
+
+    .NoticeMiddleMotherBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .NoticeListMiddleBox {
+            width: 90%;
+            margin-top: 50px;
+            .WriteNumber {
+                font-size: 18px;
+                text-align: center;
+                min-width: 40px;
+                max-width: 40px;
+            }
+        }
+    }
+
 }

@@ -122,6 +122,7 @@ function NoticeList() {
             <>
                 {Notice.map((ref) => (
                     <div className="ListForm" key={ref.id} onClick={()=>{readCheck(ref.id); history.push({pathname: "/NoticeDetail",state: {Notice: ref}})}} style={ref.readbool ? {color: 'gray'} : {}}>
+                        <p className="WriteNumber">{ref.id}</p>
                         <div className="Text">
                             <p className="Title">{ref.title}</p>
                             <p className="WriteDay">{ref.date}</p>
@@ -154,14 +155,17 @@ function NoticeList() {
 
     return (
         <div className="NoticeListBigBox">
-            <Header fontColor="black"/>
-            
-            <div className="NoticeListMiddleBox" >
-                <h1>공지사항</h1>
-                <hr />
-                
-                {Loading == true ? <h3>데이터를 불러오고 있습니다.</h3> : <NoticeList/> }
+            <div className="HeaderParent">
+                    <Header fontColor="" />
+            </div>
 
+
+            <div className="NoticeMiddleMotherBox">
+                <div className="NoticeListMiddleBox" >
+                    <h1>공지사항</h1>
+                    <hr />
+                    {Loading == true ? <h3>데이터를 불러오고 있습니다.</h3> : <NoticeList/> }
+                </div>
             </div>
             <Bottom/>
         </div>
