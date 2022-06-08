@@ -10,13 +10,15 @@ function InquireListForm({Inquire, Detail}) {
     return (
         <>
             <div className="InquireListForm"  onClick={()=>{Detail.push({pathname: "/InquireDetail", state: {Inquire: Inquire}})}}>
-                
+               
                 <div className="TextContentArea">
-                    <p>{Inquire.Title}</p>
-                    <p>{Inquire.WriteDays}</p>
+                    <p className="WriteNumber">{Inquire.id}</p>
+                    <p className="Title">{Inquire.Title}</p>
+                    <p className="WriteDay">{Inquire.WriteDays}</p>
+                    <p className="Process" style={Inquire.Process==false ? {color: 'royalblue'} : {}}>{Inquire.Process==true ? '처리완료' : '처리중'}</p>
                 </div>
 
-                <h4 style={Inquire.Process==false ? {color: 'royalblue'} : {}}>{Inquire.Process==true ? '처리완료' : '처리중'}</h4>
+            
             </div>
             
             <hr/>
@@ -66,27 +68,32 @@ function InquireList() {
             </div>
 
             
-            <div className="InquireListContentBox">
-                <h2>문의내역</h2>
-                
-                <div className="InquireListContentHeader">
-                    <p>제목 / 작성일자</p>
-                    <p>답변상태</p>
-                </div>
-                <hr />
+            <div className="InquireListContentMotherBox">
+                <div className="InquireListContentBox">
+                    <h1>문의내역</h1>
+                    
+                    <div className="InquireListContentHeader">
+                        <p className="ListNumber">순번</p>
+                        <p className="Title">제목</p>
+                        <p className="WriteDay">작성일자</p>
+                        <p className="AnswerProcess">답변상태</p>
+                    </div>
+                    <hr />
 
 
-                {Inquire.length > 0 ? Inquire.map(inq => (<InquireListForm Inquire={inq} key={inq.id} Detail={Detail}/>)) : <NoInquire/>}
-                
-                
-                <div className="InquireListBtnBox">
+                    {Inquire.length > 0 ? Inquire.map(inq => (<InquireListForm Inquire={inq} key={inq.id} Detail={Detail}/>)) : <NoInquire/>}
+                    
+                    
+                    <div className="InquireListBtnBox">
 
-                    <Link to='/InquireWrite'>
-                        <button>문의하기</button>
-                    </Link>
-                 
+                        <Link to='/InquireWrite'>
+                            <button>문의하기</button>
+                        </Link>
+                    
+                    </div>
                 </div>
             </div>
+
           <Bottom></Bottom>
         </div>
     )
