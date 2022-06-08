@@ -29,6 +29,7 @@
             }
 
             .InquireListForm {
+                cursor: pointer;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -116,5 +117,20 @@
 
     // MOBILE 버전
     @media all and (max-width:420px) {
-
+        .InquireListForm {
+            .TextContentArea {
+                display: flex;
+                width: 100%;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: row;
+                padding: 10px 0px;
+            
+                p {
+                    width: calc(100% / 4 - 20px);
+                    text-align: center;
+                }
+            }
+          
+        }
     }

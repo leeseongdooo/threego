@@ -1,5 +1,5 @@
 .InquireDetailBigBox {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -9,7 +9,6 @@
 .InquireDetailContentBox {
     margin: 15px;
     margin-top: 50px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -54,4 +53,89 @@
         
     }
     
+}
+
+// PC 버전
+@media all and (min-width:1024px) {
+    .InquireDetailBigBox {
+        
+        .InquireDetailParentBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .InquireDetailContentBox {
+                padding: 10px;
+                margin-top: 0px;
+                width: 50%;
+                .TitleText {    
+                    margin: 10px;
+                    text-align: center;
+                    font-size: 30px;
+                }
+
+                .UserArea {
+                    margin-bottom: 10px;
+
+               
+                    .TopArea {
+                        h3 {
+                            font-size: 24px;
+                        }
+                    }
+
+                    .MiddleArea {
+                        p {
+                            margin-top: 10px;
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                .AdminArea {
+           
+
+                    .TopArea {
+                        h3 {
+                            font-size: 24px;
+                        }
+                    }
+
+                    .MiddleArea {
+                        p {
+                            margin-top: 10px;
+                            font-size: 16px;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+// TAB 버전
+@media all and (min-width:768px) and (max-width:1023px) {
+
+    
+}
+
+// MOBILE 버전
+@media all and (max-width:420px) {
+    .InquireDetailBigBox {
+        
+        .InquireDetailParentBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .InquireDetailContentBox {
+                margin-top: -60px;
+                width: 100%;
+
+                .TitleText {    
+                    font-size: 30px;
+                    text-align: center;
+                }
+            }
+        }
+    }
 }

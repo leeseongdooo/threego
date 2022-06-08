@@ -17,8 +17,6 @@ function InquireListForm({Inquire, Detail}) {
                     <p className="WriteDay">{Inquire.WriteDays}</p>
                     <p className="Process" style={Inquire.Process==false ? {color: 'royalblue'} : {}}>{Inquire.Process==true ? '처리완료' : '처리중'}</p>
                 </div>
-
-            
             </div>
             
             <hr/>

@@ -1,5 +1,5 @@
 .InquireWriteBox {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -135,7 +135,52 @@
                 cursor: pointer;
             }
         }
-    }
+    }  
+}
+// PC 버전
+@media all and (min-width:1024px) {
+    .InquireWriteBox {
 
-   
+        .InquireWriteContentParentBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .InquireWriteContentBox {
+                width: 50%;
+                margin-top: 0px;
+
+                .TitleText {
+                    padding: 10px;
+                    width: 80%;
+                    font-size: 28px;
+                    text-align: center;
+                    border-bottom: 1px solid black            
+                }
+            }
+        }
+
+    }
+}
+
+// TAB 버전
+@media all and (min-width:768px) and (max-width:1023px) {
+
+    
+}
+
+// MOBILE 버전
+@media all and (max-width:420px) {
+    .InquireWriteBox {
+
+        .InquireWriteContentParentBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .InquireWriteContentBox {
+                width: 100%;
+                margin-top: -30px;
+            }
+        }
+
+    }
 }

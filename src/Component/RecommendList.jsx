@@ -16,7 +16,7 @@ function Categorie(props) {
     )
     return(
         <>
-        <Header/>
+        <Header fontColor="white"/>
             <div className="Category-Box">
                 <div className="Small-Box">
                     <div className="SmallBtn" onClick={(e) => {props.all();  setClick(e.target.outerText); }} style={click==="전체" ? clickStyle : null} >

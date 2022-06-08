@@ -54,47 +54,53 @@ function InquireWrite() {
 
     return (
         <div className="InquireWriteBox">
-            <Header fontColor="black"/>
+            <div className="HeaderParent">
+                    <Header fontColor="" />
+            </div>
             
-            <div className="InquireWriteContentBox">
-                <h2>문의 작성</h2>
-                <hr />
-                
-                <div className="WriteArea">
-
-
-                <div className="GuideText" >
-                    <p>유형</p>
-                </div>
-
-                 <div className="SelectBox">
-                    <select> 
-                        <option value="1번">유형적기</option>
-                        <option value="1번">1번</option>
-                    </select>
-                 </div>
-                   
-
+            <div className="InquireWriteContentParentBox">
                     
-                    <div className="GuideText" >
-                        <p>제목</p>
-                        <p>최소 10자</p>
-                    </div>
-
-                    <input type="text" placeholder="제목을 입력해주세요" className="InquireTitle" onChange={TitlesizeCalculation} />
-
-                    <div className="GuideText">
-                        <p>내용</p>
-                        <p>최소 10자</p>
-                    </div>
-
-                    <textarea name="" id="" className="WriteContent" placeholder="내용을 입력해주세요" onChange={ContentsizeCalculation}></textarea>
+                <div className="InquireWriteContentBox">
+            
                     
-                    <footer className="InquireWriteBottom">
-                    <button  disabled={titleSize>=10  && contentSize>=10 ? "" : "disabled"} style={titleSize>=10  && contentSize>=10 ? {} : BtnBackColor}>등록하기</button>
-                    </footer>
+                    <div className="WriteArea">
+                        <h2 className="TitleText">문의 작성</h2>
+                    
+
+                        <div className="GuideText" >
+                            <p>유형</p>
+                        </div>
+
+                        <div className="SelectBox">
+                            <select> 
+                                <option value="1번">유형적기</option>
+                                <option value="1번">1번</option>
+                            </select>
+                        </div>
+                        
+
+                            
+                            <div className="GuideText" >
+                                <p>제목</p>
+                                <p>최소 10자</p>
+                            </div>
+
+                            <input type="text" placeholder="제목을 입력해주세요" className="InquireTitle" onChange={TitlesizeCalculation} />
+
+                            <div className="GuideText">
+                                <p>내용</p>
+                                <p>최소 10자</p>
+                            </div>
+
+                            <textarea name="" id="" className="WriteContent" placeholder="내용을 입력해주세요" onChange={ContentsizeCalculation}></textarea>
+                            
+                            <footer className="InquireWriteBottom">
+                            <button  disabled={titleSize>=10  && contentSize>=10 ? "" : "disabled"} style={titleSize>=10  && contentSize>=10 ? {} : BtnBackColor}>등록하기</button>
+                            </footer>
+                        </div>
                 </div>
             </div>
+           
             <Bottom></Bottom>
         </div>
     )
