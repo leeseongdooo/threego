@@ -61,7 +61,10 @@ function InquireList() {
 
     return (
         <div className="InquireListBigBox">
-          <Header fontColor="black"/>
+            <div className="HeaderParent">
+                    <Header fontColor="" />
+            </div>
+
             
             <div className="InquireListContentBox">
                 <h2>문의내역</h2>

@@ -85,18 +85,29 @@ function CustomerQuestion() {
 
     return (
         <div className="CustomerQuestionBigBox">
-            <Header fontColor="black"/>
-                <div className="CustomerQuestionBox">
-                    <h3>자주묻는 질문</h3>
-                    <select className="Category" onChange={(e)=> {ChangeCategory(e)}}>
-                        <option value="전체">전체</option>
-                        <option value="여행문의">여행문의</option>
-                        <option value="회원문의">회원문의</option>
-                        <option value="서비스 이용문의">서비스 이용문의</option>
-                    </select>
+            
+            <div className="HeaderParent">
+                    <Header fontColor="" />
+            </div>
 
+            <div className="CustomerQuestionMotherBox">
+                <div className="CustomerQuestionBox">
+                    <h3 className="TopText">자주묻는 질문</h3>
+                    
+                    {/* 정렬하기 위해서 CategoryFlexBox 만듬 */}
+                    <div className="CategoryFlexBox">
+                        <select className="Category" onChange={(e)=> {ChangeCategory(e)}}>
+                            <option value="전체">전체</option>
+                            <option value="여행문의">여행문의</option>
+                            <option value="회원문의">회원문의</option>
+                            <option value="서비스 이용문의">서비스 이용문의</option>
+                        </select>
+                    </div>
                     {QnA.map((qna)=>(<QnAForm setQnA={setQnA} qna={qna} QnA={QnA} key={qna.id}/>))}      
                 </div>
+            </div>
+            
+
             <Bottom/>
         </div>
     )

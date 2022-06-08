@@ -1,5 +1,5 @@
 .NoticeDetailBigBox {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -9,6 +9,7 @@
        margin-top: 50px;
        h1 {
            margin-bottom: 5px;
+           text-align: center;
        }
 
        .NoticeDetailContent {
@@ -45,3 +46,58 @@
     }
 }
 
+// PC버전
+@media all and (min-width:1024px) {
+    
+    .NoticeDetailBigBox {
+
+        .NoticeDetailContentParentBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            .NoticeDetailContentBox {
+                width: 60%;
+                margin: 10px;
+                margin-top: 30px;
+
+                .TitleText {
+                    font-size: 26px;
+                }
+
+                .ContentText {
+                    margin-bottom: 10px;
+                }
+
+                .NoticeImage {
+                    max-width: 500px;
+                    max-height: 500px;
+                }
+            }
+        }
+
+        
+    }
+}
+
+// TAB 버전
+@media all and (min-width:768px) and (max-width:1023px) {
+
+    
+}
+
+// MOBILE 버전
+@media all and (max-width:420px) {
+    .NoticeDetailContentBox {
+        margin: 10px;
+        margin-top: 10px;
+
+        .TitleText {
+            font-size: 26px;
+        }
+
+        .ContentText {
+            margin-bottom: 10px;
+        }
+    }
+}
