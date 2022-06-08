@@ -139,7 +139,47 @@
   // TAB 버전
 @media all and (min-width:768px) and (max-width:1023px) {
 
-    
+    .NoticeListBigBox {
+
+        .NoticeMiddleMotherBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            .NoticeListMiddleBox {
+                width: 80%;
+                margin-top: 0px;
+            
+                .ListForm {
+                    min-height: 60px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    border-bottom: 1px solid black;
+
+                    .WriteNumber {
+                        font-size: 20px;
+                        text-align: center;
+                        min-width: 70px;
+                        max-width: 70px;
+                    }
+
+                    .Text {
+                        margin: 10px;
+                        width: 90%;
+              
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        .Title {
+                            font-size: 20px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
 }
 
 // MOBILE 버전

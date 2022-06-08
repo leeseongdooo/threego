@@ -42,6 +42,8 @@ function ReviewDetail() {
         }
     ])
 
+    const [noewSlideNumber, setNowSlideNumber] = useState(1);
+
     for(let i=0; i<DetailReviewInfo.ReviewScore; i++)
     {
         ReviewScore.push(i);
@@ -88,6 +90,7 @@ function ReviewDetail() {
         {
             setImageSize(ImageSize - ImageInfo.current.clientWidth - 10);
             console.log(ImageInfo.current.style.transform);
+            setNowSlideNumber(noewSlideNumber - 1);
         }           
     }
 
@@ -96,6 +99,7 @@ function ReviewDetail() {
             if(ImageSize < MaxSize){
                 setImageSize(ImageSize + ImageInfo.current.clientWidth + 10);
             }
+            setNowSlideNumber(noewSlideNumber + 1);
     }
 
     return (
@@ -116,8 +120,8 @@ function ReviewDetail() {
                 </div>
                 
                 <div className="ArrowArea">                                      
-                    <AiOutlineArrowLeft className="Arrow" onClick={moveImg}/>
-                    <AiOutlineArrowRight className="Arrow" onClick={moveImg2}/>
+                    <AiOutlineArrowLeft className="Arrow" onClick={moveImg} style={noewSlideNumber === 1 ? {display: 'none'} : ''}/>
+                    <AiOutlineArrowRight className="Arrow2" onClick={moveImg2} style={noewSlideNumber === 3 ? {display: 'none'} : ''}/>
                 </div>
             </div>
             

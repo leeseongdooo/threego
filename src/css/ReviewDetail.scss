@@ -29,10 +29,7 @@
     justify-content: center;
     align-items: center;
 
-    .Arrow {
-        color: white;
-        font-size: 30px;
-    }
+    
 
     .SlideTop {
         button {
@@ -70,12 +67,26 @@
     }
 
     .ArrowArea {
-        position: fixed;
+        position: absolute;
         margin-top: 60px;
-        width: 370px;
+        width: 400px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        .Arrow {   
+            position: absolute;
+            color: white;
+            font-size: 30px;
+            margin-left: 3%;
+        }
+
+        .Arrow2 {
+            
+            position: absolute;
+            color: white;
+            font-size: 30px;
+            margin-left: 90%;
+        }
+
     }
 }
 

@@ -307,7 +307,7 @@ function ReviewList() {
                <div className="ReviewMiddleArea">
                     
                     <div className="UmmName">
-                        <h2 className="ReviewCount">{review.length}개</h2>
+                        <h2 className="ReviewCount">리뷰 {review.length}개</h2>
                         
                         <ul>
                             <li onClick={()=>{SetLatestBool(true); SetRecBool(false);}} style={LatestBool ? {color: "royalblue"} : {color: "#676767"}}>최신순</li>

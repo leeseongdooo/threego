@@ -112,25 +112,93 @@
     // TAB 버전
     @media all and (min-width:768px) and (max-width:1023px) {
 
-        
+        .InquireListBigBox {
+            .InquireListContentMotherBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+
+            .InquireListContentBox {
+
+                width: 90%;
+
+                .InquireListContentHeader {
+                    justify-content: space-between;
+
+                    p {
+                        width: calc(100% / 4);
+                        text-align: center;
+                    }
+                }
+
+                .InquireListForm {
+                    .TextContentArea {
+                        display: flex;
+                        width: 100%;
+                        align-items: center;
+                        justify-content: space-between;
+                        flex-direction: row;
+                        padding: 10px 0px;
+                    
+                        p {
+                            width: calc(100% / 4 - 20px);
+                            text-align: center;
+                        }
+                    }
+                  
+                }
+            }    
+            }
+        }
     }
 
     // MOBILE 버전
     @media all and (max-width:420px) {
-        .InquireListForm {
-            .TextContentArea {
+        .InquireListBigBox {
+            .InquireListContentMotherBox {
                 display: flex;
-                width: 100%;
                 align-items: center;
-                justify-content: space-between;
-                flex-direction: row;
-                padding: 10px 0px;
+                justify-content: center;
             
-                p {
-                    width: calc(100% / 4 - 20px);
-                    text-align: center;
-                }
+                .InquireListContentBox {
+                    margin-top: 0px;
+                    width: 100%;
+
+                    .InquireListContentHeader {
+                        justify-content: space-between;
+
+                        p {
+                            width: calc(100% / 4);
+                            text-align: center;
+                        }
+                    }
+
+                    .InquireListForm {
+                        .TextContentArea {
+                            display: flex;
+                            width: 100%;
+                            align-items: center;
+                            justify-content: space-between;
+                            flex-direction: row;
+                            padding: 10px 0px;
+                        
+                            p {
+                                width: calc(100% / 4 - 20px);
+                                text-align: center;
+                            }
+
+                            .Title {
+                                width: calc(100% / 4 + 20px);
+                            }
+
+                            .WriteDay {
+                                width: calc(100% / 4 + 20px);
+                            }
+                        }
+                    
+                    }
+                }    
             }
-          
         }
     }

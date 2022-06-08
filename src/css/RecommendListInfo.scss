@@ -3,7 +3,7 @@
     .TitleImageBox {
         position: relative;
         width: calc(100% - 2px);
-        min-height: 300px;
+        min-height: 200px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -125,7 +125,7 @@
                 width: 70%;
                 // 이미지
                 .ImageForm {
-                    width: 100%;
+                    width: 90%;
                     display: flex;
 
                     img {
@@ -138,7 +138,7 @@
                     }
                     // 여행지 소개 <p>태그
                     .GuideInfoText {
-                        margin: 5px;
+                        margin: 15px;
                         font-size: 18px;
                     }
                 }
@@ -155,12 +155,82 @@
     }
 }
 
-@media all and (min-width:768px) and (max-width:1023px) {
+@media all and (min-width:650px) and (max-width:1023px) {
+    .RecommendListInfoBigBox { 
+        
+        // 상단 타이틀 이미지 div
+        .TitleImageBox {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            // 이미지 img
+            img {
+                object-fit: cover;
+                width: 100%;
+                object-fit: cover;
+            }
+        }  
+        // ??? 투어 <h1>
+        .TourName {
+            margin-top: 10px;
+        }
 
+        // 추천 리스트 전체를 감싸는 div
+        .RecommendListInfoContentBox  {
+            margin-top: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            // 추천 리스트 div
+            .tourForm {
+                width: 90%;
+                // 이미지
+                .ImageForm {
+                    width: 100%;
+                    display: flex;
+
+                    img {
+                        margin: 5px 0px;
+                        min-width: 40%;
+                        max-width: 40%;
+                        border-radius: 10px;
+                        max-height: 500px;
+                        object-fit: cover;
+                    }
+                    // 여행지 소개 <p>태그
+                    .GuideInfoText {
+                  
+                        display: flex;
+                        align-items: flex-start;
+                        margin: 15px;
+                        font-size: 16px;
+                    }
+                }
+            }
+        }
+    // 하단 button div
+    .BtnBox {
+        .GoTravelBtn {
+            width: calc(70% - 20px);
+            cursor: pointer;
+        }
+    }
+
+    }
 }
 
 
 @media all and (max-width:420px) {
-
+    .RecommendListInfoBigBox { 
+        
+        // 상단 타이틀 이미지 div
+        .TitleImageBox {
+            max-height: 700px;
+            border: 1px solid black;
+        }
+    }
 
 }
