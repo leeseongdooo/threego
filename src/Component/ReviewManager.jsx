@@ -1,9 +1,21 @@
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
+import { useEffect } from "react";
 import { BiNotepad } from "react-icons/bi";
 import { BsPencilFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-function ReviewListForm({ReviewData}) {
+function ReviewListForm({ReviewData, RealData, setRealData, setWritenObject}) {
+    
+    function RemoveReview(e) {
+        setRealData(RealData.filter(List => List.id !== ReviewData.id));
+        console.log(RealData)
+    }
+    
+    useEffect(()=> {
+        setWritenObject(RealData.filter(List => List.ReviewWrite !== false));
+    },[RealData]);
+
+    
     return (
     <div className="ReviewListForm">
         {/* 리뷰 이미지 */}
@@ -15,11 +27,13 @@ function ReviewListForm({ReviewData}) {
             <p>{ReviewData.ReviewDate}</p>
         </div>
 
+
+
         {/* 상호작용 버튼들 */}
         <div className="ReviewListButtonBox">
             <button style={ReviewData.ReviewWrite==false ? {} : {display: 'none'}}><Link to="/ReviewWrite">리뷰작성</Link></button>
-            <button style={ReviewData.ReviewWrite==false ? {display: 'none'} : {}}>수정하기</button>
-            <button style={ReviewData.ReviewWrite==false ? {display: 'none'} : {}}>삭제하기</button>
+            <button style={ReviewData.ReviewWrite==false ? {display: 'none'} : {}} onClick={()=>{console.log("A")}}>수정하기</button>
+            <button style={ReviewData.ReviewWrite==false ? {display: 'none'} : {}} onClick={RemoveReview}>삭제하기</button>
         </div>
     </div>     
     )
@@ -27,6 +41,7 @@ function ReviewListForm({ReviewData}) {
 
 function ReviewManager() {
 
+    // 원본Review Object
     const [ReviewManage, setReviewManage] = useState([
         {
             id: 1,
@@ -46,7 +61,7 @@ function ReviewManager() {
             ReviewTitle: '이곳은 제목',
             ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
             ReviewScore: 3,
-            ReviewWrite: false
+            ReviewWrite: true
         },
         {
             id: 3,
@@ -57,8 +72,65 @@ function ReviewManager() {
             ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
             ReviewScore: 5,
             ReviewWrite: false
+        },
+        {
+            id: 4,
+            TravelName: "여행지 이름123",
+            ReviewImage: '',
+            ReviewDate: '2022.04.28',
+            ReviewTitle: '이곳은 제목',
+            ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
+            ReviewScore: 5,
+            ReviewWrite: true
+        },
+        {
+            id: 5,
+            TravelName: "여행지 이름123",
+            ReviewImage: '',
+            ReviewDate: '2022.04.28',
+            ReviewTitle: '이곳은 제목',
+            ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
+            ReviewScore: 5,
+            ReviewWrite: true
         }
     ]);
+
+    // 필터링 기능 
+    const [WriteAbleObject, setWriteAbleObject] = useState(ReviewManage.filter(List =>  List.ReviewWrite === false));
+    const [WritenObject, setWritenObject] = useState(ReviewManage.filter(List =>  List.ReviewWrite !== false));
+    
+    // 카테고리 체크 여부 
+    const [WriteAbleClickBool,setWriteAbleClickBool] = useState(true);
+    const [WritenClickBool,setWritenClickBool] = useState(false);
+
+    const [WriteAbleReview, setWriteAbleReivew] = useState(ReviewManage);
+
+    // 필터링
+    function WriteAble() {
+       setWriteAbleReivew(ReviewManage.filter(List => List.ReviewWrite === false));
+       setWriteAbleClickBool(true); 
+       setWritenClickBool(false);
+    }
+
+    //필터링
+    function WritenReview() {
+        setWriteAbleReivew(ReviewManage.filter(List => List.ReviewWrite !== false));
+        setWriteAbleClickBool(false);
+        setWritenClickBool(true);
+    }
+
+    
+
+    useEffect(()=>{
+           setWriteAbleReivew(ReviewManage);
+
+           if(WriteAbleClickBool == true)
+           {
+            WriteAble();
+           } else {
+            WritenReview();
+           }
+    }, [ReviewManage]);
 
     return (
         <div className="ReviewManagerBigBox">
@@ -67,26 +139,27 @@ function ReviewManager() {
                 <h2 className="TopTitle">리뷰 관리</h2>
                 
                 <div className="TopContentBox">
-                    <div className="WriteAbleReview GoReview" onClick={()=>{console.log("A")}}>
+                    <div className="WriteAbleReview GoReview" onClick={WriteAble}>
                         <BsPencilFill/>
                         <p>작성 가능한 리뷰</p>
-                        <h3>3</h3>
+                        <h3>{WriteAbleObject.length}</h3>
                     </div>
 
-                    <div className="WritenReview GoReview" onClick={()=>{console.log("B")}}>
+                    <div className="WritenReview GoReview" onClick={WritenReview}>
                         <BiNotepad/>
                         <p>작성한 리뷰</p>
-                        <h3>0</h3>
-                    </div>
+                        <h3>{WritenObject.length}</h3>
+                 </div>
                 </div>
 
                 <div className="MiddleContentBox">
 
                     {/* 작성 가능한 리뷰 */}
-                    {ReviewManage.map(List => (
-                        <ReviewListForm ReviewData={List}/>
+                    {WriteAbleReview.map(List => (
+                        <ReviewListForm ReviewData={List} RealData={ReviewManage} setRealData={setReviewManage} setWritenObject={setWritenObject}/>
                     ))}
-                                     
+    
+                    {WriteAbleReview.length == 0 ? <h3 className="NothingText">아무것도 없어요 ㅠㅠ</h3> : "" }    
 
                 </div>
 
