@@ -4,7 +4,7 @@ import Bottom from "./Bottom";
 import { FaStar } from 'react-icons/fa';
 import { AiOutlineArrowLeft, AiOutlineArrowRight } from "react-icons/ai";
 import '../css/ReviewManagement.scss'
-
+import ReviewManager from "./ReviewManager";
 
 function ReviewForm ({List, setReviewManage, ReviewManage}) {
 
@@ -43,48 +43,43 @@ function ReviewForm ({List, setReviewManage, ReviewManage}) {
 
             
             {/* 체크박스  */}
-            <input type="checkbox" onClick={(e)=>{
-                    if(List.checkBool == false)
-                        setReviewManage(ReviewManage.map(user => user.id == List.id  ? {...user, checkBool: true} : user));
-                    else if(List.checkBool == true) 
-                        setReviewManage(ReviewManage.map(user => user.id == List.id  ? {...user, checkBool: false} : user))
-                    } 
-            } />
-
-            <div className="MiddleTopArea">
-                <div className="NameAndScore">
-                    <h3>{List.ReviewTitle}</h3>
-                    <h4>{List.TravelName}</h4>
-                    {ReviewStar.map((idx)=> (<FaStar key={idx}/>))}
-                </div>
-
-                <div className="MiddleDeleteBtn">
-                    {/* <button>수정</button> */}
-
-                    {/* onClick={()=>{setReviewManage(ReviewManage.filter((kk)=>kk.id !== List.id));} */}
-                    <button>삭제</button>
-                </div>
-
+            <div className="ReviewFormTopArea">
+                <input type="checkbox" onClick={(e)=>{
+                        if(List.checkBool == false)
+                            setReviewManage(ReviewManage.map(user => user.id == List.id  ? {...user, checkBool: true} : user));
+                        else if(List.checkBool == true) 
+                            setReviewManage(ReviewManage.map(user => user.id == List.id  ? {...user, checkBool: false} : user))
+                        } 
+                } />
+                <button>삭제</button>
             </div>
-
-            <div className="MiddleImageArea" style={List.ReviewImage.length > 0 ? {} : {display: 'none'}}>
+            
+            {/* 텍스트와 이미지가 있는 div 입니다. */}
+            <div className="TextAndImageContentBox">
                 
-                <div className="ImageBox" ref={ReviewImage}>
-                    <img src={List.ReviewImage} alt="" />
-                    <img src="/img/DaeguShinsaegae.jpg" alt="" />
-                    <img src={List.ReviewImage} alt="" />
-                </div>
-        
-                <div className="SlideBtn">
-                    <div className="BtnArea">
-                    <AiOutlineArrowLeft onClick={LeftSlide} className="Arrow" />
-                    <AiOutlineArrowRight onClick={RightSlide} className="Arrow" />
+                <div className="MiddleImageArea" style={List.ReviewImage.length > 0 ? {} : {display: 'none'}}>
+                    
+                    <div className="ImageBox" ref={ReviewImage}>
+                        <img src={List.ReviewImage} alt="" />
                     </div>
+                
                 </div>
-            </div>
+                
+                <div className="MiddleTopArea">
+                        
+                    <div className="NameAndScore">
+                        <h3>{List.ReviewTitle}</h3>
+                        <h4>{List.TravelName}</h4>
+                        {ReviewStar.map((idx)=> (<FaStar key={idx}/>))}
+                    </div>
 
-            <div className="MiddleMiddleArea">
-                <p>{List.ReviewContent}</p>
+                    <div className="MiddleDeleteBtn">
+                        {/* <button>수정</button> */}
+
+                        {/* onClick={()=>{setReviewManage(ReviewManage.filter((kk)=>kk.id !== List.id));} */}
+                    </div>
+
+                </div>
             </div>
         </div>
     )
@@ -101,7 +96,7 @@ function ReviewManagement() {
             ReviewTitle: '이곳은 제목',
             ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
             ReviewScore: 2,
-            checkBool: false
+            ReviewWrite: false
         },
         {
             id: 2,
@@ -111,7 +106,7 @@ function ReviewManagement() {
             ReviewTitle: '이곳은 제목',
             ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
             ReviewScore: 3,
-            checkBool: false
+            ReviewWrite: false
         },
         {
             id: 3,
@@ -121,7 +116,7 @@ function ReviewManagement() {
             ReviewTitle: '이곳은 제목',
             ReviewContent: '이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목이dd곳은 제목이곳은 제목이곳은 제목이곳은 제목이곳은 제목',
             ReviewScore: 5,
-            checkBool: false
+            ReviewWrite: false
         }
     ]);
 
@@ -132,32 +127,14 @@ function ReviewManagement() {
 
     return (
         <div className="ReviewManagementBigBox">
-            <Header fontColor="black"/>
-                <div className="ReviewManagementContentBox">
 
-                    <div className="TopArea">
-                        <h3>리뷰 관리</h3>
+            <div className="HeaderParent">
+                <Header fontColor=""/>
+            </div>
+            
 
-                        <div className="SelectAndDeleteBox">
-                            
-                            <div className="SelectBox">    
-                                <h4>총{111}개</h4>
-                            </div>
-
-                            <h4 className="Delete" onClick={()=>{setReviewManage(ReviewManage.filter((check)=>check.checkBool !== true))}}>선택삭제</h4>
-
-                        </div>
-                    </div>
-
-                    <div className="MiddleArea">
-                        {
-                            ReviewManage.length > 0 ? 
-                            ReviewManage.map((List)=>(<ReviewForm ReviewManage={ReviewManage} setReviewManage={setReviewManage} List={List} key={List.id}/>)) : 
-                            <h3 className="NoReview">리뷰가 없어요 ㅜ.ㅜ</h3> 
-                        }
-                      
-                    </div>
-                </div>
+            <ReviewManager/>
+            
             <Bottom/>
         </div>
     )

@@ -83,7 +83,7 @@
             margin: auto;
            
             a {
-                
+                // 안에있는 요소들
                 div {
                     padding: 10px;
                     padding-left: 0px;
@@ -168,11 +168,9 @@
                             display: flex;
                             align-items: center;
                             justify-content: center;
-                            border-radius: 20px;
-                            border: 1px solid black;
                             min-width: 150px;
                             min-height: 100px;
-                            border-radius: 0px;
+                            border-radius: 10px;
                             
                             span {
                                 font-size: 18px;

@@ -12,7 +12,7 @@ function MyPageMain() {
         <div className="MyPageMainBigBox">
             
             <div className="HeaderParent">
-                <Header fontColor="white"/>
+                <Header fontColor=""/>
             </div>
 
 

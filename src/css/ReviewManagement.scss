@@ -1,3 +1,8 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
 @mixin ellipsis($line-cnt, $line-height) {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -14,166 +19,213 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
+    .ReviewManagerBigBox {
+        display: flex;
+        // align-items: center;
+    
+        .ContentBox {
+            width: 100%; // 수정함 50에서 100으로
+         
+            .TopTitle {
+                margin-left: 10px;
+            }
 
-    .ReviewManagementContentBox {
-        margin: 15px;
-        margin-top: 50px;
-        
-        .TopArea {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-
-            .SelectAndDeleteBox {
-                margin: 5px 0px;
+            .TopContentBox {
+                width: 100%; // 수정함
                 display: flex;
-                justify-content: space-between;
-                .SelectBox {
+                // padding: 10px; // 수정
+                align-items: center;
+                justify-content: center;
+                .GoReview {
+                    cursor: pointer;
+                    width: calc(100% / 2 - 20px); // 수정함
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 10px;
+                    border: 1px solid #676767;
+                    margin: 5px;
+                    svg {
+                        font-size: 30px;
+                        padding: 5px;
+                    }
+
+                    p {
+                        font-weight: 700;
+                    }
+                }
+            }
+
+            // 리뷰 리스트 들이 나오는곳
+            .MiddleContentBox {
+                width: 100%;
+                display: flex; // 추가
+                justify-content: center; // 추가
+                flex-direction: column;
+                .ReviewListForm {
+                    width: 90%;
                     display: flex;
                     align-items: center;
+                    padding: 10px;
+                    justify-content: space-between;
+                    border-top: 1px solid black;
+                    // 여행 이미지
+                    .TravelImage {
+                        max-width: 90px;
+                        max-height: 90px;
+                    }
 
-                    input[type="checkbox"] {
-                        margin: 5px;
-                        min-width: 20px;
-                        min-height: 20px;
-                        border-radius: 50%;
-                        border: 1px solid #999;
-                        appearance: none;
-                        cursor: pointer;
-                      }
-                    
-                      input[type="checkbox"]:checked {
-                        background: black;
-                        border: none;
-                      }
+                    .TravelInfo {
+                        min-width: 40%;
+                        max-height: 90px;
+                        p {
+                            font-size: 18px;
+                            font-weight: 700;
+                        }
+
+                        p:last-child {
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+                    }
+
+                    // 버튼 박스
+                    .ReviewListButtonBox {
+                        display: flex;
+                        width: 25%;
+                        max-height: 90px;
+                        flex-direction: column;
+                        align-items: flex-end;
+                 
+                        button {
+                            width: 100%;
+                            height: calc(100% / 3 );
+                            background-color: transparent;
+                            border: 1px solid black;
+                            padding: 3px;
+                            margin: 2px 0px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                        }
+                    }
                 }
                 
-                .Delete {
+            }
+        }
+    }
+}
+
+
+@media all and (min-width:1024px) { 
+    .ReviewManagementBigBox {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        
+        .ReviewManagerBigBox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        
+            .ContentBox {
+                width: 50%;
+                min-height: 500px;
+             
+                .TopTitle {
+                    margin-left: 10px;
+                }
+    
+                .TopContentBox {
+                    width: 100%;
                     display: flex;
+                    padding: 10px;
                     align-items: center;
+                    justify-content: flex-start;
+                    .GoReview {
+                        cursor: pointer;
+                        min-width: 200px;
+                        min-height: 100px;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 10px;
+                        border: 1px solid #676767;
+                        margin: 5px;
+                        svg {
+                            font-size: 30px;
+                            padding: 5px;
+                        }
+    
+                        p {
+                            font-weight: 700;
+                        }
+                    }
+                }
+    
+                // 리뷰 리스트 들이 나오는곳
+                .MiddleContentBox {
+                    
+                    .ReviewListForm {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        padding: 10px;
+                        justify-content: space-between;
+                        border-top: 1px solid black;
+                        // 여행 이미지
+                        .TravelImage {
+                            max-width: 90px;
+                            max-height: 90px;
+                        }
+    
+                        .TravelInfo {
+                            width: 60%;
+    
+                            p {
+                                font-size: 18px;
+                                font-weight: 700;
+                            }
+    
+                            p:last-child {
+                                font-size: 16px;
+                                font-weight: 500;
+                            }
+                        }
+    
+                        // 버튼 박스
+                        .ReviewListButtonBox {
+                            display: flex;
+                            width: 25%;
+                            flex-direction: column;
+                            align-items: flex-end;
+                            button {
+                                width: 50%;
+                                background-color: transparent;
+                                border: 1px solid black;
+                                margin: 3px 0px;
+                                padding: 3px;
+                                border-radius: 5px;
+                            }
+                        }
+                    }
+                    
                 }
             }
         }
+    }
+}
 
-        .MiddleArea {
-            
-           .NoReview {
-               text-align: center;
-           }
+// MOBILE 버전
+@media all and (max-width:420px) {
 
-            input[type="checkbox"] {
-                min-width: 20px;
-                min-height: 20px;
-                border-radius: 50%;
-                border: 1px solid #999;
-                appearance: none;
-                cursor: pointer;
-              }
-            
-              input[type="checkbox"]:checked {
-                background: skyblue;
-              }
-
-            // 리뷰 컨텐츠들 css
-            .ReviewForm {
-                margin-bottom: 20px;
-                border-radius: 10px;
-                box-shadow: 0px 0px 5px rgba(44, 44, 44, 0.5);
-                padding: 10px;
-                max-width: 500px;
-              
-                .MiddleTopArea{
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: flex-start;
-                    // 여행지 이름, 별점
-                    .NameAndScore {
-
-                        // svg = StarIcon
-                        svg {
-                            margin-top: 5px;
-                            font-size: 20px;
-                            color: skyblue;
-                        }
-                    }
-
-                    .MiddleDeleteBtn {
-                        button {
-                            margin: 5px;
-                            padding: 6px;
-                            color: white;
-                            background-color: black;
-                            border: none;
-                            border-radius: 15px;
-                        }
-
-                        button:first-child {
-                            margin: 0px;
-                        }
-                    }
-                }
-
-                .MiddleImageArea {
-                    position: relative;
-                    margin-top: 10px;
-                    display: flex;
-                    overflow: hidden;
-                    
-                    .ImageBox {
-                        display: flex;
-                        transition: 0.7s;
-                        img {
-                            min-width: auto;
-                            max-width: 100%;
-                            background-size: cover;
-                        }
-                    }
-
-                    .SlideBtn {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        width: 99%;
-                        height: 100%;
-                        position: absolute;
-
-                        .BtnArea {
-                            width: 90%;
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                        }
-
-                        .Arrow {
-                            color: white;
-                            font-size: 30px;
-                        }
-                    }
-                }
-
-                .MiddleMiddleArea {
-                    margin-top: 10px;
-                    text-overflow:ellipsis;
-                    p {
-                        max-height: 65px;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        white-space: normal;
-                        line-height: 1.2;
-                        text-align: left;
-                        word-wrap: break-word;
-                        display: -webkit-box;
-                        -webkit-line-clamp: 3 ;
-                        -webkit-box-orient: vertical;
-                    }
-                    // 리뷰 이미지
-                    img {
-                        border-radius: 10px;
-                        min-width: 100%;
-                        max-width: 100%;
-                    }
-                }
-            }
+    .ReviewManagementBigBox {
+        .ContentBox {
+            margin: 10px;
+            margin-top: 50px;
         }
     }
 }
