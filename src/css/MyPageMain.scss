@@ -100,9 +100,105 @@
                     }
                 }
             }
-
         }
-
     }
+}
+
+
+@media all and (min-width: 1024px)
+{
+    .MyPageMainBigBox {
+        
+        .MyPageContentBoxParents {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 50px;
+            
+            .MyPageMainContentBox {
+                
+                width: 70%;
+
+                .UserInfo {
+                    margin-top: 10px;
+                    flex-direction: row;
+
+                    .TopArea {
+                        flex-direction: column;
+                        width: 40%;
+             
+                        img {
+                            margin: 5px;
+                        }
+                    }
+
+                    .MiddleArea {
+                       
+                        div {
+                            display: flex;
+                            flex-direction: column;
+                            text-align: center;
+                            box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.5);
+                            justify-content: center;
+                            align-items: center;
+                            min-height: 100px;
+                            padding: 5px;
+                            margin: 5px;
+                            border-radius: 0px;
+                            border-left: 1px solid black;
+                        }
+
+                    }
+                }
+
+                .PageMoveParent {
+                    width: 90%;
+                    margin: 0 auto;
+                    padding: 10px;
+                  
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    .PageMoveBox {
+                        display: flex;
+                        justify-content: space-around;
+                        width: 100%;
+                        margin: 0;
+                        div {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: 20px;
+                            border: 1px solid black;
+                            min-width: 150px;
+                            min-height: 100px;
+                            border-radius: 0px;
+                            
+                            span {
+                                font-size: 18px;
+                                font-weight: 700;
+                            }
+
+                            svg {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        // 내용이 들어가는 영역
+        
+    }
+}
+
+// TAB 버전
+@media all and (min-width:768px) and (max-width:1023px) {
+
+    
+}
+
+// MOBILE 버전
+@media all and (max-width:420px) {
 
 }

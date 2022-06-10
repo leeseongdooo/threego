@@ -123,7 +123,7 @@ function ReviewManagement() {
             ReviewScore: 5,
             checkBool: false
         }
-    ])
+    ]);
 
     useEffect(()=>{
         console.log(ReviewManage);
