@@ -20,7 +20,7 @@
 
         // 상단 총갯수와 선택삭제 부분
         .SelectAndDeleteBox {
-            margin-top: 5px;
+            padding: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -28,7 +28,32 @@
             .SelectBox {
                 display: flex;
                 align-items: center;
+  
             }
+
+            .GuideTextBox {
+                display: flex;
+                width: 90%;
+                justify-content: space-between;
+                align-items: center;
+                h4 {
+                    min-width: calc(100% / 3 );
+                    text-align: center;
+                }
+
+                button {
+                    max-height: 40px;
+                    padding: 6px;
+                    font-weight: 700;
+                    text-align: center;
+                    color: white;
+                    background-color: black;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 30px;
+                }
+            }
+            
         }
 
         .InquireForm{
@@ -40,28 +65,161 @@
             border-radius: 10px;
             box-shadow: 1px 1px 5px rgb(0 0 0 / 50%);
 
-            .BoxOne {
+            .ContentTextBox {
+                width: 90%; // 여기
                 display: flex;
+                justify-content: space-between;
                 align-items: center;
-                // 제목과 작성날짜
-                .TitleAndWriteDays {
-                    margin: 5px;
-                }                 
-            }
+                .BoxOne {
+                    min-width: calc(100% / 3 );
+                    max-width: calc(100% / 3 );
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    text-align: center;
+                    // 제목과 작성날짜
+                    .TitleAndWriteDays {
+                        margin: 5px;
+                        h3 {
+                            font-size: 16px;
+                            text-align: center;
+                        }
 
-            button {
-                width: 50px;
-                padding: 6px;
-                font-weight: 700;
-                color: white;
-                background-color: black;
-                border: none;
-                border-radius: 30px;
+                    }        
+                     
+                }
+    
+                button {
+                    min-width: 65px;
+                    max-height: 40px;
+                    padding: 6px;
+                    font-weight: 700;
+                    text-align: center;
+                    color: white;
+                    background-color: black;
+                    border: none;
+                    cursor: pointer;
+                    border-radius: 30px;
+                }
+                
             }
+            
         }
+
+        .InquireForm:first-child {
+            margin-top: 0px;
+        }
+
         .NoInquireList {
             text-align: center;
         }
 
     }   
+}
+
+@media all and (min-width:1024px) {
+    .InquireManagementBigBox {
+
+        .InquireManageMentParentBox{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .InquireManageMentContentBox {
+                margin: 15px;
+                width: 80%;
+
+                .TopTitle {
+                    font-size: 24px;
+                }
+
+                // 상단 총갯수와 선택삭제 부분
+                .SelectAndDeleteBox {
+                    padding: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    .SelectBox {
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .GuideTextBox {
+                        display: flex;
+                        width: 80%;
+                        justify-content: space-between;
+                        align-items: center;
+                        h4 {
+                            min-width: calc(100% / 3 );
+                            text-align: center;
+                        }
+
+                        button {
+                            max-height: 40px;
+                            padding: 6px;
+                            font-weight: 700;
+                            text-align: center;
+                            color: white;
+                            background-color: black;
+                            border: none;
+                            cursor: pointer;
+                            border-radius: 30px;
+                        }
+                    }
+                    
+                }
+
+
+                .InquireForm {
+                    .ContentTextBox {
+                        width: 80%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        .BoxOne {
+                            min-width: calc(100% / 3 );
+                            max-width: calc(100% / 3 );
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            // 제목과 작성날짜
+                            .TitleAndWriteDays {
+                                margin: 5px;
+                                h3 {
+                                    font-size: 1.17em;
+                                }
+                            }        
+                             
+                        }
+            
+                        button {
+                            width: 50px;
+                            padding: 6px;
+                            font-weight: 700;
+                            color: white;
+                            background-color: black;
+                            border: none;
+                            border-radius: 30px;
+                        }
+                        
+                    }
+                }
+            }
+        }
+        
+    }
+} 
+
+// TAB 버전
+@media all and (min-width:768px) and (max-width:1023px) {
+
+}
+
+// MOBILE 버전
+@media all and (max-width:420px) {
+
+
 }

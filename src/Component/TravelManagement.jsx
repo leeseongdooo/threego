@@ -42,10 +42,11 @@ function TravelListForm({TravelInfo, setTravelList, TravelList, setAllSelectBool
                 <div className="TextBox">
                     <h3>{TravelInfo.TravelName}</h3>
                     <h4>{TravelInfo.TravelSubName}</h4>
-                    <h4>{TravelInfo.TravelDate}</h4>
+                    <p className='TravelDate'>{TravelInfo.TravelDate}</p>
+            
                 </div>
-
             </div>
+
             
             <div className="BtnBox">
                 <button onClick={RemoveTravelList}>삭제</button>
@@ -127,6 +128,7 @@ function TravelManagement() {
                         
                         <button className="CheckDelete" onClick={SelectRemove}>선택삭제</button>
                     </div>
+
 
                     {TravelList.length > 0 ? TravelList.map((List)=><TravelListForm setCheckTravelList={setCheckTravelList} CheckTravelList={CheckTravelList} setAllSelectBool={setAllSelectBool} key={List.id} TravelList={TravelList} setTravelList={setTravelList} TravelInfo={List}/>) : 
                     <h3 className='NoTravelList'>아무것도 없어요 ㅜㅜ</h3>}

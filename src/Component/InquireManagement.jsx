@@ -35,19 +35,23 @@ function InquireForm({Inquire, setInquire, RealInquire, CheckInquirelList, setCh
     return (
         <div className="InquireForm">
             {/* 체크여부 */}
-            <div className="BoxOne">
-                <input type="checkbox" onChange={CheckInquire} name="InquireList" checked={Inquire.checkBool} />
-                <div className="TitleAndWriteDays">
-                    <p>{Inquire.Title}</p>
-                    <p>{Inquire.WriteDays}</p>
+            <input type="checkbox" onChange={CheckInquire} name="InquireList" checked={Inquire.checkBool} />
+            
+            <div className="ContentTextBox">
+                <div className="BoxOne">
+                    <div className="TitleAndWriteDays">
+                        <h3>{Inquire.Title}</h3>
+                        <p>{Inquire.WriteDays}</p>
+                    </div>
                 </div>
-            </div>
-        
-            <div className="State">
-                {Inquire.Process == true ? <h4>처리완료</h4> : <h4 style={{color: 'royalblue'}}>처리중</h4>}
-            </div>
+            
+                <div className="State">
+                    {Inquire.Process == true ? <h4>처리완료</h4> : <h4 style={{color: 'royalblue'}}>처리중</h4>}
+                </div>
 
-            <button onClick={RemoveInquire}>삭제</button>
+                <button onClick={RemoveInquire}>삭제</button>
+            </div>
+          
         </div>  
     )
 }
@@ -58,7 +62,7 @@ function InquireManagement() {
     const [Inquire, setInquire] = useState([
         {
             id: 1,
-            Title: '제목입니다',
+            Title: '제목입니다제목입니다제목입니다제목입니다',
             WriteDays: '2022-05-13',
             Content: '얼씨구1',
             Process: true,
@@ -66,7 +70,7 @@ function InquireManagement() {
         },
         {
             id: 2,
-            Title: '제목입니다',
+            Title: '제목입니다제목입니다',
             WriteDays: '2022-05-13',
             Content: '얼씨구2',
             Process: false,
@@ -106,22 +110,35 @@ function InquireManagement() {
 
     return (
         <div className="InquireManagementBigBox">
-            <Header fontColor="black"/>
+            <div>
+                <Header/>
+            </div>
+            
+            <div className="InquireManageMentParentBox">
+
                 <div className="InquireManageMentContentBox">
-                    <h3>문의 관리</h3>
+                    <h3 className="TopTitle">문의 관리</h3>
                     
                     <div className="SelectAndDeleteBox">
+                        
                         <div className="SelectBox">
                             <input type="checkbox" name='InquireList' onChange={AllSelect} checked={AllSelectBool}/>
-                            <h4>전체선택</h4>
+                            <h4></h4>
                         </div>
 
-                        <h4 className="SelectDelete" onClick={SelectRemove}>선택삭제</h4>
+                        <div className="GuideTextBox">
+                            <h4 className="TitleAndDate">제목/날짜</h4>
+                            <h4 className="Answer">답변 여부</h4>
+                            <button className="SelectDelete" onClick={SelectRemove}>선택삭제</button>
+                        </div>
+                        
                     </div>
                     
+
                     {Inquire.length > 0 ? Inquire.map((List) => (<InquireForm key={List.id} setAllSelectBool={setAllSelectBool} RealInquire={Inquire} setInquire={setInquire} CheckInquirelList={CheckInquirelList} setCheckInquireList={setCheckInquireList} Inquire={List}/>)) : <h3 className='NoInquireList'>아무것도 없어요 ㅜㅜ</h3>}
 
                 </div>
+            </div>
             <Bottom/>
         </div>
     )
