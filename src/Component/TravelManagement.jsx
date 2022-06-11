@@ -42,9 +42,11 @@ function TravelListForm({TravelInfo, setTravelList, TravelList, setAllSelectBool
                 <div className="TextBox">
                     <h3>{TravelInfo.TravelName}</h3>
                     <h4>{TravelInfo.TravelSubName}</h4>
+                    <h4>{TravelInfo.TravelDate}</h4>
                 </div>
-            </div>
 
+            </div>
+            
             <div className="BtnBox">
                 <button onClick={RemoveTravelList}>삭제</button>
             </div>
@@ -61,6 +63,7 @@ function TravelManagement() {
             TravelName: "대구 광역시",
             TravelSubName: "스파크랜드",
             TravelImage: "/img/Daegu.jpg",
+            TravelDate: "2022-06-11",
             checkBool: false
         },
         {
@@ -68,6 +71,7 @@ function TravelManagement() {
             TravelName: "대구 광역시",
             TravelSubName: "김광석 그리기 거리",
             TravelImage: "/img/Daegu.jpg",
+            TravelDate: "2022-06-11",
             checkBool: false
         },
         {
@@ -75,6 +79,7 @@ function TravelManagement() {
             TravelName: "대구 광역시",
             TravelSubName: "앞산",
             TravelImage: "/img/Daegu.jpg",
+            TravelDate: "2022-06-11",
             checkBool: false
         },
     ]); 
@@ -101,27 +106,33 @@ function TravelManagement() {
         }
     }
 
-
-
     return(
         <div className="TravelManagementBigBox">
-            <Header fontColor="black"/>
-            {/* 내용이 들어갈 곳 */}
-            <div className="TravelManagementContentBox">
-                <h3 className="Title">여행 관리</h3>
-                
-                <div className="SelectAndDeleteBox">
-                    <div>
-                        <input type="checkbox" name='TravelList' onChange={AllSelect} checked={AllSelectBool}/>
-                        <h4>전체선택 </h4>
-                    </div>
-                    
-                    <h4 onClick={SelectRemove}>선택삭제</h4>
-                </div>
 
-                {TravelList.length > 0 ? TravelList.map((List)=><TravelListForm setCheckTravelList={setCheckTravelList} CheckTravelList={CheckTravelList} setAllSelectBool={setAllSelectBool} key={List.id} TravelList={TravelList} setTravelList={setTravelList} TravelInfo={List}/>) : 
-                <h3 className='NoTravelList'>아무것도 없어요 ㅜㅜ</h3>}
+            <div>
+                <Header/>
             </div>
+            
+            {/* 내용이 들어갈 곳 */}
+
+            <div className='TravelManagementParentBox'>
+                <div className="TravelManagementContentBox">
+                    <h3 className="TopTitle">여행 관리</h3>
+                    
+                    <div className="SelectAndDeleteBox">
+                        <div>
+                            <input type="checkbox" name='TravelList' onChange={AllSelect} checked={AllSelectBool}/>
+                            <h4>전체선택 </h4>
+                        </div>
+                        
+                        <button className="CheckDelete" onClick={SelectRemove}>선택삭제</button>
+                    </div>
+
+                    {TravelList.length > 0 ? TravelList.map((List)=><TravelListForm setCheckTravelList={setCheckTravelList} CheckTravelList={CheckTravelList} setAllSelectBool={setAllSelectBool} key={List.id} TravelList={TravelList} setTravelList={setTravelList} TravelInfo={List}/>) : 
+                    <h3 className='NoTravelList'>아무것도 없어요 ㅜㅜ</h3>}
+                </div>
+            </div>
+            
             <Bottom/>
         </div>
     );
