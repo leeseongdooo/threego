@@ -137,36 +137,43 @@ function ProfileEdit() {
 
     return (
         <div className="ProfileEditBigBox">
-            <Header fontColor="black"/>    
-                <div className="ProfileContentBox">
-                    <label className="ProfileImage">
-                        <input type="file" name="file" accept="image/*" onChange={ReviewImage}/>
-                        <FaUser/>
-                        <img src={"/img/" + PreviewImage} alt="USERIMAGE" style={PreviewImage == null ? {display: 'none'} : {}}/>
-                    </label>
-
-                    <div className="InputInfo">
-                        <p>닉네임</p>
-                        <input type="text" className="nickNameInput" placeholder="닉네임" onChange={NickNameCheck}/>
-                        <span className={isNickName ? "true" : "false"}>{nicknameMessage}</span>
-                    </div>
-
-                    <div className="InputInfo">
-                        <p>비밀번호 변경</p>
-                        <input type="password" className="pwdInput" placeholder="비밀번호" onChange={PasswordCheck}/>
-                        <span className={isPwd ? "true" : "false"}>{pwdMessage}</span>
-                    </div>
-
-                    <div className="InputInfo">
-                        <p>비밀번호 재확인</p>
-                        <input type="password" className="pwdChkInput" placeholder="비밀번호 확인" onChange={PasswordCheckCheck}/>
-                        <span className={isPwdChk ? "true" : "false"}>{pwdChkMessage}</span>
-                    </div>
-
-                    <div className="FinalEditBtn">
-                        <button>개인정보 변경하기</button>
-                    </div>
+                <div className='HeaderParent'>
+                    <Header fontColor=""/>
                 </div>
+
+                <div className="ProfileContentParentBox">
+                    <div className="ProfileContentBox">
+                        <label className="ProfileImage">
+                            <input type="file" name="file" accept="image/*" onChange={ReviewImage}/>
+                            <FaUser/>
+                            <img src={"/img/" + PreviewImage} alt="USERIMAGE" style={PreviewImage == null ? {display: 'none'} : {}}/>
+                        </label>
+
+                        <div className="InputInfo">
+                            <p>닉네임</p>
+                            <input type="text" className="nickNameInput" placeholder="닉네임" onChange={NickNameCheck}/>
+                            <span className={isNickName ? "true" : "false"}>{nicknameMessage}</span>
+                        </div>
+
+                        <div className="InputInfo">
+                            <p>비밀번호 변경</p>
+                            <input type="password" className="pwdInput" placeholder="비밀번호" onChange={PasswordCheck}/>
+                            <span className={isPwd ? "true" : "false"}>{pwdMessage}</span>
+                        </div>
+
+                        <div className="InputInfo">
+                            <p>비밀번호 재확인</p>
+                            <input type="password" className="pwdChkInput" placeholder="비밀번호 확인" onChange={PasswordCheckCheck}/>
+                            <span className={isPwdChk ? "true" : "false"}>{pwdChkMessage}</span>
+                        </div>
+
+                        <div className="FinalEditBtn">
+                            <button>개인정보 변경하기</button>
+                        </div>
+                    </div>
+
+                </div>
+                
             <Bottom/>   
         </div>
     )

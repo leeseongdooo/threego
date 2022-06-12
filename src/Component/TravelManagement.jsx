@@ -110,7 +110,7 @@ function TravelManagement() {
     return(
         <div className="TravelManagementBigBox">
 
-            <div>
+            <div className='HeaderParent'>
                 <Header/>
             </div>
             

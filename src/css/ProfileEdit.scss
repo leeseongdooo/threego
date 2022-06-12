@@ -95,3 +95,18 @@
 
     }
 }
+
+@media all and (min-width:1024px) { 
+    .ProfileEditBigBox {
+        .ProfileContentParentBox
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .ProfileContentBox {
+                width: 50%;
+            }
+        }  
+    }
+}

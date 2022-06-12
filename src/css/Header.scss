@@ -65,7 +65,6 @@ a {
 @media all and (min-width:1024px) { 
 
   .Header {
-    background-color: black;
     color: white;
     max-height: 80px;
     // ThreeGo 
@@ -105,6 +104,7 @@ a {
       }
 
       .loginBox {
+        min-width: 200px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -120,7 +120,6 @@ a {
 
 
   .Header { 
-    background-color: black;
     color: white;
     max-height: 80px;
     h3 {

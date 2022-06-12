@@ -110,7 +110,7 @@ function InquireManagement() {
 
     return (
         <div className="InquireManagementBigBox">
-            <div>
+            <div className='HeaderParent'>
                 <Header/>
             </div>
             

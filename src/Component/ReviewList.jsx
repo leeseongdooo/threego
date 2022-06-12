@@ -346,7 +346,7 @@ function ReviewList() {
 
     return(
         <div className="ReviewListBigBox">
-           <div className="HeaderParent">
+           <div className="HeaderParent" style={{backgroundColor: 'black'}}>
                     <Header fontColor="white" />
             </div>
             
